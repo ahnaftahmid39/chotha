@@ -1,0 +1,47 @@
+.useful-buttons {
+  display: flex;
+  padding: 0.5rem;
+  margin-left: 1rem;
+}
+
+.link-modal {
+  width: 80vw;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.link-modal input[type='text'],
+.link-modal button {
+  flex-basis: 1;
+  flex-grow: 1;
+  border-radius: 6px;
+  font-size: 1rem;
+  border: 1px solid black;
+  outline: none;
+}
+
+.link-modal input[type='text'] {
+  padding: 0.6rem;
+}
+
+.link-modal button {
+  padding: 0.5rem;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  background-color: black;
+}
+
+.link-modal .modal-btn-group {
+  display: flex;
+  gap: 1rem;
+}
+.link-modal .modal-btn-group > * {
+  flex-grow: 1;
+}
+@media (min-width: 700px) {
+  .link-modal {
+    width: 40vw;
+  }
+}

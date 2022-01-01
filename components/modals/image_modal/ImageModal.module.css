@@ -1,0 +1,19 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3), 0 0 0 100vw rgba(0, 0, 0, 0.5);
+  transition: transform 300ms;
+}
+
+.modalbg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  backdrop-filter: blur(8px);
+}

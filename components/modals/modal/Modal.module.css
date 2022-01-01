@@ -1,0 +1,22 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  z-index: 2;
+  padding: 2rem;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3), 0 0 0 100vw rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 400ms;
+}
+
+.modalbg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 1000vw;
+  height: 1000vh;
+  z-index: 1;
+  backdrop-filter: blur(2px);
+}

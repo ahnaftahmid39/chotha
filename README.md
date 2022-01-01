@@ -1,34 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# This is chotha
 
-## Getting Started
+## Why?
 
-First, run the development server:
+So that we don't waste time before exam by reading the whole book and asking each other "এইটা একটু বুঝা/ এইটা কেমনে হইল/ এইটা বাদ দিমু না পরমু"
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## For this we need a website that:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- that provides all the necessary notes/links/refs about certain topic (mostly hard to understand) in a student-friendly way.
+- that also provides bangla explanation but technical terms used in english.
+- that have question bank (and possible solution of them) from renowed unsversities.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Essential features:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- To be able to post notes.
+- Adding like-dislike or upvote-downvote system to rate a certain note/post.
+- Different category of topics for different subjects from different department. For example "pipelining" from "computer architecture" from "CSE".
+- Contribution feature. Since all the notes/chothas will be from "kind hearted people" we need to implement a feature where people can send note in markdown format and we publish it as a post. Which format they send is a debatable topic.
+- Comment section for queries.
+- Being able to request update. (This will be challenging)
+- Separate question-bank section.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## TODOs:
+### Frontend:
+- [ ] post component
+- [ ] image support
+- [ ] comment section
+- [ ] math symbol, equations support
+- [ ] image optimization? next-optimized-image
+### Backend:
+- [ ] image processing (Where do I save images?) in imagekit, settings in imagekit done.
+- [ ] version control (Post can be modified. We will store the primary version and last 5 modifications)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## How to:
+This is a website similar to blog website or forum idk.\
+Some links:\
+[Example from next for blog type website](https://github.com/vercel/next.js/tree/canary/examples/blog-with-comment)
