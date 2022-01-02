@@ -3,6 +3,7 @@ import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 import CloseButton from '../../buttons/close_button/CloseButton';
 import ImageModal from '../../modals/image_modal/ImageModal';
 import styles from './ImageMarkdown.module.css';
+
 const ImageMarkdown = React.memo(({ src, alt }) => {
   const [imgModal, setImgModal] = useState(false);
 
@@ -86,4 +87,7 @@ const ImageMarkdown = React.memo(({ src, alt }) => {
     </span>
   );
 });
+
+ImageMarkdown.displayName = 'ImageMarkdown';
+
 export default ImageMarkdown;

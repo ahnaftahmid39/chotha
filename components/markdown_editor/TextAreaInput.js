@@ -10,7 +10,7 @@ const TextAreaInput = ({ spaces = 4, className, text, setText }, ref) => {
     if (text.caret >= 0) {
       text.target.setSelectionRange(text.caret + spaces, text.caret + spaces);
     }
-  }, [text]);
+  }, [text, spaces]);
 
   const taRef = useRef();
 

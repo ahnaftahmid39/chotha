@@ -39,6 +39,7 @@ export default async function handle(req, res) {
       break;
 
     default:
+      res.status(400).json({ error: `Cannot ${req.method}`})
       break;
   }
 }

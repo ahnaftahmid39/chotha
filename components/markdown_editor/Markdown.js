@@ -1,8 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { useState } from 'react/cjs/react.development';
-import CodeMarkdown from './code_markdown/CodeMarkdown';
-import ImageMarkdown from './image_markdown/ImageMarkdown';
+import dynamic from 'next/dynamic';
+const CodeMarkdown = dynamic(() => {
+  console.log('CodeMarkdown');
+  return import('./code_markdown/CodeMarkdown');
+});
+const ImageMarkdown = dynamic(() => {
+  console.log('ImageMarkdown');
+  return import('./image_markdown/ImageMarkdown');
+});
 import styles from './Markdown.module.css';
 
 const Markdown = ({ contentRef }) => {
@@ -15,7 +21,7 @@ const Markdown = ({ contentRef }) => {
     return () => {
       clearInterval(intervalfn);
     };
-  }, []);
+  }, [contentRef]);
 
   return (
     <ReactMarkdown

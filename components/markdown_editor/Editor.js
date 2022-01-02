@@ -1,5 +1,9 @@
-import { useCallback, useRef, useState } from 'react';
-import Markdown from './Markdown';
+import { useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
+const Markdown = dynamic(() => {
+  console.log('Markdown');
+  return import('./Markdown');
+});
 import styles from './Editor.module.css';
 import TextAreaInput from './TextAreaInput';
 import UsefulButtons from './useful_buttons/UsefulButtons';
@@ -7,42 +11,41 @@ import UsefulButtons from './useful_buttons/UsefulButtons';
 const Editor = () => {
   const [text, setText] = useState({ value: '', caret: -1, target: null });
   const taRef = useRef();
-
-  const bolden = useCallback(() => {
+  const bolden = () => {
     taRef.current.boldItalic('bold');
-  });
+  };
 
-  const italicen = useCallback(() => {
+  const italicen = () => {
     taRef.current.boldItalic('italic');
-  });
+  };
 
-  const addImgLink = useCallback((link) => {
+  const addImgLink = (link) => {
     setText({
       ...text,
       value: text.value + '  \n' + link,
     });
     taRef.current.focus();
-  });
+  };
 
-  const addLink = useCallback((link) => {
+  const addLink = (link) => {
     setText({
       ...text,
       value: text.value + link,
     });
     taRef.current.focus();
-  });
+  };
 
-  const addNewLine = useCallback(() => {
+  const addNewLine = () => {
     taRef.current.newLine();
-  });
+  };
 
-  const addHeading = useCallback((type) => {
+  const addHeading = (type) => {
     taRef.current.giveHeadings(type);
-  });
+  };
 
-  const toggleWrap = useCallback((wrap) => {
+  const toggleWrap = (wrap) => {
     taRef.current.toggleWrap(wrap);
-  });
+  };
 
   return (
     <>
@@ -71,7 +74,7 @@ const Editor = () => {
           <div className={`${styles['column-header']} unselectable`}>
             Preview
           </div>
-          <Markdown contentRef={taRef} />
+          {text.value != '' && <Markdown contentRef={taRef} />}
         </div>
       </div>
     </>

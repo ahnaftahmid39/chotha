@@ -1,5 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import { useRef, useState, useEffect } from 'react';
 import Modal from '../../modals/modal/Modal';
 import styles from './UsefulButtons.module.css';
 
@@ -12,14 +11,14 @@ const AddLinkButton = ({ addLink }) => {
     if (linkModal) inputRef.current.focus();
   }, [linkModal]);
 
-  const addLinkToContent = useCallback(() => {
+  const addLinkToContent = () => {
     let url = link.url;
     if (url.substring(0, 4) != 'http') url = 'https://' + url;
     const linkMd = `[${link.title}](${url})`;
     addLink(linkMd);
     setLinkModal(false);
     setLink({ title: '', url: '' });
-  });
+  };
 
   return (
     <>

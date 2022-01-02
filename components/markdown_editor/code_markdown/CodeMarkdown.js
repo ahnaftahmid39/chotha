@@ -4,20 +4,20 @@ import { github, nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import styles from './CodeMarkdown.module.css';
 
 const CodeMarkdown = React.memo(
-  ({ node, inline, className, children, language, ...props }) => {
+  function ({ node, inline, className, children, language, ...props }) {
     const match = /language-(\w+)/.exec(className || '');
 
     return !inline && match ? (
       <SyntaxHighlighter
         style={github}
         showLineNumbers
-        language={match[1]}
         className={`custom-scroll ${styles['syntax-highlighter']}`}
-        children={String(children).trim()}
         language={match[1]}
         PreTag='div'
         {...props}
-      />
+      >
+        {String(children).trim()}
+      </SyntaxHighlighter>
     ) : (
       <code className={className} {...props}>
         {children}
@@ -30,5 +30,7 @@ const CodeMarkdown = React.memo(
     );
   }
 );
+
+CodeMarkdown.displayName = CodeMarkdown;
 
 export default CodeMarkdown;
