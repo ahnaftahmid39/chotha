@@ -82,7 +82,7 @@ const TextAreaInput = ({ spaces = 4, className, text, setText }, ref) => {
             else if (content[i2] == ' ' || content[i2] == '#') continue;
             else {
               pre = '\n';
-              console.log('adding pre');
+              // console.log('adding pre');
               p++;
               q++;
               break;

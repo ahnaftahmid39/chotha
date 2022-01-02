@@ -70,18 +70,17 @@ input[type='file'] {
   border: none;
   outline: none;
   padding: 0.8rem;
-  transition: 150ms;
   cursor: pointer;
   margin: 0 0.5rem 0 0.5rem;
+  transition: transform 150ms;
 }
 .btn-blur {
   background-color: rgba(0, 0, 0, 0.6);
   font-size: 0.9rem;
   backdrop-filter: blur(5px);
   white-space: pre;
-
 }
-.btn:focus,
-.btn:hover {
+
+.btn-blur:hover {
   transform: scale(1.1);
 }
