@@ -3,7 +3,7 @@ import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { github, nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import styles from './CodeMarkdown.module.css';
 
-const CodeSyntax = React.memo(
+const CodeMarkdown = React.memo(
   ({ node, inline, className, children, language, ...props }) => {
     const match = /language-(\w+)/.exec(className || '');
 
@@ -31,4 +31,4 @@ const CodeSyntax = React.memo(
   }
 );
 
-export default CodeSyntax;
+export default CodeMarkdown;
