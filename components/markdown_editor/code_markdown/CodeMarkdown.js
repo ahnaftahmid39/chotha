@@ -1,6 +1,7 @@
 import React from 'react';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { github, nord } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import github from 'react-syntax-highlighter/dist/cjs/styles/hljs/github';
+import nord from 'react-syntax-highlighter/dist/cjs/styles/hljs/nord';
 import styles from './CodeMarkdown.module.css';
 
 const CodeMarkdown = React.memo(

@@ -4,28 +4,28 @@
   margin-left: 1rem;
 }
 
-.link-modal {
+.modal {
   width: 80vw;
   gap: 1rem;
   display: flex;
   flex-direction: column;
 }
 
-.link-modal input[type='text'],
-.link-modal button {
+.modal input[type='text'],
+.modal button {
   flex-basis: 1;
   flex-grow: 1;
   border-radius: 6px;
   font-size: 1rem;
-  border: 1px solid black;
+  border: 0.5px groove black;
   outline: none;
 }
 
-.link-modal input[type='text'] {
+.modal input[type='text'] {
   padding: 0.6rem;
 }
 
-.link-modal button {
+.modal button {
   padding: 0.5rem;
   cursor: pointer;
   color: white;
@@ -33,15 +33,43 @@
   background-color: black;
 }
 
-.link-modal .modal-btn-group {
+.modal .modal-btn-group {
   display: flex;
   gap: 1rem;
 }
-.link-modal .modal-btn-group > * {
+
+.modal .modal-btn-group > * {
   flex-grow: 1;
 }
-@media (min-width: 700px) {
-  .link-modal {
+
+.image-modal input[type='text'] {
+  padding-left: 1.5rem;
+}
+
+.file-input {
+  font-size: 1rem;
+  border: 0.5px groove black;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.file-input > span {
+  display: block;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+.file-input .file-input-browse {
+  background-color: black;
+  color: white;
+  font-weight: 600;
+}
+
+@media (min-width: 769px) {
+  .modal {
     width: 40vw;
   }
 }

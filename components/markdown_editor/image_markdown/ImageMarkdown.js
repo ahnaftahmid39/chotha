@@ -43,7 +43,7 @@ const ImageMarkdown = React.memo(({ src, alt }) => {
             {({ resetTransform, zoomIn, zoomOut }) => {
               return (
                 <>
-                  <span className={`btn-group ${styles['image-modal-btn']}`}>
+                  <span className={`btn-group ${styles['modal-btn']}`}>
                     <button
                       onClick={() => resetTransform()}
                       className={`btn btn-blur`}

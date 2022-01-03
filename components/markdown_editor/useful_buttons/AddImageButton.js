@@ -4,9 +4,17 @@ import styles from './UsefulButtons.module.css';
 
 const AddImageBtn = ({ addImgLink }) => {
   const [imgModal, setImgModal] = useState(false);
-  const [imgData, setImgData] = useState({ title: '', data: null });
+  const [linkStatus, setLinkStatus] = useState('');
+  const [imgData, setImgData] = useState({
+    title: '',
+    data: null,
+    fileName: '',
+  });
 
   const handleGetImageLink = async () => {
+    console.log('clicked');
+    if (!imgData.data) return;
+    setLinkStatus('Link Generating...');
     const data = new FormData();
     data.append('photo', imgData.data);
     const raw = await fetch('/api/image', {
@@ -16,9 +24,13 @@ const AddImageBtn = ({ addImgLink }) => {
     const {
       result: { url },
     } = await raw.json();
-    addImgLink(`![${imgData.title}](${url})\n\n`);
-    setImgModal(false);
-    setImgData({ title: '', data: null });
+    setLinkStatus('Success!');
+    setTimeout(() => {
+      addImgLink(`![${imgData.title}](${url})\n\n`);
+      setImgModal(false);
+      setImgData({ title: '', data: null });
+      setLinkStatus('');
+    }, 500);
   };
 
   return (
@@ -31,36 +43,64 @@ const AddImageBtn = ({ addImgLink }) => {
       >
         Add Image
       </label>
-      <Modal modal={imgModal}>
-        <input
-          type='text'
-          value={imgData.title}
-          onChange={(e) => {
-            setImgData({ ...imgData, title: e.target.value });
-          }}
-        />
-        <label>
+      {imgModal && (
+        <Modal
+          className={`${styles['modal']} ${styles['image-modal']}`}
+          modal={imgModal}
+        >
           <input
+            type='text'
+            value={imgData.title}
+            placeholder='Title or brief description'
             onChange={(e) => {
-              setImgData({ ...imgData, data: e.target.files[0] });
+              setImgData({ ...imgData, title: e.target.value });
             }}
-            type='file'
-            accept='image/png, image/jpeg, imgae/jpg, image/gif'
           />
-          Choose File
-        </label>
-        <div className={styles['modal-btn-group']}>
-          <button onClick={handleGetImageLink}>Add link</button>
-          <button
-            onClick={() => {
-              setImgData({ title: '', data: null });
-              setImgModal(false);
-            }}
-          >
-            Cancel
-          </button>
-        </div>
-      </Modal>
+          <label className={styles['file-input']}>
+            <input
+              onChange={(e) => {
+                setImgData({ ...imgData, data: e.target.files[0] });
+                console.log(e.target.files[0]);
+                e.target.value = '';
+              }}
+              type='file'
+              accept='image/png, image/jpeg, imgae/jpg, image/gif'
+            />
+            <span>{!imgData.data ? 'Choose File...' : imgData.data.name}</span>
+            <span className={styles['file-input-browse']}>Browse</span>
+          </label>
+          <span style={{ display: 'grid', placeItems: 'center' }}>
+            {imgData.data && (
+              <img
+                style={{ maxHeight: '50vh', maxWidth: '100%' }}
+                src={URL.createObjectURL(imgData.data)}
+                alt=''
+              />
+            )}
+          </span>
+          <span>{linkStatus}</span>
+          <div className={styles['modal-btn-group']}>
+            <button
+              onClick={handleGetImageLink}
+              style={{
+                color: imgData.data == null ? 'rgb(190, 190, 190)' : 'white',
+                cursor: imgData.data == null ? 'not-allowed' : 'pointer',
+              }}
+            >
+              Add Image
+            </button>
+            <button
+              onClick={() => {
+                setImgData({ title: '', data: null, fileName: '' });
+                setImgModal(false);
+                setLinkStatus('');
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

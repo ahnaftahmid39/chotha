@@ -27,7 +27,7 @@ const AddLinkButton = ({ addLink }) => {
       </label>
       <Modal
         modal={linkModal}
-        className={styles['link-modal']}
+        className={styles['modal']}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             e.preventDefault();

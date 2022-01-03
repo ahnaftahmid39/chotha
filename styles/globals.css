@@ -66,6 +66,7 @@ input[type='file'] {
   color: white;
   text-decoration: none;
   font-weight: 600;
+  font-size: 1rem;
   border-radius: 8px;
   border: none;
   outline: none;
