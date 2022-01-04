@@ -22,8 +22,8 @@ a {
 }
 
 .custom-scroll::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 8px;
+  height: 8px;
 }
 
 /* Handle */
@@ -32,6 +32,10 @@ a {
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.3);
   width: 5px;
+}
+
+.custom-scroll:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 input[type='file'] {

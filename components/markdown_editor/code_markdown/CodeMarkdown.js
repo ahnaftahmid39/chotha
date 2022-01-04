@@ -4,7 +4,6 @@ const SyntaxHighlighter = dynamic(
   () => import('react-syntax-highlighter/dist/cjs/light-async'),
   { ssr: false }
 );
-// import {LightAsync as SyntaxHighlighter} from 'react-syntax-highlighter';
 import nord from 'react-syntax-highlighter/dist/cjs/styles/hljs/nord';
 import styles from './CodeMarkdown.module.css';
 
