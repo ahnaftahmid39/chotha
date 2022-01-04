@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 const Markdown = dynamic(() => {
-  console.log('Markdown');
   return import('./Markdown');
 });
 import styles from './Editor.module.css';
