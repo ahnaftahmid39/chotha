@@ -18,8 +18,8 @@ export default function Home({ content }) {
     <div className={styles.container}>
       <Head></Head>
       <div className={styles.main}>
-        <Link href='/new-chotha'>
-          <span className='btn'>New Chotha</span>
+        <Link href='/new-chotha' passHref>
+          <a className='btn'>New Chotha</a>
         </Link>
         <ReactMarkdown
           className={markdownStyles['markdown-body']}
