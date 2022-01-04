@@ -30,6 +30,9 @@ export default function Home({ content }) {
         >
           {content}
         </ReactMarkdown>
+        <Link href='/about' passHref>
+          <a className='btn'>About</a>
+        </Link>
       </div>
     </div>
   );
