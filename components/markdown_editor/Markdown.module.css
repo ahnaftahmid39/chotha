@@ -1,3 +1,11 @@
+.markdown-body {
+  box-sizing: border-box;
+  padding: 1rem;
+  flex-grow: 0;
+  padding-top: 0.3rem;
+  overflow: auto;
+}
+
 .markdown-body a {
   display: inline-block;
   text-decoration: underline;
@@ -17,15 +25,10 @@
   text-decoration-color: rgb(54, 116, 95);
   color: white;
 }
-.markdown-body {
-  box-sizing: border-box;
-  padding: 1rem;
-  flex-grow: 0;
-  padding-top: 0.3rem;
-  overflow: auto;
-}
 
 .markdown-body pre {
   padding: 1.2rem;
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
+  background-color: #2E3440;
+  border-radius: 8px;
 }

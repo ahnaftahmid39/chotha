@@ -1,44 +1,45 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
+import Link from 'next/link';
 import React from 'react';
-import styles from '../styles/Home.module.css'
+import dynamic from 'next/dynamic';
+import ReactMarkdown from 'react-markdown';
+import styles from '../styles/Home.module.css';
+import markdownStyles from '../components/markdown_editor/Markdown.module.css';
+import fs from 'fs';
+const ImageMarkdown = dynamic(() =>
+  import('../components/markdown_editor/image_markdown/ImageMarkdown')
+);
+const CodeMarkdown = dynamic(() =>
+  import('../components/markdown_editor/code_markdown/CodeMarkdown')
+);
 
-export default function Home() {
+export default function Home({ content }) {
   return (
     <div className={styles.container}>
-      <Head>
-      </Head>
+      <Head></Head>
       <div className={styles.main}>
-        <Link href="/new-chotha">New Chotha</Link>
-        <textarea className = 'custom-caret'  />
-        <Timer />
+        <Link href='/new-chotha'>
+          <span className='btn'>New Chotha</span>
+        </Link>
+        <ReactMarkdown
+          className={markdownStyles['markdown-body']}
+          components={{
+            img: ImageMarkdown,
+            code: CodeMarkdown,
+          }}
+        >
+          {content}
+        </ReactMarkdown>
       </div>
     </div>
-  )
+  );
 }
 
-const useInterval = (callback, delay) => {
-  const savedCallback = React.useRef();
-
-  React.useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  React.useEffect(() => {
-    const tick = () => {
-      savedCallback.current();
-    };
-    if (delay !== null) {
-      let id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }
-  }, [delay]);
-};
-const Timer = (props) => {
-  const [seconds, setSeconds] = React.useState(0);
-  useInterval(() => {
-    setSeconds(seconds + 1);
-  }, 1000);
-
-  return <p>{seconds}</p>;
+export const getStaticProps = () => {
+  const content = fs.readFileSync('README.md').toString();
+  return {
+    props: {
+      content,
+    },
+  };
 };

@@ -10,9 +10,9 @@ const CodeMarkdown = React.memo(
 
     return !inline && match ? (
       <SyntaxHighlighter
-        style={github}
+        style={nord}
         showLineNumbers
-        className={`custom-scroll ${styles['syntax-highlighter']}`}
+        className={`custom-scroll ${className} ${styles['syntax-highlighter']}`}
         language={match[1]}
         PreTag='div'
         {...props}

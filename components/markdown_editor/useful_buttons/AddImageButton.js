@@ -12,7 +12,6 @@ const AddImageBtn = ({ addImgLink }) => {
   });
 
   const handleGetImageLink = async () => {
-    console.log('clicked');
     if (!imgData.data) return;
     setLinkStatus('Link Generating...');
     const data = new FormData();
