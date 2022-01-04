@@ -37,10 +37,13 @@ This is a website similar to blog website or forum idk.\
 Some links:\
 [Example from next for blog type website](https://github.com/vercel/next.js/tree/canary/examples/blog-with-comment)
 
-![](https://ik.imagekit.io/tpzipiqc99p/87d37fcd83718a93d9698b304_g-DXDTKdJ.png?tr=c-at_max)
+## Markdown Examples:
+### Images
+![A screenshot](https://ik.imagekit.io/tpzipiqc99p/87d37fcd83718a93d9698b304_g-DXDTKdJ.png?tr=c-at_max)
 
-![](https://ik.imagekit.io/tpzipiqc99p/87d37fcd83718a93d9698b307_n-ByPyQ5G.png)
+![Another screenshot](https://ik.imagekit.io/tpzipiqc99p/87d37fcd83718a93d9698b307_n-ByPyQ5G.png)
 
+### Codes
 ```javascript
 import { login } from '../../../lib/controllers/user';
 import dbConnect from '../../../lib/middlewares/mongoose';
