@@ -1,12 +1,11 @@
 import React from 'react';
-// import dynamic from 'next/dynamic';
-// const SyntaxHighlighter = dynamic(
-//   () => {
-//     import('react-syntax-highlighter/dist/cjs/light-async');
-//   },
-//   { ssr: false }
-// );
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
+import dynamic from 'next/dynamic';
+const SyntaxHighlighter = dynamic(
+  () => {
+    return import('react-syntax-highlighter/dist/cjs/light-async');
+  },
+  { ssr: false }
+);
 import nord from 'react-syntax-highlighter/dist/cjs/styles/hljs/nord';
 import styles from './CodeMarkdown.module.css';
 
@@ -15,7 +14,6 @@ const CodeMarkdown = React.memo(
     const match = /language-(\w+)/.exec(className || '');
     return !inline && match ? (
       <SyntaxHighlighter
-        useInlineStyles={false}
         style={nord}
         showLineNumbers
         className={`custom-scroll ${className} ${styles['syntax-highlighter']}`}
