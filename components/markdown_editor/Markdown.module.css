@@ -32,3 +32,7 @@
   background-color: #2E3440;
   border-radius: 8px;
 }
+
+.markdown-body li+li {
+  margin-top: 0.5rem;
+}

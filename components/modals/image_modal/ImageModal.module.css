@@ -17,3 +17,8 @@
   z-index: 1;
   backdrop-filter: blur(8px);
 }
+
+.modal-btn > * {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
