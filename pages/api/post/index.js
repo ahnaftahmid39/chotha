@@ -1,5 +1,7 @@
+import { Types } from 'mongoose';
 import { authorize } from '../../../lib/middlewares/authorize';
 import dbConnect from '../../../lib/middlewares/mongoose';
+import { Post } from '../../../lib/models/post';
 
 export default async function handle(req, res) {
   await dbConnect();
@@ -7,26 +9,24 @@ export default async function handle(req, res) {
   switch (req.method) {
     case 'GET': {
       try {
-        //middlewares
-        await authorize(req, res);
-
-        //api-related
-        res.json({ food: 'ice cream' });
+        const posts = await Post.find().lean();
+        return res.status(200).json({ message: 'success', posts });
       } catch (e) {
-        console.log(e.message);
+        return res.status(400).json({ message: 'failed', error: e.message });
       }
-
-      break;
     }
 
     case 'POST': {
       try {
-        res.json({ message: 'ok' });
+        console.log(req.body);
+        const post = new Post(req.body);
+        // post.subject = 'Others'
+        post.user = Types.ObjectId('61d710914d0b9a61b7d67961');
+        const result = await post.save();
+        return res.status(201).json({ message: 'success', result });
       } catch (e) {
-        console.log(e.message);
-        res.status(400).json({ error: e.message });
+        return res.status(400).json({ message: 'failed', error: e.message });
       }
-      break;
     }
 
     default: {
@@ -37,8 +37,3 @@ export default async function handle(req, res) {
     }
   }
 }
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};

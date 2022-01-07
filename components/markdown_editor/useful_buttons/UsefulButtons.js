@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AddDataButton from './AddDataButton';
 import AddImageBtn from './AddImageButton';
 import AddLinkButton from './AddLinkButton';
 import styles from './UsefulButtons.module.css';
@@ -11,6 +12,7 @@ const UsefulButtons = ({
   addHeading,
   addLink,
   toggleWrap,
+  addData
 }) => {
   const [wrap, setWrap] = useState(false);
 
@@ -45,6 +47,7 @@ const UsefulButtons = ({
         H3
       </label>
       <AddLinkButton addLink={addLink} />
+      <AddDataButton addData={addData}/>
     </div>
   );
 };

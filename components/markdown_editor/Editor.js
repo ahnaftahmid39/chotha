@@ -6,9 +6,11 @@ const Markdown = dynamic(() => {
 import styles from './Editor.module.css';
 import TextAreaInput from './TextAreaInput';
 import UsefulButtons from './useful_buttons/UsefulButtons';
+import { useRouter } from 'next/router';
 
 const Editor = () => {
   const [text, setText] = useState({ value: '', caret: -1, target: null });
+  const router = useRouter();
   const taRef = useRef();
   const bolden = () => {
     taRef.current.boldItalic('bold');
@@ -46,6 +48,26 @@ const Editor = () => {
     taRef.current.toggleWrap(wrap);
   };
 
+  const addData = ({ title, description }) => {
+    fetch('/api/post', {
+      body: JSON.stringify({
+        markdown: text.value,
+        title: title,
+        description: description,
+      }),
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        router.replace('/');
+      });
+  };
+
   return (
     <>
       <UsefulButtons
@@ -56,6 +78,7 @@ const Editor = () => {
         italicen={italicen}
         addHeading={addHeading}
         toggleWrap={toggleWrap}
+        addData={addData}
       />
       <div className={styles.layout}>
         <div className={styles.edit}>

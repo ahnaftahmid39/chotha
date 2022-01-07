@@ -14,6 +14,7 @@ export default async function handle(req, res) {
         message: 'failed!',
         error: 'Can not handle requests other than POST',
       });
+      break;
     }
   }
 }

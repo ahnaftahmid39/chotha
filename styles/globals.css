@@ -64,6 +64,15 @@ input[type='file'] {
   z-index: 2;
 }
 
+.btn-group-post {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 1rem;
+  gap: 1rem;
+  justify-content: center;
+}
+
 .btn {
   text-align: center;
   background-color: rgb(23, 23, 23);
