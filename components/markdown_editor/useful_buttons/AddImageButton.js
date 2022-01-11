@@ -1,15 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Modal from '../../modals/modal/Modal';
 import styles from './UsefulButtons.module.css';
 
 const AddImageBtn = ({ addImgLink }) => {
   const [imgModal, setImgModal] = useState(false);
   const [linkStatus, setLinkStatus] = useState('');
+  const ref = useRef();
   const [imgData, setImgData] = useState({
     title: '',
     data: null,
     fileName: '',
   });
+
+  useEffect(() => {{
+    if (imgModal) ref.current.focus();
+  }}, [imgModal])
 
   const handleGetImageLink = async () => {
     if (!imgData.data) return;
@@ -49,6 +54,7 @@ const AddImageBtn = ({ addImgLink }) => {
         >
           <input
             type='text'
+            ref={ref}
             value={imgData.title}
             placeholder='Title or brief description'
             onChange={(e) => {

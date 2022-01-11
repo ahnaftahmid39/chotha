@@ -1,7 +1,7 @@
 .useful-buttons {
   display: flex;
   padding: 0.5rem;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 .useful-buttons > * {
   flex-shrink: 0;

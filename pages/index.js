@@ -7,6 +7,7 @@ import styles from '../styles/Home.module.css';
 import markdownStyles from '../components/markdown_editor/Markdown.module.css';
 import fs from 'fs';
 import { getAllPostsWithoutMarkdown } from '../lib/controllers/post';
+import path from 'path';
 const ImageMarkdown = dynamic(() =>
   import('../components/markdown_editor/image_markdown/ImageMarkdown')
 );
@@ -49,7 +50,7 @@ export default function Home({ content, posts }) {
 }
 
 export const getStaticProps = async () => {
-  const content = fs.readFileSync('README.md').toString();
+  const content = fs.readFileSync(path.resolve(__dirname, '../../../README.md')).toString();
   const posts = JSON.parse(JSON.stringify(await getAllPostsWithoutMarkdown()));
   return {
     props: {
