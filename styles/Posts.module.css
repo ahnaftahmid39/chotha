@@ -1,0 +1,20 @@
+.head-container {
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 2px 2px 4px #d9d9d9;
+}
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.author, .time {
+  font-size: 0.9rem;
+  text-align: right;
+  margin-right: '2rem';
+  font-weight: 500;
+}

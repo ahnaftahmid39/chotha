@@ -1,5 +1,6 @@
 html,
 body {
+  background-color: #eee;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -19,6 +20,20 @@ a {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.main {
+  display: flex;
+  padding: 2rem 3%;
+  flex: 1;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    padding: 2rem 15%;
+  }
 }
 
 .custom-scroll::-webkit-scrollbar {
@@ -64,14 +79,7 @@ input[type='file'] {
   z-index: 2;
 }
 
-.btn-group-post {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  margin-top: 1rem;
-  gap: 1rem;
-  justify-content: center;
-}
+
 
 .btn {
   text-align: center;
@@ -97,4 +105,12 @@ input[type='file'] {
 
 .btn:hover {
   transform: scale(1.1);
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+a {
+  cursor: pointer;
 }

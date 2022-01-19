@@ -4,6 +4,9 @@
   flex-grow: 0;
   padding-top: 0.3rem;
   overflow: auto;
+  font-family:  Georgia, 'Times New Roman', 'SolaimanLipi', Times, serif;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
 }
 
 .markdown-body a {
@@ -28,6 +31,8 @@
 
 .markdown-body pre {
   padding: 1.2rem;
+  font-size: 0.9rem;
+  font-family: 'Cascadia Code', monospace;
   /* background-color: #f8f8f8; */
   background-color: #2E3440;
   border-radius: 8px;
@@ -35,4 +40,10 @@
 
 .markdown-body li+li {
   margin-top: 0.5rem;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  color: rgb(54, 116, 95);
 }

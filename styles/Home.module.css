@@ -5,20 +5,19 @@
   align-items: flex-start;
 }
 
-.main {
-  display: flex;
-  padding: 2rem 1%;
-  flex: 1;
-  flex-direction: column;
-  max-width: 95%;
-}
-
 .para {
   text-align: start;
 }
 
+.postcard-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
 @media screen and (min-width: 768px) {
-  .main {
-    padding: 2rem 15%;
+  .postcard-group {
+    grid-template-columns: 1fr 1fr;
   }
 }
