@@ -8,12 +8,27 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
   const [leaving, setLeaving] = useState(false);
   useEffect(() => {
+    const postsFromLS = JSON.parse(localStorage.getItem('posts'));
+    if (!postsFromLS) {
+      fetch('/api/post', { method: 'GET', headers: {} })
+        .then((r) => r.json())
+        .then((res) => {
+          localStorage.setItem('posts', JSON.stringify(res.posts));
+          setPosts(res.posts);
+        });
+    } else {
+      setPosts(postsFromLS);
+    }
+  }, []);
+
+  const refreshPosts = ()=>{
     fetch('/api/post', { method: 'GET', headers: {} })
       .then((r) => r.json())
       .then((res) => {
+        localStorage.setItem('posts', JSON.stringify(res.posts));
         setPosts(res.posts);
       });
-  }, []);
+  }
   if (leaving) return <div style={{ margin: '5rem' }}>Loading...</div>;
   return (
     <div className={styles.container}>
@@ -30,7 +45,6 @@ export default function Home() {
         <Link href='/about' passHref>
           <a
             onClick={() => {
-              console.log('aha');
               setLeaving(true);
             }}
             title='About'
@@ -40,8 +54,9 @@ export default function Home() {
           </a>
         </Link>
         <main>
+          <button onClick={refreshPosts} className='btn mt-1'>Refresh</button>
           <div className={styles['postcard-group']}>
-            {posts.length > 0 &&
+            {posts?.length > 0 &&
               posts.map((post) => {
                 return (
                   <Link key={post._id} passHref href={`/posts/${post._id}`}>

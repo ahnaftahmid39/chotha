@@ -45,12 +45,12 @@ a {
 .custom-scroll::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.3);
+  background: hsla(0, 0%, 0%, 0.3);
   width: 5px;
 }
 
 .custom-scroll:hover::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.5);
+  background: hsla(0, 0%, 0%, 0.5);
 }
 
 input[type='file'] {
@@ -83,7 +83,7 @@ input[type='file'] {
 
 .btn {
   text-align: center;
-  background-color: rgb(23, 23, 23);
+  background-color: hsl(0, 0%, 9%);
   color: white;
   text-decoration: none;
   font-weight: 600;
@@ -97,7 +97,7 @@ input[type='file'] {
   transition: transform 150ms;
 }
 .btn-blur {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: hsla(0, 0%, 0%, 0.6);
   font-size: 0.9rem;
   backdrop-filter: blur(5px);
   white-space: pre;
