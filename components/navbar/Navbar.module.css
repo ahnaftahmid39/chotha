@@ -1,0 +1,25 @@
+.navbar-container {
+  display: flex;
+  background-color: rgb(23, 23, 23);
+  flex-grow: 1;
+  position: sticky;
+  top: 0;
+}
+
+.links {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.links a {
+  color: white;
+  padding: 1rem;
+  font-weight: 700;
+  transition: transform 100ms;
+}
+
+.links a:hover,
+.links a:active{
+  transform: scale(1.1);
+}
