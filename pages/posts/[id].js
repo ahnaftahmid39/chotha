@@ -25,11 +25,15 @@ const Post = ({ post }) => {
         <main>
           <div className={styles['head-container']}>
             <span className={styles['title']}>{post.title}</span>
-            <span className={styles['author']}>By: {post.user?.name}</span>
+          </div>
+          <div className={styles['info']}>
+            <div className={styles['author']}>By: {post.user?.name}</div>
             <div className={styles['time']}>
-              Posted On: {new Date(post.createdAt).toLocaleDateString('en-UK', {
+              Posted On:{' '}
+              {new Date(post.createdAt).toLocaleDateString('en-UK', {
                 month: 'long',
                 day: 'numeric',
+                year: 'numeric'
               })}{' '}
             </div>
           </div>

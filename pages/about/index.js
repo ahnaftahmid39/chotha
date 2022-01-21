@@ -1,20 +1,14 @@
 import Head from 'next/head';
+import styles from '../../styles/About.module.css';
 
 export default function Home() {
   return (
     <div>
-      <Head></Head>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          margin: '10%',
-          fontFamily: 'monospace',
-          fontWeight: '600',
-        }}
-      >
-        <p>
+      <Head>
+        <title>About Chotha</title>
+      </Head>
+      <div className={styles['container']}>
+        <p className={styles['about']}>
           {`Hi, I'm Ahnaf Tahmid, creator of chotha. This is just a hobby project.
           I wish to see it grow bigger. It is open source. Feel free to
           contribute.`}

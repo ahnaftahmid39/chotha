@@ -12,9 +12,11 @@
   text-align: center;
 }
 
-.author, .time {
+.info {
+  margin-top: 1rem;
   font-size: 0.9rem;
-  text-align: right;
-  margin-right: '2rem';
   font-weight: 500;
+  padding: 0 1rem;
+  line-height: 1.6rem;
+  color: hsl(0, 0%, 20%);
 }
