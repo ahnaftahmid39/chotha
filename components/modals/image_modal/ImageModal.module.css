@@ -21,4 +21,6 @@
 .modal-btn > * {
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
+  margin: 0 0.5rem 0 0.5rem;
+
 }
