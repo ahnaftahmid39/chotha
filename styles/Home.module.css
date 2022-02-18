@@ -1,8 +1,8 @@
 .container {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .para {
@@ -17,8 +17,14 @@
   margin-bottom: 2rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 40rem) {
   .postcard-group {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .postcard-group {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }

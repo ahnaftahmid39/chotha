@@ -12,12 +12,12 @@
 .markdown-body a {
   display: inline-block;
   text-decoration: underline;
-  color: rgb(54, 116, 95);
+  color: var(--hd-clr);
 }
 .markdown-body a {
-  text-decoration: underline rgb(54, 116, 95);
-  color: rgb(54, 116, 95);
-  background-image: linear-gradient(to bottom, rgb(54, 116, 95) 50%, transparent 50%);
+  text-decoration: underline var(--hd-clr);
+  color: var(--hd-clr);
+  background-image: linear-gradient(to bottom, var(--hd-clr) 50%, transparent 50%);
   background-size: 100% 200%;
   background-position: 0 -100%;
   transition: background-position 100ms ease-out;
@@ -25,8 +25,8 @@
 
 .markdown-body a:hover {
   background-position: 0 0;
-  text-decoration-color: rgb(54, 116, 95);
-  color: white;
+  text-decoration-color: var(--hd-clr);
+  color: var(--bg-clr);
 }
 
 .markdown-body pre {
@@ -45,5 +45,5 @@
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3 {
-  color: rgb(54, 116, 95);
+  color: var(--hd-clr);
 }

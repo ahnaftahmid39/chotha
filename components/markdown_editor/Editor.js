@@ -89,10 +89,10 @@ const Editor = () => {
             ref={taRef}
             text={text}
             setText={setText}
-            className={styles.textarea}
+            className={`${styles.textarea} custom-scroll`}
           />
         </div>
-        <div className={styles.preview}>
+        <div className={`${styles.preview} custom-scroll`}>
           <div className={`${styles['column-header']} unselectable`}>
             Preview
           </div>

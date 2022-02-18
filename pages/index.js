@@ -8,15 +8,21 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
   const [leaving, setLeaving] = useState(false);
   useEffect(() => {
-    const postsFromLS = JSON.parse(localStorage.getItem('posts'));
-    if (postsFromLS) {
-      setPosts(postsFromLS);
+    const postsFromLS = localStorage.getItem('posts');
+    if (postsFromLS && postsFromLS != 'undefined') {
+      setPosts(JSON.parse(postsFromLS));
     }
     fetch('/api/post', { method: 'GET', headers: {} })
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw Error('Database Error!');
+        return r.json();
+      })
       .then((res) => {
         localStorage.setItem('posts', JSON.stringify(res.posts));
         setPosts(res.posts);
+      })
+      .catch((e) => {
+        console.log(e.message);
       });
   }, []);
 
@@ -37,8 +43,9 @@ export default function Home() {
       <div className={`main ${styles['container']}`}>
         <main>
           <button onClick={refreshPosts} className='btn mt-1'>
-            Refresh
+            Refresh Posts
           </button>
+
           <div className={styles['postcard-group']}>
             {posts?.length > 0 &&
               posts.map((post) => {

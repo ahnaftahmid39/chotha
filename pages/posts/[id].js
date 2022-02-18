@@ -21,33 +21,31 @@ const Post = ({ post }) => {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <div className='main'>
-        <main>
-          <div className={styles['head-container']}>
-            <span className={styles['title']}>{post.title}</span>
+      <main className='main'>
+        <div className={styles['head-container']}>
+          <span className={styles['title']}>{post.title}</span>
+        </div>
+        <div className={styles['info']}>
+          <div className={styles['author']}>By: {post.user?.name}</div>
+          <div className={styles['time']}>
+            Posted On:{' '}
+            {new Date(post.createdAt).toLocaleDateString('en-UK', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            })}{' '}
           </div>
-          <div className={styles['info']}>
-            <div className={styles['author']}>By: {post.user?.name}</div>
-            <div className={styles['time']}>
-              Posted On:{' '}
-              {new Date(post.createdAt).toLocaleDateString('en-UK', {
-                month: 'long',
-                day: 'numeric',
-                year: 'numeric'
-              })}{' '}
-            </div>
-          </div>
-          <ReactMarkdown
-            className={markdownStyles['markdown-body']}
-            components={{
-              img: ImageMarkdown,
-              code: CodeMarkdown,
-            }}
-          >
-            {post.markdown}
-          </ReactMarkdown>
-        </main>
-      </div>
+        </div>
+        <ReactMarkdown
+          className={markdownStyles['markdown-body']}
+          components={{
+            img: ImageMarkdown,
+            code: CodeMarkdown,
+          }}
+        >
+          {post.markdown}
+        </ReactMarkdown>
+      </main>
     </div>
   );
 };

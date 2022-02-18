@@ -1,13 +1,16 @@
 .card {
+  width: 100%;
+  min-height: 30vh;
   padding: 2em;
   border-radius: 10px;
-  border: 1px solid hsl(0, 0%, 79%);
-  background: hsl(0, 0%, 91%);
+  border: 1px solid var(--card-border-clr);
+  background: var(--card-bg-clr);
   /* box-shadow: 5px 5px 10px #cccccc, -5px -5px 10px #ffffff; */
 }
 
-.card:hover, .card:active {
-  box-shadow: 2px 2px 5px rgb(200, 200, 200);
+.card:hover,
+.card:active {
+  box-shadow: var(--card-shadow);
   border-radius: 15px;
 }
 

@@ -1,9 +1,11 @@
 .navbar-container {
   display: flex;
-  background-color: rgb(23, 23, 23);
+  background-color: var(--nav-bg-clr);
   flex-grow: 1;
   position: sticky;
   top: 0;
+  box-shadow: var(--nav-shadow);
+  z-index: 2;
 }
 
 .links {
@@ -12,14 +14,18 @@
   margin-right: auto;
 }
 
-.links a {
+.links a,
+.btn-theme-change {
   color: white;
   padding: 1rem;
   font-weight: 700;
   transition: transform 100ms;
+  cursor: pointer;
 }
 
 .links a:hover,
-.links a:active{
+.links a:active,
+.btn-theme-change:hover,
+.btn-theme-change:active {
   transform: scale(1.1);
 }

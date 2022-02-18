@@ -4,9 +4,8 @@
   flex-direction: column;
 }
 
-
 .preview {
-  background-color: white;
+  background-color: var(--bg-clr);
 }
 
 .edit,
@@ -14,7 +13,6 @@
   display: flex;
   flex-direction: column;
   height: 60vh;
-  scroll-behavior: smooth !important;
 }
 
 .column-header {
@@ -22,33 +20,27 @@
   padding: 0.6rem;
   font-weight: 700;
   text-decoration: none;
-  background-color: whitesmoke;
+  background-color: var(--bg-clr-light);
 }
 
 .edit .textarea {
+  background-color: var(--bg-clr);
+  color: var(--fo-clr);
   padding: 1rem;
   box-sizing: border-box;
   flex-grow: 1;
   border: none;
   resize: none;
   padding-bottom: 40vh;
-  font-family:  Georgia, 'Times New Roman', 'SolaimanLipi', Times, serif;
+  font-family: Georgia, 'Times New Roman', 'SolaimanLipi', Times, serif;
   font-size: 1.1rem;
   overflow-wrap: normal;
 }
 
 
-
-.useful-buttons{
-  display: flex;
-  padding: 0.5rem;
-  margin-left: 1rem;
-}
-
 .edit .textarea:focus {
   outline: none;
 }
-
 
 @media (min-width: 700px) {
   .layout {

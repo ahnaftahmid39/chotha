@@ -17,7 +17,7 @@ const UsefulButtons = ({
   const [wrap, setWrap] = useState(false);
 
   return (
-    <div className={styles['useful-buttons']}>
+    <div className={`${styles['useful-buttons']} custom-scroll`}>
       <AddImageBtn addImgLink={addImgLink} />
       <label
         onClick={() => {
