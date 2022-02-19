@@ -1,10 +1,11 @@
 .head-container {
   display: flex;
   flex-direction: column;
-  background-color: var(--card-bg-clr);
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: var(--card-shadow);
+  background-color: var(--btn-bg-clr);
+  color: var(--btn-fo-clr);
+  border-radius: 0 0 10px 10px;
+  padding: 1.5rem;
+  /* box-shadow: var(--card-shadow); */
 }
 
 .title {

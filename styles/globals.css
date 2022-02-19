@@ -8,17 +8,18 @@
   --fo-clr2: hsl(0, 0%, 14%);
   --fo-clr-light: hsl(0, 0%, 20%);
 
-  --hd-clr: var(--nav-bg-clr); /* heading color (h1, h2, h3) */
+  --hd-clr: hsl(var(--hue), 10%, 10%); /* heading color (h1, h2, h3) */
 
-  --btn-bg-clr: var(--nav-bg-clr);
-  --btn-fo-clr: hsl(0, 0%, 100%);
+  --btn-bg-clr: hsl(var(--hue), 9%, 82%);
+  --btn-fo-clr: var(--nav-bg-clr);
   --btn-blur-bg-clr: hsla(0, 0%, 0%, 0.6);
 
-  --card-bg-clr: hsl(var(--hue), 20%, 95%);
+  --card-bg-clr: hsl(var(--hue), 30%, 95%);
   --card-shadow: 2px 2px 5px hsl(0, 0%, 78%);
-  --card-border-clr: hsl(0, 0%, 79%);
+  --card-border-clr: hsl(0, 0%, 86%);
 
-  --nav-bg-clr: hsl(var(--hue), 9%, 15%);
+  --nav-bg-clr: hsla(var(--hue), 9%, 15%, 1);
+  --nav-fo-clr: hsl(0, 0%, 100%);
   --nav-shadow: none;
 
   --post-info-fo-clr: hsl(0, 0%, 20%);
@@ -40,14 +41,15 @@
   --hd-clr: hsl(var(--hue), 51%, 73%); /* heading color (h1, h2, h3) */
 
   --btn-bg-clr: hsl(var(--hue), 10%, 25%);
-  /* --btn-fo-clr: hsl(0, 0%, 0%); */
+  --btn-fo-clr: hsl(0, 0%, 90%);
   /* --btn-blur-bg-clr: hsla(0, 0%, 0%, 0.6);  */
 
-  --card-bg-clr: hsl(var(--hue), 8%, 18%);
-  --card-shadow: 2px 2px 5px hsl(0, 0%, 22%);
-  --card-border-clr: hsl(var(--hue), 10%, 35%);
+  --card-bg-clr: hsl(var(--hue), 8%, 20%);
+  --card-shadow: 2px 2px 5px hsl(var(--hue), 10%, 22%);
+  --card-border-clr: hsl(var(--hue), 10%, 25%);
 
-  --nav-bg-clr: hsl(var(--hue), 9%, 22%);
+  --nav-bg-clr: hsla(var(--hue), 9%, 22%, 1);
+  --nav-fo-clr: hsl(0, 0%, 100%);
   --nav-shadow: 1px 1px 10px hsl(var(--hue), 11%, 11%);
 
   --post-info-fo-clr: hsl(0, 0%, 80%);
@@ -66,7 +68,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  user-select: none;
+  /* user-select: none; */
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
@@ -88,7 +90,7 @@ a {
 
 .main {
   display: flex;
-  padding: 1rem 3%;
+  padding: 0 3%;
   flex: 1;
   flex-direction: column;
   max-width: 100%;
@@ -96,7 +98,7 @@ a {
 
 @media screen and (min-width: 768px) {
   .main {
-    padding: 1rem 15%;
+    padding: 0 15%;
   }
 }
 

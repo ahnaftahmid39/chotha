@@ -31,6 +31,8 @@
 
 .modal input[type='text'] {
   padding: 0.6rem;
+  background-color: var(--bg-clr);
+  color: var(--fo-clr);
 }
 
 .modal button {

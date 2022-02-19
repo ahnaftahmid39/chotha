@@ -42,7 +42,7 @@ export default function Home() {
       </Head>
       <div className={`main ${styles['container']}`}>
         <main style={{ width: '100%' }}>
-          <button onClick={refreshPosts} className='btn'>
+          <button onClick={refreshPosts} className='btn mt-1'>
             Refresh Posts
           </button>
 

@@ -21,3 +21,9 @@
   z-index: 3;
   backdrop-filter: blur(2px);
 }
+
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .modalbg {
+    background-color: hsla(0, 0%, 0%, 0.5);
+  }
+}

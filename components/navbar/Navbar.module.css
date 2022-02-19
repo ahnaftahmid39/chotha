@@ -15,7 +15,7 @@
 }
 
 .links a {
-  color: white;
+  color: var(--nav-fo-clr);
   padding: 1rem;
   font-weight: 700;
   transition: transform 100ms;
