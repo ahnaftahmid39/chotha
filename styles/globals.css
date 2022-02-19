@@ -1,7 +1,9 @@
 :root {
-  --bg-clr: hsl(0, 0%, 100%); /* background color */
-  --bg-clr-light: hsl(0, 0%, 96%);
+  --hue: 190;
+  --bg-clr: hsl(var(--hue), 10%, 90%); /* background color */
+  --bg-clr-light: hsl(var(--hue), 30%, 96%);
   --bg-clr2: hsl(0, 0%, 93%);
+
   --fo-clr: hsl(0, 0%, 0%); /* forground color */
   --fo-clr2: hsl(0, 0%, 14%);
   --fo-clr-light: hsl(0, 0%, 20%);
@@ -12,36 +14,48 @@
   --btn-fo-clr: hsl(0, 0%, 100%);
   --btn-blur-bg-clr: hsla(0, 0%, 0%, 0.6);
 
-  --card-bg-clr: hsl(0, 0%, 91%);
+  --card-bg-clr: hsl(var(--hue), 20%, 95%);
   --card-shadow: 2px 2px 5px hsl(0, 0%, 78%);
   --card-border-clr: hsl(0, 0%, 79%);
 
-  --nav-bg-clr: hsl(240, 9%, 15%);
+  --nav-bg-clr: hsl(var(--hue), 9%, 15%);
   --nav-shadow: none;
 
   --post-info-fo-clr: hsl(0, 0%, 20%);
+
+  --theme-switch-bg-clr: hsla(var(--hue), 20%, 40%, 0.5);
+  --theme-switch-thumb-left: 27px;
+
+  --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
+  --scroll-thumb-bg-clr: hsla(0, 0%, 50%, 0.6);
 }
 
 [data-theme='dark'] {
-  --bg-clr: hsl(240, 9%, 15%);
-  --bg-clr-light: hsl(240, 11%, 19%);
-  --fo-clr: white;
-  --fo-clr-light: hsl(0, 0%, 80%);
+  --hue: 220;
+  --bg-clr: hsl(var(--hue), 9%, 15%);
+  --bg-clr-light: hsl(var(--hue), 11%, 19%);
+  --fo-clr: hsl(0, 0%, 85%);
+  --fo-clr-light: hsl(0, 0%, 70%);
 
-  --hd-clr: hsl(240, 51%, 73%); /* heading color (h1, h2, h3) */
+  --hd-clr: hsl(var(--hue), 51%, 73%); /* heading color (h1, h2, h3) */
 
-  --btn-bg-clr: hsl(240, 10%, 25%);
+  --btn-bg-clr: hsl(var(--hue), 10%, 25%);
   /* --btn-fo-clr: hsl(0, 0%, 0%); */
   /* --btn-blur-bg-clr: hsla(0, 0%, 0%, 0.6);  */
 
-  --card-bg-clr: hsl(240, 8%, 18%);
+  --card-bg-clr: hsl(var(--hue), 8%, 18%);
   --card-shadow: 2px 2px 5px hsl(0, 0%, 22%);
-  --card-border-clr: hsl(240, 10%, 35%);
+  --card-border-clr: hsl(var(--hue), 10%, 35%);
 
-  --nav-bg-clr: hsl(240, 9%, 22%);
-  --nav-shadow: 1px 1px 10px hsl(240, 11%, 11%);
+  --nav-bg-clr: hsl(var(--hue), 9%, 22%);
+  --nav-shadow: 1px 1px 10px hsl(var(--hue), 11%, 11%);
 
   --post-info-fo-clr: hsl(0, 0%, 80%);
+
+  --theme-switch-bg-clr: hsla(var(--hue), 20%, 40%, 0.5);
+  --theme-switch-thumb-left: 0.25rem;
+
+  --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
 }
 
 html,
@@ -74,7 +88,7 @@ a {
 
 .main {
   display: flex;
-  padding: 2rem 3%;
+  padding: 1rem 3%;
   flex: 1;
   flex-direction: column;
   max-width: 100%;
@@ -82,28 +96,43 @@ a {
 
 @media screen and (min-width: 768px) {
   .main {
-    padding: 2rem 15%;
+    padding: 1rem 15%;
   }
 }
 
-.custom-scroll::-webkit-scrollbar,
-html::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
 /* Handle */
-.custom-scroll::-webkit-scrollbar-thumb,
-html::-webkit-scrollbar-thumb {
-  /* -webkit-border-radius: 10px;
-  border-radius: 5px; */
+.custom-scroll::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
   background: hsla(0, 0%, 0%, 0.3);
   width: 5px;
 }
 
-.custom-scroll:hover::-webkit-scrollbar-thumb,
-html:hover::-webkit-scrollbar-thumb {
+.custom-scroll::-webkit-scrollbar-thumb:hover {
   background: hsla(0, 0%, 0%, 0.5);
+}
+/* Only show this to desktop */
+@media (min-width: 40rem) {
+  html::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: var(--scroll-bg-clr);
+  }
+
+  /* Handle */
+  html::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    width: 5px;
+    background: var(--scroll-thumb-bg-clr);
+  }
+  html::-webkit-scrollbar-thumb:hover {
+    background: hsla(0, 0%, 40%, 0.5);
+  }
 }
 
 input[type='file'] {

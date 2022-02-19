@@ -1,0 +1,29 @@
+.parent {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: var(--theme-switch-bg-clr);
+  margin: 0.7rem;
+  padding:  0 0.3rem;
+  border-radius: 1000px;
+  position: relative;
+  cursor: pointer;
+}
+
+.thumb {
+  position: absolute;
+  left: var(--theme-switch-thumb-left);
+  width: 20px;
+  height: 20px;
+  background-color: aliceblue;
+  border-radius: 1000px;
+  transition: left 200ms;
+}
+
+.thumb:hover {
+  box-shadow: 0 0 8px aliceblue;
+}
+
+.thumb:focus {
+  box-shadow: 0 0 16px aliceblue;
+}

@@ -23,7 +23,7 @@ const Markdown = ({ contentRef }) => {
 
   return (
     <ReactMarkdown
-      className={styles['markdown-body']}
+      className={`${styles['markdown-body']} custom-scroll`}
       components={{
         img: ImageMarkdown,
         code: CodeMarkdown,

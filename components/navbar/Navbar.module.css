@@ -14,8 +14,7 @@
   margin-right: auto;
 }
 
-.links a,
-.btn-theme-change {
+.links a {
   color: white;
   padding: 1rem;
   font-weight: 700;
@@ -24,8 +23,6 @@
 }
 
 .links a:hover,
-.links a:active,
-.btn-theme-change:hover,
-.btn-theme-change:active {
+.links a:active {
   transform: scale(1.1);
 }

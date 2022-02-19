@@ -36,9 +36,9 @@
 .modal button {
   padding: 0.5rem;
   cursor: pointer;
-  color: white;
+  color: var(--btn-fo-clr);
   font-weight: 600;
-  background-color: black;
+  background-color: var(--btn-bg-clr);
 }
 
 .modal .modal-btn-group {
@@ -51,13 +51,15 @@
 }
 
 .image-modal input[type='text'] {
-  padding-left: 1.5rem;
+  padding-left: 1.2rem;
+  background-color: var(--bg-clr);
+  color: var(--fo-clr);
 }
 
 .file-input {
   font-size: 1rem;
   border: 0.5px groove black;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--bg-clr);
   border-radius: 6px;
   cursor: pointer;
   display: flex;
@@ -67,17 +69,17 @@
 
 .file-input > span {
   display: block;
-  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  padding: 0.5rem 1.2rem 0.5rem 1.2rem;
 }
 
 .file-input .file-input-browse {
-  background-color: black;
+  background-color: var(--btn-bg-clr);
   color: white;
   font-weight: 600;
 }
 
 @media (min-width: 769px) {
   .modal {
-    width: 40vw;
+    width: 50vw;
   }
 }

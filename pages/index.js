@@ -36,13 +36,13 @@ export default function Home() {
   };
   if (leaving) return <div style={{ margin: '5rem' }}>Loading...</div>;
   return (
-    <div>
+    <>
       <Head>
         <title>Chotha Home page</title>
       </Head>
       <div className={`main ${styles['container']}`}>
-        <main>
-          <button onClick={refreshPosts} className='btn mt-1'>
+        <main style={{ width: '100%' }}>
+          <button onClick={refreshPosts} className='btn'>
             Refresh Posts
           </button>
 
@@ -63,6 +63,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-    </div>
+    </>
   );
 }

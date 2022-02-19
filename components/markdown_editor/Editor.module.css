@@ -20,7 +20,7 @@
   padding: 0.6rem;
   font-weight: 700;
   text-decoration: none;
-  background-color: var(--bg-clr-light);
+  background-color: var(--card-bg-clr);
 }
 
 .edit .textarea {
