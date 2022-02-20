@@ -19,9 +19,26 @@ const AddDataButton = ({ addData }) => {
 
   return (
     <>
-      <label onClick={() => setDataModal(true)} className={`btn`}>
-        Save
-      </label>
+      <div
+        onClick={() => setDataModal(true)}
+        className={`${styles['svg-icon-parent']}`}
+      >
+        <svg
+          width='20'
+          height='auto'
+          viewBox='0 0 249 287'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          className={`${styles['svg-icon-stroke']}`}
+        >
+          <path d='M196.643 8H8V279H241V54L196.643 8Z' />
+          <path d='M56 8V73H156.5V8' />
+          <path d='M61.5 279V148H183.5L182.5 273.5' />
+          <path d='M87 184H155.5' />
+          <path d='M87 214H155.5' />
+          <path d='M87 244H155.5' />
+        </svg>
+      </div>
       <Modal
         modal={dataModal}
         className={styles['modal']}

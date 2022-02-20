@@ -1,6 +1,7 @@
 .useful-buttons {
   display: flex;
   padding: 0.5rem;
+  gap: 1.5rem;
   overflow-x: auto;
 }
 .useful-buttons > * {
@@ -8,7 +9,7 @@
   margin: 0 0.5rem 0 0.5rem;
 }
 @media screen and (min-width: 768px) {
-  .useful-buttons{
+  .useful-buttons {
     margin-left: 1rem;
   }
 }
@@ -76,7 +77,7 @@
 
 .file-input .file-input-browse {
   background-color: var(--btn-bg-clr);
-  color: white;
+  color: var(--btn-fo-clr);
   font-weight: 600;
 }
 
@@ -84,4 +85,35 @@
   .modal {
     width: 50vw;
   }
+}
+
+.svg-icon-parent {
+  transition: transform 0.1s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  color: var(--btn-fo-clr)
+}
+
+.svg-icon-parent:hover {
+  transform: scale(1.1);
+}
+
+.svg-icon-stroke {
+  stroke: var(--btn-fo-clr);
+  stroke-width: 12;
+}
+
+.svg-icon-fill {
+  fill: var(--btn-fo-clr);
+}
+
+
+.svg-image-icon-fill {
+  fill: var(--btn-bg-clr);
+}
+
+[data-theme='dark'] .dark-fill {
+  fill: var(--btn-fo-clr)
 }
