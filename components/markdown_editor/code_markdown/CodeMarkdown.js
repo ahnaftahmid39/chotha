@@ -24,9 +24,11 @@ const CodeMarkdown = React.memo(
         {String(children).trim()}
       </SyntaxHighlighter>
     ) : (
-      <code className={className} {...props}>
-        {children}
-      </code>
+      <div className={`${styles['no-highlight']} custom-scroll`}>
+        <code className={`${className}`} {...props}>
+          {children}
+        </code>
+      </div>
     );
   },
   (prev, next) => {

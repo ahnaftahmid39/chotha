@@ -12,6 +12,7 @@ import styles from './Markdown.module.css';
 const Markdown = ({ contentRef }) => {
   const [content, setContent] = useState('');
 
+  // TODO: use debounce if possible
   useEffect(() => {
     const intervalfn = setInterval(() => {
       setContent(contentRef.current.value);

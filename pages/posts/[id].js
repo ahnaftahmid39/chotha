@@ -13,8 +13,20 @@ import {
   getPostById,
 } from '../../lib/controllers/post';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 
 const Post = ({ post }) => {
+  // following was added to prevent the hydration error
+  const [date, setDate] = useState();
+  useEffect(() => {
+    let str = new Date(post.createdAt).toLocaleDateString('en-UK', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    });
+    setDate(str);
+  }, [post]);
+
   if (!post) return null;
   return (
     <div className='container'>
@@ -27,14 +39,7 @@ const Post = ({ post }) => {
         </div>
         <div className={styles['info']}>
           <div className={styles['author']}>By: {post.user?.name}</div>
-          <div className={styles['time']}>
-            Posted On:{' '}
-            {new Date(post.createdAt).toLocaleDateString('en-UK', {
-              month: 'long',
-              day: 'numeric',
-              year: 'numeric',
-            })}{' '}
-          </div>
+          <div className={styles['time']}>Posted On: {date}</div>
         </div>
         <ReactMarkdown
           className={markdownStyles['markdown-body']}

@@ -13,6 +13,7 @@
   --btn-bg-clr: hsl(var(--hue), 9%, 82%);
   --btn-fo-clr: var(--nav-bg-clr);
   --btn-blur-bg-clr: hsla(0, 0%, 0%, 0.6);
+  --btn-blur-fo-clr: hsl(0, 0%, 90%);
 
   --card-bg-clr: hsl(var(--hue), 30%, 95%);
   --card-shadow: 2px 2px 5px hsl(0, 0%, 78%);
@@ -179,13 +180,16 @@ input[type='file'] {
 }
 .btn-blur {
   background-color: var(--btn-blur-bg-clr);
+  color: var(--btn-blur-fo-clr);
   font-size: 0.9rem;
   backdrop-filter: blur(5px);
   white-space: pre;
 }
 
-.btn:hover {
-  transform: scale(1.1);
+@media (hover: hover) {
+  .btn:hover {
+    transform: scale(1.1);
+  }
 }
 
 .mt-1 {

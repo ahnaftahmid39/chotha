@@ -1,20 +1,17 @@
 .useful-buttons {
   display: flex;
   padding: 0.5rem;
-  gap: 1.5rem;
+  gap: 2.5rem;
   overflow-x: auto;
 }
-.useful-buttons > * {
-  flex-shrink: 0;
-  margin: 0 0.5rem 0 0.5rem;
-}
+
 @media screen and (min-width: 768px) {
   .useful-buttons {
     margin-left: 1rem;
   }
 }
 .modal {
-  width: 80vw;
+  width: 100vw;
   gap: 1rem;
   display: flex;
   flex-direction: column;

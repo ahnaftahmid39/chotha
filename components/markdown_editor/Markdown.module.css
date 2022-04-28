@@ -30,12 +30,16 @@
 }
 
 .markdown-body pre {
-  padding: 1.2rem;
+  padding: 1rem;
   font-size: 0.9rem;
   font-family: 'Cascadia Code', monospace;
   /* background-color: #f8f8f8; */
   background-color: #2E3440;
   border-radius: 8px;
+}
+
+.markdown-body code {
+  color: hsl(0, 0%, 80%);
 }
 
 .markdown-body li+li {

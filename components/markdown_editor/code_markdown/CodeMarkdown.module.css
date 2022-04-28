@@ -3,3 +3,9 @@
   line-height: 1.2rem;
   overflow-x: auto !important;
 }
+
+.no-highlight {
+  overflow-x: auto !important;
+  padding: 0.3rem;;
+  line-height: 1.2rem;
+}

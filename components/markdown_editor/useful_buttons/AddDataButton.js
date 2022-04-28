@@ -1,6 +1,27 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, memo } from 'react';
 import Modal from '../../modals/modal/Modal';
 import styles from './UsefulButtons.module.css';
+
+const SaveIcon = memo(() => {
+  return (
+    <svg
+      width='20'
+      viewBox='0 0 249 287'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      className={`${styles['svg-icon-stroke']}`}
+    >
+      <path d='M196.643 8H8V279H241V54L196.643 8Z' />
+      <path d='M56 8V73H156.5V8' />
+      <path d='M61.5 279V148H183.5L182.5 273.5' />
+      <path d='M87 184H155.5' />
+      <path d='M87 214H155.5' />
+      <path d='M87 244H155.5' />
+    </svg>
+  );
+});
+
+SaveIcon.displayName = 'SaveIcon';
 
 const AddDataButton = ({ addData }) => {
   const [data, setData] = useState({ title: '', description: '' });
@@ -23,21 +44,7 @@ const AddDataButton = ({ addData }) => {
         onClick={() => setDataModal(true)}
         className={`${styles['svg-icon-parent']}`}
       >
-        <svg
-          width='20'
-          height='auto'
-          viewBox='0 0 249 287'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-          className={`${styles['svg-icon-stroke']}`}
-        >
-          <path d='M196.643 8H8V279H241V54L196.643 8Z' />
-          <path d='M56 8V73H156.5V8' />
-          <path d='M61.5 279V148H183.5L182.5 273.5' />
-          <path d='M87 184H155.5' />
-          <path d='M87 214H155.5' />
-          <path d='M87 244H155.5' />
-        </svg>
+        <SaveIcon />
       </div>
       <Modal
         modal={dataModal}
