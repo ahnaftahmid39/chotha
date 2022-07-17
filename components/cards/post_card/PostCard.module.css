@@ -3,8 +3,7 @@
   min-height: 30vh;
   padding: 2em;
   border-radius: 10px;
-  border: 1px solid var(--card-border-clr);
-  background: var(--card-bg-clr);
+  background: var(--card-bg);
 }
 
 .card:hover,

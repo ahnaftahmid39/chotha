@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import PostCard from '../components/cards/post_card/PostCard';
+import Loading from '../components/loading_indicator/Loading';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -34,7 +35,7 @@ export default function Home() {
         setPosts(res.posts);
       });
   };
-  if (leaving) return <div style={{ margin: '5rem' }}>Loading...</div>;
+  if (leaving) return <div style={{display: 'grid', placeItems: 'center', minHeight: '80vh'}}><Loading /></div>
   return (
     <>
       <Head>
