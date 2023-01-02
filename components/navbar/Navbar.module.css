@@ -6,6 +6,7 @@
   top: 0;
   box-shadow: var(--nav-shadow);
   z-index: 2;
+  overflow: hidden;
 }
 
 .links {

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import styles from './Navbar.module.css';
 
 import ThemeSwitchButton from '../buttons/theme_switch_button/ThemeSwitchButton';
+import AuthButton from '../buttons/auth_button/AuthButton';
 const Navbar = ({}) => {
   const router = useRouter();
 
@@ -26,6 +27,7 @@ const Navbar = ({}) => {
         )}
       </div>
       <ThemeSwitchButton/>
+      <AuthButton />
     </nav>
   );
 };

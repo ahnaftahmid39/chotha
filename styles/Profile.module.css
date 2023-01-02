@@ -1,0 +1,48 @@
+.profile-container {
+  min-height: 90vh;
+}
+
+.profile {
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.profile-photo {
+  width: 200px;
+  height: 200px;
+  background-color: var(--fo-clr);
+  border-radius: 16px;
+  margin: 1rem;
+}
+
+.name {
+
+}
+
+.name, .email {
+  padding: 1rem;
+}
+
+.email {
+
+}
+
+.btn-logout {
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(214, 37, 37);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.btn-logout:hover {
+  background-color: rgb(219, 103, 103);
+}
+
+.btn-logout:active {
+  transform: translateY(-4px);
+}

@@ -1,0 +1,12 @@
+.auth-btn {
+  color: var(--nav-fo-clr);
+  padding: 1rem;
+  font-weight: 700;
+  transition: transform 100ms;
+  cursor: pointer;
+}
+
+.auth-btn:active {
+  transform: scale(1.1);
+}
+
