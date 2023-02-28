@@ -35,7 +35,12 @@ export default function Home() {
         setPosts(res.posts);
       });
   };
-  if (leaving) return <div style={{display: 'grid', placeItems: 'center', minHeight: '80vh'}}><Loading /></div>
+  if (leaving)
+    return (
+      <div style={{ display: 'grid', placeItems: 'center', minHeight: '80vh' }}>
+        <Loading />
+      </div>
+    );
   return (
     <>
       <Head>
@@ -43,10 +48,6 @@ export default function Home() {
       </Head>
       <div className={`main ${styles['container']}`}>
         <main style={{ width: '100%' }}>
-          <button onClick={refreshPosts} className='btn mt-1'>
-            Refresh Posts
-          </button>
-
           <div className={styles['postcard-group']}>
             {posts?.length > 0 &&
               posts.map((post) => {

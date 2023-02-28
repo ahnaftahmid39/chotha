@@ -44,7 +44,12 @@
 }
 
 .form-error {
+  color: rgb(112, 112, 0);
+}
+
+[data-theme='dark'] .form-error{
   color: yellow;
+
 }
 
 .form-success {
@@ -90,19 +95,13 @@
 }
 
 .submit-container {
-  outline: 2px;
+  justify-content: space-between;
+  margin: 2px;
 }
 
 .submit-container {
   display: flex;
-  justify-content: space-between;
-  padding: 1rem;
   gap: 1rem;
-}
-
-.submit-container span[role='button'] {
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 .btn-login,
@@ -122,11 +121,33 @@
 }
 
 .btn-login {
-  background-color: var(--nav-bg-clr);
+  background-color: hsl(220, 50%, 60%);
 }
 
 .btn-signup {
   background-color: rgb(56, 151, 27);
+}
+
+.submit-container div[role='button'] {
+  text-decoration: underline;
+  padding: 1rem;
+  border-radius: 4px;
+  height: min-content;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to bottom,
+    var(--hd-clr) 50%,
+    transparent 50%
+  );
+  background-size: 100% 200%;
+  background-position: 0 -101%;
+  transition: background-position 200ms ease-out;
+}
+
+.submit-container div[role='button']:hover {
+  text-decoration: none;
+  color: var(--bg-clr);
+  background-position: 0 0;
 }
 
 @media (max-width: 600px) {

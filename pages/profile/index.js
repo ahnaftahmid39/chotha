@@ -1,32 +1,31 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../providers/UserProvider';
 import styles from '../../styles/Profile.module.css';
 
 export default function Profile() {
-  const [user, setUser] = useState(null);
   const router = useRouter();
+  const { userInfo, setUserInfo } = useContext(UserContext);
   useEffect(() => {
-    let lsuser = localStorage.getItem('user');
-    if (lsuser) setUser(JSON.parse(lsuser));
-    else router.replace('/auth');
+    if (!userInfo.user) router.replace('/auth');
   }, []);
-
   return (
     <div>
       <Head>
         <title>User Profile</title>
       </Head>
       <div className={styles['profile-container']}>
-        {user && (
+        {userInfo.user && (
           <div className={styles['profile']}>
             <div className={styles['photo']}></div>
-            <div className={styles['name']}>Name: {user.name}</div>
-            <div className={styles['email']}>Email: {user.email}</div>
+            <div className={styles['name']}>Name: {userInfo.user.name}</div>
+            <div className={styles['email']}>Email: {userInfo.user.email}</div>
             <button
               className={styles['btn-logout']}
               onClick={() => {
                 localStorage.setItem('user', '');
+                setUserInfo({});
                 router.replace('/auth');
               }}
             >

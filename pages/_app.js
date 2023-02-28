@@ -1,12 +1,15 @@
 import Navbar from '../components/navbar/Navbar';
 import '../styles/globals.css';
 import { ThemeProvider } from 'next-themes';
+import UserProvider from '../providers/UserProvider';
 
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider enableColorScheme={false}>
-      <Navbar />
-      <Component {...pageProps} />
+      <UserProvider>
+        <Navbar />
+        <Component {...pageProps} />
+      </UserProvider>
     </ThemeProvider>
   );
 }

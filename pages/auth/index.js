@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { UserContext } from '../../providers/UserProvider';
 
 import styles from '../../styles/Auth.module.css';
 
@@ -9,23 +10,26 @@ const Authentication = ({}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [log, setLog] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [showpass, setShowPass] = useState(false);
   const [errMsg, setErrMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
+  const { setUserInfo } = useContext(UserContext);
+
   const passref = useRef();
+  const confirmpassref = useRef();
   const nameref = useRef();
   const emailref = useRef();
 
   const router = useRouter();
 
   useEffect(() => {
-    if (!log) nameref.current.focus();
+    if (!isLogin) nameref.current.focus();
     else emailref.current.focus();
     setErrMsg('');
     setSuccessMsg('');
-  }, [log]);
+  }, [isLogin]);
 
   const handleLoginSubmit = useCallback(
     (e) => {
@@ -47,10 +51,9 @@ const Authentication = ({}) => {
           return r.json();
         })
         .then((res) => {
-          console.log(res.token);
-          localStorage.setItem('user', JSON.stringify(res.user));
           localStorage.setItem('token', JSON.stringify(res.token));
           setSuccessMsg('Login successful');
+          setUserInfo({ user: res.user });
           router.replace('/');
         })
         .catch((res) => {
@@ -60,7 +63,7 @@ const Authentication = ({}) => {
               setErrMsg(err.error);
             })
             .catch((e) => {
-              console.log('Something went wrong!');
+              setErrMsg('Something went wrong!');
             });
         });
     },
@@ -88,11 +91,10 @@ const Authentication = ({}) => {
           return r.json();
         })
         .then((res) => {
-          console.log(res.token);
-          localStorage.setItem('user', JSON.stringify(res.user));
-          localStorage.setItem('token', JSON.stringify(res.token));
-          setSuccessMsg('Login successful');
-          router.replace('/');
+          console.log(res.message);
+          setSuccessMsg('Sign Up successful');
+          setUserInfo({ user: res.user });
+          router.replace('/auth/confirmation');
         })
         .catch((res) => {
           res
@@ -101,7 +103,7 @@ const Authentication = ({}) => {
               setErrMsg(err.error);
             })
             .catch((e) => {
-              console.log('Something went wrong!', e);
+              setErrMsg('Something went wrong!', e);
             });
         });
     },
@@ -131,7 +133,7 @@ const Authentication = ({}) => {
             <div className={styles['form-error']}>{errMsg}</div>
             <div className={styles['form-success']}>{successMsg}</div>
             <form className={styles['auth-form']} action="/">
-              {!log && (
+              {!isLogin && (
                 <>
                   <fieldset>
                     <legend>Name</legend>
@@ -163,9 +165,11 @@ const Authentication = ({}) => {
                       e.preventDefault();
                       if (passref.current.type == 'password') {
                         passref.current.type = 'text';
+                        confirmpassref.current.type = 'text';
                         setShowPass(true);
                       } else {
                         passref.current.type = 'password';
+                        confirmpassref.current.type = 'password';
                         setShowPass(false);
                       }
                     }}
@@ -187,13 +191,52 @@ const Authentication = ({}) => {
                   onChange={(e) => setPassword(e.target.value)}
                 ></input>
               </fieldset>
+              {!isLogin && (
+                <fieldset>
+                  <legend>
+                    Confirm Password
+                    <button
+                      tabIndex={-1}
+                      className={styles['btn-visibility']}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (confirmpassref.current.type == 'password') {
+                          confirmpassref.current.type = 'text';
+                          passref.current.type = 'text';
+                          setShowPass(true);
+                        } else {
+                          confirmpassref.current.type = 'password';
+                          passref.current.type = 'password';
+                          setShowPass(false);
+                        }
+                      }}
+                    >
+                      <Image
+                        src={
+                          showpass
+                            ? '/images/eye-open.png'
+                            : '/images/eye-closed.png'
+                        }
+                        width="20px"
+                        height="20px"
+                      />
+                    </button>
+                  </legend>
+                  <input
+                    ref={confirmpassref}
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  ></input>
+                </fieldset>
+              )}
+
               <span className={'vspace'} />
               <div className={styles['submit-container']}>
-                {log ? (
+                {isLogin ? (
                   <>
-                    <span role="button" onClick={() => setLog(false)}>
+                    <div role="button" onClick={() => setIsLogin(false)}>
                       Create new account
-                    </span>
+                    </div>
                     <button
                       type="submit"
                       onClick={(e) => {
@@ -207,9 +250,13 @@ const Authentication = ({}) => {
                   </>
                 ) : (
                   <>
-                    <span role="button" onClick={() => setLog(true)}>
+                    <div
+                      className={styles['btn-already']}
+                      role="button"
+                      onClick={() => setIsLogin(true)}
+                    >
                       I already have an account
-                    </span>
+                    </div>
                     <button
                       type="submit"
                       onClick={(e) => {
