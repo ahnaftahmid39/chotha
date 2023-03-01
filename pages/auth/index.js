@@ -56,7 +56,7 @@ const Authentication = ({}) => {
         localStorage.setItem('token', res.token);
         setSuccessMsg('Login successful');
         setUserInfo({ ...jwtDecode(res.token), token: res.token });
-        router.replace('/');
+        router.push('/');
       })
       .catch((res) => {
         res
