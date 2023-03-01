@@ -1,4 +1,4 @@
-import { confirmEmail } from '../../../lib/controllers/user';
+import { verifyToken } from '../../../lib/controllers/user';
 import dbConnect from '../../../lib/middlewares/mongoose';
 
 export default async function handle(req, res) {
@@ -6,8 +6,8 @@ export default async function handle(req, res) {
 
   switch (req.method) {
     case 'GET': {
-      if (req.query.token) {
-        await confirmEmail(req, res, req.query.token);
+      if (req.query.shortToken) {
+        await verifyToken(req, res, req.query.shortToken);
         break;
       }
     }

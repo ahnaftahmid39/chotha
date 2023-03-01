@@ -1,33 +1,47 @@
 import jwtDecode from 'jwt-decode';
 import { useRouter } from 'next/router';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../providers/UserProvider';
+
 export default function Confirmation({ ...props }) {
   const router = useRouter();
   const { userInfo, setUserInfo } = useContext(UserContext);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    if (router.query.token)
+    if (router.query.shortToken)
       fetch(
-        `http://localhost:3000/api/auth/confirm?token=${router.query.token}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/verify-token?shortToken=${router.query.shortToken}`,
         {
           method: 'GET',
           headers: {},
         }
       )
+        .then((res) => res.json())
         .then((res) => {
-          if (res.statusText == 'OK') return res.json();
-        })
-        .then((res) => {
-          const decoded = jwtDecode(router.query.token);
-          setUserInfo({ user: decoded });
-          localStorage.setItem('token', router.query.token);
+          // console.log(res);
+
+          if (res.status == 400) {
+            setError(res.message);
+            throw Error(res.message);
+          }
+
+          localStorage.setItem('token', res.token);
+          const decoded = jwtDecode(res.token);
+          setUserInfo({ ...decoded, token: res.token });
+          router.replace('/profile');
         })
         .catch((err) => {
-          console.log(err);
+          
         });
-  }, [router.query.token]);
-  if (userInfo.user) router.replace('/profile');
+  }, [router.query.shortToken]);
 
-  return <div> Check your email </div>;
+  return (
+    <div className="container">
+      <div className="main">
+        {error && <div>{error}</div>}
+        Check your email <></>{' '}
+      </div>
+    </div>
+  );
 }

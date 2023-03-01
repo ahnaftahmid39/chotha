@@ -5,7 +5,6 @@ import dbConnect from '../../../lib/middlewares/mongoose';
 import { Post } from '../../../lib/models/post';
 
 export default async function handle(req, res) {
-
   switch (req.method) {
     case 'GET': {
       try {
@@ -19,8 +18,10 @@ export default async function handle(req, res) {
     case 'POST': {
       try {
         await dbConnect();
+        authorize(req, res);
+
         const post = new Post(req.body);
-        post.user = Types.ObjectId('61d710914d0b9a61b7d67961');
+        post.user = req.user._id;
         const result = await post.save();
         return res.status(201).json({ message: 'success', result });
       } catch (e) {

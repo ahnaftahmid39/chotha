@@ -11,9 +11,13 @@ export default async function handle(req, res) {
       try {
         const post = await Post.findById(id);
         if (!post) throw Error('Not found!');
-        return res.status(200).json({ message: 'success!', post: post });
+        return res
+          .status(200)
+          .json({ status: 200, message: 'success!', post: post });
       } catch (e) {
-        return res.status(400).json({ message: 'error', error: e.message });
+        return res
+          .status(400)
+          .json({ status: 400, message: 'error', error: e.message });
       }
     }
     case 'PUT': {
@@ -25,13 +29,19 @@ export default async function handle(req, res) {
           throw Error("You shall not pass! It's not  your post");
         const update = req.body;
         const result = await Post.findByIdAndUpdate(id, update, { new: true });
-        return res.status(200).json({ message: 'success', result });
+        return res
+          .status(200)
+          .json({ status: 200, message: 'success', result });
       } catch (e) {
-        return res.status(400).json({ message: 'Error!', error: e.message });
+        return res
+          .status(400)
+          .json({ status: 400, message: 'Error!', error: e.message });
       }
     }
     default: {
-      return res.status(400).json({ message: 'Cannot ' + req.method });
+      return res
+        .status(400)
+        .json({ status: 400, message: 'Cannot ' + req.method });
     }
   }
 }

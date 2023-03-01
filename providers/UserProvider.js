@@ -6,15 +6,18 @@ const UserProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decoded = jwtDecode(token);
-      if (new Date().getTime() < decoded.exp * 1000) {
-        setUserInfo({
-          user: decoded,
-        });
-      } else {
-        localStorage.setItem('token', '');
+    if (Object.keys(userInfo).length == 0) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decoded = jwtDecode(token);
+        if (new Date().getTime() < decoded.exp * 1000) {
+          setUserInfo({
+            ...decoded,
+            token: token,
+          });
+        } else {
+          localStorage.setItem('token', '');
+        }
       }
     }
   }, []);

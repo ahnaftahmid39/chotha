@@ -26,20 +26,20 @@ export default async function handle(req, res) {
               function (error, result) {
                 if (error) throw error;
                 else {
-                  res.json({ message: 'ok', result });
+                  res.status(200).json({ status: 200, message: 'ok', result });
                 }
               }
             );
           });
         } catch (e) {
           console.log(e.message);
-          res.status(400).json({ error: e.message });
+          res.status(400).json({ status: 400, error: e.message });
         }
       }
       break;
 
     default:
-      res.status(400).json({ error: `Cannot ${req.method}`})
+      res.status(400).json({ status: 400, error: `Cannot ${req.method}` });
       break;
   }
 }

@@ -6,12 +6,10 @@ import styles from './AuthButton.module.css';
 const AuthButton = ({ ...props }) => {
   let btnInfo = {};
 
-  const {
-    userInfo: { user },
-  } = useContext(UserContext);
-  if (user) {
+  const { userInfo } = useContext(UserContext);
+  if (Object.keys(userInfo).length > 0) {
     btnInfo.link = '/profile';
-    btnInfo.btnName = user.name.split(' ')[0];
+    btnInfo.btnName = userInfo.name.split(' ')[0];
   } else {
     btnInfo = { link: '/auth', btnName: 'Login' };
   }

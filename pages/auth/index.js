@@ -1,3 +1,4 @@
+import jwtDecode from 'jwt-decode';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -51,9 +52,9 @@ const Authentication = ({}) => {
           return r.json();
         })
         .then((res) => {
-          localStorage.setItem('token', JSON.stringify(res.token));
+          localStorage.setItem('token', res.token);
           setSuccessMsg('Login successful');
-          setUserInfo({ user: res.user });
+          setUserInfo({ ...jwtDecode(res.token), token: res.token });
           router.replace('/');
         })
         .catch((res) => {
@@ -93,7 +94,6 @@ const Authentication = ({}) => {
         .then((res) => {
           console.log(res.message);
           setSuccessMsg('Sign Up successful');
-          setUserInfo({ user: res.user });
           router.replace('/auth/confirmation');
         })
         .catch((res) => {
@@ -103,7 +103,7 @@ const Authentication = ({}) => {
               setErrMsg(err.error);
             })
             .catch((e) => {
-              setErrMsg('Something went wrong!', e);
+              setErrMsg('Something went wrong!');
             });
         });
     },

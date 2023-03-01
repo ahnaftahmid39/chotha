@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 const Markdown = dynamic(() => {
   return import('./Markdown');
@@ -7,8 +7,11 @@ import styles from './Editor.module.css';
 import TextAreaInput from './TextAreaInput';
 import UsefulButtons from './useful_buttons/UsefulButtons';
 import { useRouter } from 'next/router';
+import { UserContext } from '../../providers/UserProvider';
+import Link from 'next/link';
 
 const Editor = () => {
+  const { userInfo } = useContext(UserContext);
   const [text, setText] = useState({ value: '', caret: -1, target: null });
   const router = useRouter();
   const taRef = useRef();
@@ -59,6 +62,7 @@ const Editor = () => {
       headers: {
         Accept: 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
       },
     })
       .then((res) => res.json())
@@ -67,6 +71,30 @@ const Editor = () => {
         router.replace('/');
       });
   };
+
+  if (Object.keys(userInfo).length == 0)
+    return (
+      <div
+        style={{
+          display: 'flex',
+          minHeight: '95vh',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: '4rem',
+          padding: '2rem',
+          textAlign: 'center',
+          gap: '1rem',
+        }}
+      >
+        Sorry you have to login to create a new chotha
+        <Link href={'/auth'}>
+          <a className="btn" style={{ fontSize: '1.4rem' }}>
+            Login
+          </a>
+        </Link>
+      </div>
+    );
 
   return (
     <>
