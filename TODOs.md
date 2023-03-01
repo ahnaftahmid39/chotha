@@ -11,11 +11,11 @@
 
 ### Frontend
 
+- [ ] Bug inside \<code\>: copy pasting with extra line  
 - [ ] Profile Image
 - [ ] Better structured css
 - [ ] Component
-- [ ]
-- [ ]
+- [ ] Editing existing chotha
 
 ### Backend
 
