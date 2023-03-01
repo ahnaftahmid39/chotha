@@ -11,6 +11,7 @@ const Authentication = ({}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [conpassword, setConPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const [showpass, setShowPass] = useState(false);
   const [errMsg, setErrMsg] = useState('');
@@ -32,44 +33,41 @@ const Authentication = ({}) => {
     setSuccessMsg('');
   }, [isLogin]);
 
-  const handleLoginSubmit = useCallback(
-    (e) => {
-      fetch('/api/auth/login', {
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-        method: 'POST',
-        headers: {
-          Accept: 'application/json, text/plain, */*',
-          'Content-Type': 'application/json',
-        },
+  const handleLoginSubmit = useCallback(() => {
+    fetch('/api/auth/login', {
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((r) => {
+        if (r.statusText != 'OK') {
+          return Promise.reject(r);
+        }
+        return r.json();
       })
-        .then((r) => {
-          if (r.statusText != 'OK') {
-            return Promise.reject(r);
-          }
-          return r.json();
-        })
-        .then((res) => {
-          localStorage.setItem('token', res.token);
-          setSuccessMsg('Login successful');
-          setUserInfo({ ...jwtDecode(res.token), token: res.token });
-          router.replace('/');
-        })
-        .catch((res) => {
-          res
-            .json()
-            .then((err) => {
-              setErrMsg(err.error);
-            })
-            .catch((e) => {
-              setErrMsg('Something went wrong!');
-            });
-        });
-    },
-    [email, password]
-  );
+      .then((res) => {
+        localStorage.setItem('token', res.token);
+        setSuccessMsg('Login successful');
+        setUserInfo({ ...jwtDecode(res.token), token: res.token });
+        router.replace('/');
+      })
+      .catch((res) => {
+        res
+          .json()
+          .then((err) => {
+            setErrMsg(err.error);
+          })
+          .catch((e) => {
+            setErrMsg('Something went wrong!');
+          });
+      });
+  }, [email, password]);
 
   const handleSignUpSubmit = useCallback(
     (e) => {
@@ -132,10 +130,10 @@ const Authentication = ({}) => {
           <div className={styles['form-container']}>
             <div className={styles['form-error']}>{errMsg}</div>
             <div className={styles['form-success']}>{successMsg}</div>
-            <form className={styles['auth-form']} action="/">
+            <form id="auth-form-id" className={styles['auth-form']} action="/">
               {!isLogin && (
                 <>
-                  <fieldset>
+                  <fieldset form="auth-form-id">
                     <legend>Name</legend>
                     <input
                       type="text"
@@ -146,7 +144,7 @@ const Authentication = ({}) => {
                   <span className={'vspace'} />
                 </>
               )}
-              <fieldset>
+              <fieldset form="auth-form-id">
                 <legend>Email</legend>
                 <input
                   type="email"
@@ -155,21 +153,22 @@ const Authentication = ({}) => {
                 ></input>
               </fieldset>
               <span className={'vspace'} />
-              <fieldset>
+              <fieldset form="auth-form-id">
                 <legend>
                   Password
                   <button
                     tabIndex={-1}
+                    type="button"
                     className={styles['btn-visibility']}
                     onClick={(e) => {
                       e.preventDefault();
                       if (passref.current.type == 'password') {
                         passref.current.type = 'text';
-                        confirmpassref.current.type = 'text';
+                        if (!isLogin) confirmpassref.current.type = 'text';
                         setShowPass(true);
                       } else {
                         passref.current.type = 'password';
-                        confirmpassref.current.type = 'password';
+                        if (!isLogin) confirmpassref.current.type = 'password';
                         setShowPass(false);
                       }
                     }}
@@ -186,20 +185,26 @@ const Authentication = ({}) => {
                   </button>
                 </legend>
                 <input
+                  value={password}
                   ref={passref}
                   type="password"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setPassword(e.target.value);
+                  }}
                 ></input>
               </fieldset>
               {!isLogin && (
-                <fieldset>
+                <fieldset form="auth-form-id">
                   <legend>
                     Confirm Password
                     <button
-                      tabIndex={-1}
+                      tabIndex={1}
+                      type="button"
                       className={styles['btn-visibility']}
                       onClick={(e) => {
                         e.preventDefault();
+                        console.log('The fuck what');
                         if (confirmpassref.current.type == 'password') {
                           confirmpassref.current.type = 'text';
                           passref.current.type = 'text';
@@ -223,9 +228,13 @@ const Authentication = ({}) => {
                     </button>
                   </legend>
                   <input
+                    value={conpassword}
                     ref={confirmpassref}
                     type="password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      e.preventDefault();
+                      setConPassword(e.target.value);
+                    }}
                   ></input>
                 </fieldset>
               )}
@@ -239,9 +248,10 @@ const Authentication = ({}) => {
                     </div>
                     <button
                       type="submit"
+                      tabIndex={-1}
                       onClick={(e) => {
                         e.preventDefault();
-                        handleLoginSubmit(e);
+                        handleLoginSubmit();
                       }}
                       className={styles['btn-login']}
                     >
@@ -259,9 +269,10 @@ const Authentication = ({}) => {
                     </div>
                     <button
                       type="submit"
+                      tabIndex={0}
                       onClick={(e) => {
                         e.preventDefault();
-                        handleSignUpSubmit(e);
+                        handleSignUpSubmit();
                       }}
                       className={styles['btn-signup']}
                     >

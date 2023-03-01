@@ -1,7 +1,7 @@
 .head-container {
   display: flex;
   flex-direction: column;
-  background-color: var(--btn-bg-clr);
+  background-color: var(--post-title-bg-clr);
   color: var(--btn-fo-clr);
   border-radius: 0 0 10px 10px;
   padding: 1.5rem;

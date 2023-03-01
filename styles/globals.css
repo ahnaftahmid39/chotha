@@ -23,11 +23,12 @@
 
   --nav-bg-clr: hsla(var(--hue), 15%, 85%, 1);
   --nav-fo-clr: hsl(0, 0%, 10%);
-  --nav-shadow: none;
+  --nav-shadow: 1px 1px 10px hsl(var(--hue), 11%, 60%);
 
   --post-info-fo-clr: hsl(0, 0%, 20%);
+  --post-title-bg-clr: hsl(var(--hue), 30%, 90%);
 
-  --theme-switch-bg-clr: hsla(var(--hue), 20%, 40%, 0.5);
+  --theme-switch-bg-clr: hsla(var(--hue), 20%, 40%, 0.8);
   --theme-switch-thumb-left: 4px;
 
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
@@ -55,6 +56,7 @@
   --nav-shadow: 1px 1px 10px hsl(var(--hue), 11%, 11%);
 
   --post-info-fo-clr: hsl(0, 0%, 80%);
+  --post-title-bg-clr: var(--btn-bg-clr);
 
   --theme-switch-bg-clr: hsla(var(--hue), 20%, 40%, 0.5);
   --theme-switch-thumb-left: 27px;
