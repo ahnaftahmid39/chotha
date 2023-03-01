@@ -71,7 +71,7 @@ const Authentication = ({}) => {
             setErrMsg('Something went wrong!');
           });
       });
-  }, [email, password]);
+  }, [email, password, router]);
 
   const handleSignUpSubmit = useCallback(
     (e) => {
