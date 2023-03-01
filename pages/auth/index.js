@@ -52,6 +52,7 @@ const Authentication = ({}) => {
         return r.json();
       })
       .then((res) => {
+        console.log(res);
         localStorage.setItem('token', res.token);
         setSuccessMsg('Login successful');
         setUserInfo({ ...jwtDecode(res.token), token: res.token });
@@ -61,9 +62,12 @@ const Authentication = ({}) => {
         res
           .json()
           .then((err) => {
+            console.log(err);
             setErrMsg(err.error);
           })
           .catch((e) => {
+            console.log(e);
+
             setErrMsg('Something went wrong!');
           });
       });
