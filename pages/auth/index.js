@@ -1,21 +1,21 @@
-import jwtDecode from "jwt-decode";
-import Head from "next/head";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { UserContext } from "../../providers/UserProvider";
+import jwtDecode from 'jwt-decode';
+import Head from 'next/head';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { UserContext } from '../../providers/UserProvider';
 
-import styles from "../../styles/Auth.module.css";
+import styles from '../../styles/Auth.module.css';
 
 const Authentication = ({ ...props }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [conpassword, setConPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [conpassword, setConPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
   const [showpass, setShowPass] = useState(false);
-  const [errMsg, setErrMsg] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
+  const [errMsg, setErrMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
 
   const { setUserInfo } = useContext(UserContext);
 
@@ -29,86 +29,51 @@ const Authentication = ({ ...props }) => {
   useEffect(() => {
     if (!isLogin) nameref.current.focus();
     else emailref.current.focus();
-    setErrMsg("");
-    setSuccessMsg("");
+    setErrMsg('');
+    setSuccessMsg('');
   }, [isLogin]);
 
   const handleLoginSubmit = async () => {
     try {
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch('/api/auth/login', {
         body: JSON.stringify({
           email,
           password,
         }),
-        method: "POST",
+        method: 'POST',
         headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
         },
       });
 
       const data = await res.json();
-      localStorage.setItem("token", data.token);
-      setSuccessMsg("Login successful");
-      const decoded = jwtDecode(data.token);
-      setUserInfo({ ...decoded, token: data.token });
-      router.replace("/profile");
+      if (data.status != 200) {
+        setErrMsg(data.message);
+      } else {
+        localStorage.setItem('token', data.token);
+        setSuccessMsg('Login successful');
+        const decoded = jwtDecode(data.token);
+        setUserInfo({ ...decoded, token: data.token });
+        router.replace('/profile');
+      }
     } catch (err) {
       setErrMsg(err.message);
     }
   };
 
-  const handleSignUpSubmit = useCallback(
-    (e) => {
-      fetch("/api/auth/signup", {
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-      })
-        .then((r) => {
-          if (r.status != 201) {
-            return Promise.reject(r);
-          }
-          return r.json();
-        })
-        .then((res) => {
-          console.log(res.message);
-          setSuccessMsg("Sign Up successful");
-          router.replace("/auth/confirmation");
-        })
-        .catch((res) => {
-          res
-            .json()
-            .then((err) => {
-              setErrMsg(err.error);
-            })
-            .catch((e) => {
-              setErrMsg("Something went wrong!");
-            });
-        });
-    },
-    [name, email, password]
-  );
-
-  const handleSignUpSubmit2 = async (e) => {
+  const handleSignUpSubmit = async (e) => {
     try {
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch('/api/auth/signup', {
         body: JSON.stringify({
           name,
           email,
           password,
         }),
-        method: "POST",
+        method: 'POST',
         headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
         },
       });
       const data = await res.json();
@@ -116,8 +81,8 @@ const Authentication = ({ ...props }) => {
       if (data.status != 201) {
         setErrMsg(data.message);
       } else {
-        setSuccessMsg("Sign Up successful");
-        router.replace("/auth/confirmation");
+        setSuccessMsg('Sign Up successful');
+        router.replace('/auth/confirmation');
       }
     } catch (err) {
       setErrMsg(err.message);
@@ -130,9 +95,9 @@ const Authentication = ({ ...props }) => {
         <title>Authentication</title>
       </Head>
       <main className="main">
-        <div className={styles["auth-container"]}>
-          <div className={styles["logo-container"]}>
-            <div className={styles["logo-wrapper"]}>
+        <div className={styles['auth-container']}>
+          <div className={styles['logo-container']}>
+            <div className={styles['logo-wrapper']}>
               <Image
                 priority
                 layout="fill"
@@ -141,12 +106,12 @@ const Authentication = ({ ...props }) => {
                 alt="Logo"
               />
             </div>
-            <span className={styles["logo-title"]}>CHOTHA</span>
+            <span className={styles['logo-title']}>CHOTHA</span>
           </div>
-          <div className={styles["form-container"]}>
-            <div className={styles["form-error"]}>{errMsg}</div>
-            <div className={styles["form-success"]}>{successMsg}</div>
-            <form id="auth-form-id" className={styles["auth-form"]} action="/">
+          <div className={styles['form-container']}>
+            <div className={styles['form-error']}>{errMsg}</div>
+            <div className={styles['form-success']}>{successMsg}</div>
+            <form id="auth-form-id" className={styles['auth-form']} action="/">
               {!isLogin && (
                 <>
                   <fieldset form="auth-form-id">
@@ -157,7 +122,7 @@ const Authentication = ({ ...props }) => {
                       onChange={(e) => setName(e.target.value)}
                     ></input>
                   </fieldset>
-                  <span className={"vspace"} />
+                  <span className={'vspace'} />
                 </>
               )}
               <fieldset form="auth-form-id">
@@ -168,23 +133,23 @@ const Authentication = ({ ...props }) => {
                   onChange={(e) => setEmail(e.target.value)}
                 ></input>
               </fieldset>
-              <span className={"vspace"} />
+              <span className={'vspace'} />
               <fieldset form="auth-form-id">
                 <legend>
                   Password
                   <button
                     tabIndex={-1}
                     type="button"
-                    className={styles["btn-visibility"]}
+                    className={styles['btn-visibility']}
                     onClick={(e) => {
                       e.preventDefault();
-                      if (passref.current.type == "password") {
-                        passref.current.type = "text";
-                        if (!isLogin) confirmpassref.current.type = "text";
+                      if (passref.current.type == 'password') {
+                        passref.current.type = 'text';
+                        if (!isLogin) confirmpassref.current.type = 'text';
                         setShowPass(true);
                       } else {
-                        passref.current.type = "password";
-                        if (!isLogin) confirmpassref.current.type = "password";
+                        passref.current.type = 'password';
+                        if (!isLogin) confirmpassref.current.type = 'password';
                         setShowPass(false);
                       }
                     }}
@@ -192,8 +157,8 @@ const Authentication = ({ ...props }) => {
                     <Image
                       src={
                         showpass
-                          ? "/images/eye-open.png"
-                          : "/images/eye-closed.png"
+                          ? '/images/eye-open.png'
+                          : '/images/eye-closed.png'
                       }
                       width="20px"
                       height="20px"
@@ -217,17 +182,17 @@ const Authentication = ({ ...props }) => {
                     <button
                       tabIndex={1}
                       type="button"
-                      className={styles["btn-visibility"]}
+                      className={styles['btn-visibility']}
                       onClick={(e) => {
                         e.preventDefault();
-                        console.log("The fuck what");
-                        if (confirmpassref.current.type == "password") {
-                          confirmpassref.current.type = "text";
-                          passref.current.type = "text";
+                        console.log('The fuck what');
+                        if (confirmpassref.current.type == 'password') {
+                          confirmpassref.current.type = 'text';
+                          passref.current.type = 'text';
                           setShowPass(true);
                         } else {
-                          confirmpassref.current.type = "password";
-                          passref.current.type = "password";
+                          confirmpassref.current.type = 'password';
+                          passref.current.type = 'password';
                           setShowPass(false);
                         }
                       }}
@@ -235,8 +200,8 @@ const Authentication = ({ ...props }) => {
                       <Image
                         src={
                           showpass
-                            ? "/images/eye-open.png"
-                            : "/images/eye-closed.png"
+                            ? '/images/eye-open.png'
+                            : '/images/eye-closed.png'
                         }
                         width="20px"
                         height="20px"
@@ -255,8 +220,8 @@ const Authentication = ({ ...props }) => {
                 </fieldset>
               )}
 
-              <span className={"vspace"} />
-              <div className={styles["submit-container"]}>
+              <span className={'vspace'} />
+              <div className={styles['submit-container']}>
                 {isLogin ? (
                   <>
                     <div role="button" onClick={() => setIsLogin(false)}>
@@ -269,7 +234,7 @@ const Authentication = ({ ...props }) => {
                         e.preventDefault();
                         handleLoginSubmit(e);
                       }}
-                      className={styles["btn-login"]}
+                      className={styles['btn-login']}
                     >
                       Login
                     </button>
@@ -277,7 +242,7 @@ const Authentication = ({ ...props }) => {
                 ) : (
                   <>
                     <div
-                      className={styles["btn-already"]}
+                      className={styles['btn-already']}
                       role="button"
                       onClick={() => setIsLogin(true)}
                     >
@@ -288,9 +253,9 @@ const Authentication = ({ ...props }) => {
                       tabIndex={0}
                       onClick={(e) => {
                         e.preventDefault();
-                        handleSignUpSubmit2(e);
+                        handleSignUpSubmit(e);
                       }}
-                      className={styles["btn-signup"]}
+                      className={styles['btn-signup']}
                     >
                       Sign up
                     </button>
