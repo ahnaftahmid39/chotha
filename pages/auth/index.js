@@ -111,7 +111,7 @@ const Authentication = ({ ...props }) => {
           "Content-Type": "application/json",
         },
       });
-      const data = res.json();
+      const data = await res.json();
       console.log(data);
       if (data.status != 201) {
         setErrMsg(data.message);
