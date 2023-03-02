@@ -15,7 +15,6 @@ export default function Home() {
         return r.json();
       })
       .then((res) => {
-        localStorage.setItem('posts', JSON.stringify(res.posts));
         setPosts(res.posts);
       })
       .catch((e) => {
