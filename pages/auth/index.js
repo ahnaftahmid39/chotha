@@ -33,6 +33,37 @@ const Authentication = ({ ...props }) => {
     setSuccessMsg("");
   }, [isLogin]);
 
+  const handleLoginSubmit2 = async () => {
+    try {
+      const res = await fetch("/api/auth/login", {
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+
+      console.log(data);
+      localStorage.setItem("token", data.token);
+      setSuccessMsg("Login successful");
+      const decoded = jwtDecode(data.token);
+      console.log(decoded);
+      setUserInfo({ ...decoded, token: data.token });
+      console.log(setUserInfo);
+      router.replace("/profile");
+
+    } catch (err) {
+      console.log(err);
+      setErrMsg(err.message);
+    }
+  };
+
   const handleLoginSubmit = (e) => {
     fetch("/api/auth/login", {
       body: JSON.stringify({
@@ -46,7 +77,7 @@ const Authentication = ({ ...props }) => {
       },
     })
       .then((r) => {
-        if (r.statusText != "OK") {
+        if (r.status != 200) {
           return Promise.reject(r);
         }
         return r.json();
@@ -60,20 +91,6 @@ const Authentication = ({ ...props }) => {
         setUserInfo({ ...decoded, token: res.token });
         console.log(setUserInfo);
         router.replace("/profile");
-      })
-      .catch((res) => {
-        console.log("In catch 1st degree: ", res);
-        res
-          .json()
-          .then((err) => {
-            console.log(err);
-            setErrMsg(err.error);
-          })
-          .catch((e) => {
-            console.log(e);
-
-            setErrMsg("Something went wrong!");
-          });
       });
   };
 
@@ -256,10 +273,10 @@ const Authentication = ({ ...props }) => {
                     </div>
                     <button
                       type="submit"
-                      tabIndex={-1}
+                      tabIndex={0}
                       onClick={(e) => {
                         e.preventDefault();
-                        handleLoginSubmit(e);
+                        handleLoginSubmit2(e);
                       }}
                       className={styles["btn-login"]}
                     >
