@@ -56,10 +56,13 @@ const Authentication = ({ ...props }) => {
         localStorage.setItem("token", res.token);
         setSuccessMsg("Login successful");
         const decoded = jwtDecode(res.token);
+        console.log(decoded);
         setUserInfo({ ...decoded, token: res.token });
+        console.log(setUserInfo);
         router.replace("/profile");
       })
       .catch((res) => {
+        console.log("In catch 1st degree: ", res);
         res
           .json()
           .then((err) => {
