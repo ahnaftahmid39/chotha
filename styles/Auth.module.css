@@ -140,7 +140,7 @@
     transparent 50%
   );
   background-size: 100% 200%;
-  background-position: 0 -101%;
+  background-position: 0 -100%;
   transition: background-position 200ms ease-out;
 }
 

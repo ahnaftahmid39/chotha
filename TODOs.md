@@ -11,7 +11,7 @@
 ## Long term
 
 ### Frontend
-
+- [ ] Navigation bar for mobile
 - [ ] Bug inside \<code\>: copy pasting with extra line
 - [ ] Profile Image
 - [ ] Better structured css
