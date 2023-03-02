@@ -2,8 +2,8 @@
 
 ## Short term
 
-- [ ] Bug in login
-- [ ] Add user in new chotha
+- [x] Bug in login: cause: haven't really found out the bug but after using try catch in fetch seems to solve the issue
+- [x] Add user in new chotha
 - [ ] Profile page
 - [ ] Better authentication code
 - [ ] Do something about userInfo like no more Object.key(userInfo).lenth > 0 stuff

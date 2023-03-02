@@ -33,7 +33,7 @@ const Authentication = ({ ...props }) => {
     setSuccessMsg("");
   }, [isLogin]);
 
-  const handleLoginSubmit2 = async () => {
+  const handleLoginSubmit = async () => {
     try {
       const res = await fetch("/api/auth/login", {
         body: JSON.stringify({
@@ -48,50 +48,14 @@ const Authentication = ({ ...props }) => {
       });
 
       const data = await res.json();
-
-      console.log(data);
       localStorage.setItem("token", data.token);
       setSuccessMsg("Login successful");
       const decoded = jwtDecode(data.token);
-      console.log(decoded);
       setUserInfo({ ...decoded, token: data.token });
-      console.log(setUserInfo);
       router.replace("/profile");
-
     } catch (err) {
-      console.log(err);
       setErrMsg(err.message);
     }
-  };
-
-  const handleLoginSubmit = (e) => {
-    fetch("/api/auth/login", {
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((r) => {
-        if (r.status != 200) {
-          return Promise.reject(r);
-        }
-        return r.json();
-      })
-      .then((res) => {
-        console.log(res);
-        localStorage.setItem("token", res.token);
-        setSuccessMsg("Login successful");
-        const decoded = jwtDecode(res.token);
-        console.log(decoded);
-        setUserInfo({ ...decoded, token: res.token });
-        console.log(setUserInfo);
-        router.replace("/profile");
-      });
   };
 
   const handleSignUpSubmit = useCallback(
@@ -132,6 +96,33 @@ const Authentication = ({ ...props }) => {
     },
     [name, email, password]
   );
+
+  const handleSignUpSubmit2 = async (e) => {
+    try {
+      const res = await fetch("/api/auth/signup", {
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+      });
+      const data = res.json();
+      console.log(data);
+      if (data.status != 201) {
+        setErrMsg(data.message);
+      } else {
+        setSuccessMsg("Sign Up successful");
+        router.replace("/auth/confirmation");
+      }
+    } catch (err) {
+      setErrMsg(err.message);
+    }
+  };
 
   return (
     <>
@@ -276,7 +267,7 @@ const Authentication = ({ ...props }) => {
                       tabIndex={0}
                       onClick={(e) => {
                         e.preventDefault();
-                        handleLoginSubmit2(e);
+                        handleLoginSubmit(e);
                       }}
                       className={styles["btn-login"]}
                     >
@@ -297,7 +288,7 @@ const Authentication = ({ ...props }) => {
                       tabIndex={0}
                       onClick={(e) => {
                         e.preventDefault();
-                        handleSignUpSubmit(e);
+                        handleSignUpSubmit2(e);
                       }}
                       className={styles["btn-signup"]}
                     >
