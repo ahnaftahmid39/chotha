@@ -2,6 +2,7 @@
 
 ## Short term
 
+- [ ] Bug in login
 - [ ] Add user in new chotha
 - [ ] Profile page
 - [ ] Better authentication code
@@ -11,7 +12,7 @@
 
 ### Frontend
 
-- [ ] Bug inside \<code\>: copy pasting with extra line  
+- [ ] Bug inside \<code\>: copy pasting with extra line
 - [ ] Profile Image
 - [ ] Better structured css
 - [ ] Component
