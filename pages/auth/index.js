@@ -48,8 +48,9 @@ const Authentication = ({ ...props }) => {
       });
 
       const data = await res.json();
+      console.log(data);
       if (data.status != 200) {
-        setErrMsg(data.message);
+        setErrMsg(data.error ?? data.message);
       } else {
         localStorage.setItem('token', data.token);
         setSuccessMsg('Login successful');
@@ -58,7 +59,7 @@ const Authentication = ({ ...props }) => {
         router.replace('/profile');
       }
     } catch (err) {
-      setErrMsg(err.message);
+      setErrMsg(err.error ?? err.message);
     }
   };
 
