@@ -24,10 +24,12 @@
 - [ ] Better structured css
 - [ ] Component
 - [ ] Editing existing chotha
+- [ ] Keyboard Navigation, Shortcuts
 
 ### Backend
 
 - [ ] structured api response
+- [ ] express server for realtime communication
 
 ### Database
 
@@ -37,15 +39,6 @@
 
 - [ ] Bug inside `<code>`: copying with extra line
 - [ ] Confirmation page sometimes acts weird
-
-### Closed issues
-
-- [x] Bug in login: cause: haven't really found out the bug but after using try catch in fetch seems to solve the issue
-- [x] Bug in signup
-
-## Done
-
-- [x] Add user in new chotha
 
 ## Experiment
 
