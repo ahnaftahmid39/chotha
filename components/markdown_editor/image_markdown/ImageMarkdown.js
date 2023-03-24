@@ -1,11 +1,12 @@
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
-const ImageModal = dynamic(
-  () => {
-    return import('../../modals/image_modal/ImageModal');
-  },
-  { ssr: false }
-);
+// const ImageModal = dynamic(
+//   () => {
+//     return import('../../modals/image_modal/ImageModal');
+//   },
+//   { ssr: false }
+// );
+import ImageModal from '../../modals/image_modal/ImageModal';
 
 const ImageMarkdown = React.memo(({ src, alt }) => {
   const [imgModal, setImgModal] = useState(false);

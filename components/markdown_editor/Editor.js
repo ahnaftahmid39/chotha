@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 // const Markdown = dynamic(() => {
 //   return import('./Markdown');
 // });

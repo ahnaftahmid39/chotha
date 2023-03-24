@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 import styles from '../../styles/Posts.module.css';
 import markdownStyles from '../../components/markdown_editor/Markdown.module.css';

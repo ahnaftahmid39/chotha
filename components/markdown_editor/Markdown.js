@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 // const CodeMarkdown = dynamic(() => {
 //   return import('./code_markdown/CodeMarkdown');
 // });
