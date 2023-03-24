@@ -26,14 +26,6 @@ export default function Home() {
     }
   }, []);
 
-  const refreshPosts = () => {
-    fetch('/api/post', { method: 'GET', headers: {} })
-      .then((r) => r.json())
-      .then((res) => {
-        localStorage.setItem('posts', JSON.stringify(res.posts));
-        setPosts(res.posts);
-      });
-  };
   if (leaving)
     return (
       <div style={{ display: 'grid', placeItems: 'center', minHeight: '80vh' }}>

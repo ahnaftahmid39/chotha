@@ -45,20 +45,29 @@ const AddImageBtn = ({ addImgLink }) => {
     setLinkStatus('Link Generating...');
     const data = new FormData();
     data.append('photo', imgData.data);
-    const raw = await fetch('/api/image', {
-      body: data,
-      method: 'POST',
-    });
-    const {
-      result: { url },
-    } = await raw.json();
-    setLinkStatus('Success!');
-    setTimeout(() => {
-      addImgLink(`![${imgData.title}](${url})\n\n`);
+    try {
+      const raw = await fetch('/api/image', {
+        body: data,
+        method: 'POST',
+      });
+      if (raw.status == 400) throw Error(res.error);
+      if (raw.status == 500) throw Error('Something went wrong with server');
+      const {
+        result: { url },
+      } = await raw.json();
+      setLinkStatus('Success!');
+      setTimeout(() => {
+        addImgLink(`![${imgData.title}](${url})\n\n`);
+        setImgModal(false);
+        setImgData({ title: '', data: null });
+        setLinkStatus('');
+      }, 500);
+    } catch (error) {
+      console.log(error.message);
       setImgModal(false);
-      setImgData({ title: '', data: null });
+      setImgData({ title: error.message, data: null });
       setLinkStatus('');
-    }, 500);
+    }
   };
 
   return (
