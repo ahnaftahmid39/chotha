@@ -95,16 +95,16 @@ const Authentication = ({ ...props }) => {
       <Head>
         <title>Authentication</title>
       </Head>
-      <main className="main">
+      <main className='main'>
         <div className={styles['auth-container']}>
           <div className={styles['logo-container']}>
             <div className={styles['logo-wrapper']}>
               <Image
                 priority
-                layout="fill"
-                objectFit="cover"
-                src="/chotha.svg"
-                alt="Logo"
+                layout='fill'
+                objectFit='cover'
+                src='/chotha.svg'
+                alt='Logo'
               />
             </div>
             <span className={styles['logo-title']}>CHOTHA</span>
@@ -112,13 +112,13 @@ const Authentication = ({ ...props }) => {
           <div className={styles['form-container']}>
             <div className={styles['form-error']}>{errMsg}</div>
             <div className={styles['form-success']}>{successMsg}</div>
-            <form id="auth-form-id" className={styles['auth-form']} action="/">
+            <form id='auth-form-id' className={styles['auth-form']} action='/'>
               {!isLogin && (
                 <>
-                  <fieldset form="auth-form-id">
+                  <fieldset form='auth-form-id'>
                     <legend>Name</legend>
                     <input
-                      type="text"
+                      type='text'
                       ref={nameref}
                       onChange={(e) => setName(e.target.value)}
                     ></input>
@@ -126,21 +126,21 @@ const Authentication = ({ ...props }) => {
                   <span className={'vspace'} />
                 </>
               )}
-              <fieldset form="auth-form-id">
+              <fieldset form='auth-form-id'>
                 <legend>Email</legend>
                 <input
-                  type="email"
+                  type='email'
                   ref={emailref}
                   onChange={(e) => setEmail(e.target.value)}
                 ></input>
               </fieldset>
               <span className={'vspace'} />
-              <fieldset form="auth-form-id">
+              <fieldset form='auth-form-id'>
                 <legend>
                   Password
                   <button
                     tabIndex={-1}
-                    type="button"
+                    type='button'
                     className={styles['btn-visibility']}
                     onClick={(e) => {
                       e.preventDefault();
@@ -161,15 +161,15 @@ const Authentication = ({ ...props }) => {
                           ? '/images/eye-open.png'
                           : '/images/eye-closed.png'
                       }
-                      width="20px"
-                      height="20px"
+                      width='20px'
+                      height='20px'
                     />
                   </button>
                 </legend>
                 <input
                   value={password}
                   ref={passref}
-                  type="password"
+                  type='password'
                   onChange={(e) => {
                     e.preventDefault();
                     setPassword(e.target.value);
@@ -177,12 +177,12 @@ const Authentication = ({ ...props }) => {
                 ></input>
               </fieldset>
               {!isLogin && (
-                <fieldset form="auth-form-id">
+                <fieldset form='auth-form-id'>
                   <legend>
                     Confirm Password
                     <button
                       tabIndex={1}
-                      type="button"
+                      type='button'
                       className={styles['btn-visibility']}
                       onClick={(e) => {
                         e.preventDefault();
@@ -204,15 +204,15 @@ const Authentication = ({ ...props }) => {
                             ? '/images/eye-open.png'
                             : '/images/eye-closed.png'
                         }
-                        width="20px"
-                        height="20px"
+                        width='20px'
+                        height='20px'
                       />
                     </button>
                   </legend>
                   <input
                     value={conpassword}
                     ref={confirmpassref}
-                    type="password"
+                    type='password'
                     onChange={(e) => {
                       e.preventDefault();
                       setConPassword(e.target.value);
@@ -225,11 +225,11 @@ const Authentication = ({ ...props }) => {
               <div className={styles['submit-container']}>
                 {isLogin ? (
                   <>
-                    <div role="button" onClick={() => setIsLogin(false)}>
+                    <div role='button' onClick={() => setIsLogin(false)}>
                       Create new account
                     </div>
                     <button
-                      type="submit"
+                      type='submit'
                       tabIndex={0}
                       onClick={(e) => {
                         e.preventDefault();
@@ -244,13 +244,13 @@ const Authentication = ({ ...props }) => {
                   <>
                     <div
                       className={styles['btn-already']}
-                      role="button"
+                      role='button'
                       onClick={() => setIsLogin(true)}
                     >
                       I already have an account
                     </div>
                     <button
-                      type="submit"
+                      type='submit'
                       tabIndex={0}
                       onClick={(e) => {
                         e.preventDefault();

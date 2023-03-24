@@ -90,7 +90,7 @@ const Editor = () => {
       >
         Sorry you have to login to create a new chotha
         <Link href={'/auth'}>
-          <a className="btn" style={{ fontSize: '1.4rem' }}>
+          <a className='btn' style={{ fontSize: '1.4rem' }}>
             Login
           </a>
         </Link>

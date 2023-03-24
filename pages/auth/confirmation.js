@@ -31,14 +31,12 @@ export default function Confirmation({ ...props }) {
           setUserInfo({ ...decoded, token: res.token });
           router.replace('/profile');
         })
-        .catch((err) => {
-          
-        });
+        .catch((err) => {});
   }, [router.query.shortToken]);
 
   return (
-    <div className="container">
-      <div className="main">
+    <div className='container'>
+      <div className='main'>
         {error && <div>{error}</div>}
         Check your email <></>{' '}
       </div>

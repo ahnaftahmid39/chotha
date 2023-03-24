@@ -29,7 +29,7 @@ export default async function handle(req, res) {
           throw Error("You shall not pass! It's not  your post");
         const update = req.body;
         const result = await Post.findByIdAndUpdate(id, update, { new: true });
-        
+
         await res.unstable_revalidate('/');
         return res
           .status(200)

@@ -4,18 +4,18 @@
 } */
 
 .spinner {
-    border: 3px solid;
-    position:absolute;
-    border-color: var(--fo-clr) transparent transparent transparent;
-    border-radius: 50%;
-    animation: clockwise-rotate 0.7s linear infinite;
+  border: 3px solid;
+  position: absolute;
+  border-color: var(--fo-clr) transparent transparent transparent;
+  border-radius: 50%;
+  animation: clockwise-rotate 0.7s linear infinite;
 }
 .spinner-background {
-    position:absolute;
-    border: 3px solid;
-    border-color: var(--fo-clr-light);
-    opacity: 0.4;
-    border-radius: 50%;
+  position: absolute;
+  border: 3px solid;
+  border-color: var(--fo-clr-light);
+  opacity: 0.4;
+  border-radius: 50%;
 }
 
 @keyframes clockwise-rotate {

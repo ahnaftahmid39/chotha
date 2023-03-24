@@ -4,7 +4,7 @@
   flex-grow: 0;
   padding-top: 0.3rem;
   overflow: auto;
-  font-family:  Georgia, 'Times New Roman', 'SolaimanLipi', Times, serif;
+  font-family: Georgia, 'Times New Roman', 'SolaimanLipi', Times, serif;
   font-size: 1.1rem;
   line-height: 1.5rem;
 }
@@ -17,7 +17,11 @@
 .markdown-body a {
   text-decoration: underline var(--hd-clr);
   color: var(--hd-clr);
-  background-image: linear-gradient(to bottom, var(--hd-clr) 50%, transparent 50%);
+  background-image: linear-gradient(
+    to bottom,
+    var(--hd-clr) 50%,
+    transparent 50%
+  );
   background-size: 100% 200%;
   background-position: 0 -100%;
   transition: background-position 100ms ease-out;
@@ -34,7 +38,7 @@
   font-size: 0.9rem;
   font-family: 'Cascadia Code', monospace;
   /* background-color: #f8f8f8; */
-  background-color: #2E3440;
+  background-color: #2e3440;
   border-radius: 8px;
 }
 
@@ -42,7 +46,7 @@
   color: hsl(0, 0%, 80%);
 }
 
-.markdown-body li+li {
+.markdown-body li + li {
   margin-top: 0.5rem;
 }
 

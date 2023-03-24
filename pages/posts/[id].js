@@ -32,11 +32,11 @@ const Post = ({ post }) => {
 
   if (!post) return null;
   return (
-    <div className="container">
+    <div className='container'>
       <Head>
         <title>{post.title}</title>
       </Head>
-      <main className="main">
+      <main className='main'>
         <div className={styles['head-container']}>
           <span className={styles['title']}>{post.title}</span>
         </div>
