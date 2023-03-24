@@ -1,8 +1,9 @@
 import { useContext, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
-const Markdown = dynamic(() => {
-  return import('./Markdown');
-});
+// const Markdown = dynamic(() => {
+//   return import('./Markdown');
+// });
+import Markdown from './Markdown';
 import styles from './Editor.module.css';
 import TextAreaInput from './TextAreaInput';
 import UsefulButtons from './useful_buttons/UsefulButtons';

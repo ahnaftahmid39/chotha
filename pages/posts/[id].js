@@ -2,12 +2,15 @@ import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 import styles from '../../styles/Posts.module.css';
 import markdownStyles from '../../components/markdown_editor/Markdown.module.css';
-const ImageMarkdown = dynamic(() =>
-  import('../../components/markdown_editor/image_markdown/ImageMarkdown')
-);
-const CodeMarkdown = dynamic(() =>
-  import('../../components/markdown_editor/code_markdown/CodeMarkdown')
-);
+// const ImageMarkdown = dynamic(() =>
+//   import('../../components/markdown_editor/image_markdown/ImageMarkdown')
+// );
+// const CodeMarkdown = dynamic(() =>
+//   import('../../components/markdown_editor/code_markdown/CodeMarkdown')
+// );
+import ImageMarkdown from '../../components/markdown_editor/image_markdown/ImageMarkdown';
+import CodeMarkdown from '../../components/markdown_editor/code_markdown/CodeMarkdown';
+
 import {
   getAllPostsWithoutMarkdown,
   getPostById,
@@ -29,11 +32,11 @@ const Post = ({ post }) => {
 
   if (!post) return null;
   return (
-    <div className='container'>
+    <div className="container">
       <Head>
         <title>{post.title}</title>
       </Head>
-      <main className='main'>
+      <main className="main">
         <div className={styles['head-container']}>
           <span className={styles['title']}>{post.title}</span>
         </div>
