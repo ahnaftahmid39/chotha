@@ -26,7 +26,7 @@
 .btn-logout {
   cursor: pointer;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: rgb(214, 37, 37);
   color: white;
   padding: 0.5rem 1rem;
