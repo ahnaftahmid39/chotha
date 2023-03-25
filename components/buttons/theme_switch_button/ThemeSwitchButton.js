@@ -5,10 +5,15 @@ import { useTheme } from 'next-themes';
   NGL, style for this button was inspired from reactnavigation.org, But I implemented it myself.
 */
 const ThemeSwitchButton = ({}) => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, systemTheme } = useTheme();
   const handleThemeChange = () => {
-    if (theme != 'dark') setTheme('dark');
-    else setTheme('light');
+    if (theme == 'system') {
+      if (systemTheme != 'dark') setTheme('dark');
+      else setTheme('light');
+    } else {
+      if (theme != 'dark') setTheme('dark');
+      else setTheme('light');
+    }
   };
   return (
     <div className={styles['parent']} onClick={handleThemeChange}>

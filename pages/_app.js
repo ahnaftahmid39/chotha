@@ -5,7 +5,7 @@ import UserProvider from '../providers/UserProvider';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider enableColorScheme={false}>
+    <ThemeProvider>
       <UserProvider>
         <Navbar />
         <Component {...pageProps} />
