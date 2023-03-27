@@ -1,4 +1,5 @@
 import jwtDecode from 'jwt-decode';
+import { useTheme } from 'next-themes';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -18,7 +19,7 @@ const Authentication = ({ ...props }) => {
   const [successMsg, setSuccessMsg] = useState('');
 
   const { setUserInfo } = useContext(UserContext);
-
+  const { theme, systemTheme } = useTheme();
   const passref = useRef();
   const confirmpassref = useRef();
   const nameref = useRef();
@@ -32,6 +33,17 @@ const Authentication = ({ ...props }) => {
     setErrMsg('');
     setSuccessMsg('');
   }, [isLogin]);
+
+  useEffect(() => {
+    let t = setTimeout(() => {
+      setErrMsg('');
+    }, 3000);
+    return () => {
+      clearTimeout(t);
+    };
+  }, [errMsg]);
+
+  const logoSrc = theme == 'dark' ? '/chotha-dark.svg' : '/chotha.svg';
 
   const handleLoginSubmit = async () => {
     try {
@@ -97,17 +109,14 @@ const Authentication = ({ ...props }) => {
       </Head>
       <main className='main'>
         <div className={styles['auth-container']}>
-          <div className={styles['logo-container']}>
-            <div className={styles['logo-wrapper']}>
-              <Image
-                priority
-                layout='fill'
-                objectFit='cover'
-                src='/chotha.svg'
-                alt='Logo'
-              />
-            </div>
-            <span className={styles['logo-title']}>CHOTHA</span>
+          <div className={styles['logo-wrapper']}>
+            <Image
+              priority
+              layout='fill'
+              objectFit='contain'
+              src={logoSrc}
+              alt='Logo'
+            />
           </div>
           <div className={styles['form-container']}>
             <div className={styles['form-error']}>{errMsg}</div>
