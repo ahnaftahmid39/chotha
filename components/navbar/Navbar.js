@@ -11,18 +11,18 @@ const Navbar = ({}) => {
     <nav className={styles['navbar-container']}>
       <div className={styles['links']}>
         {router.pathname != '/' && (
-          <Link href={'/'} passHref>
-            <a title={'Home'}>Home</a>
+          <Link title={'Home'} href={'/'}>
+            Home
           </Link>
         )}
         {router.pathname != '/about' && (
-          <Link href={'/about'} passHref>
-            <a title={'About'}>About</a>
+          <Link title={'About'} href={'/about'}>
+            About
           </Link>
         )}
         {router.pathname != '/new-chotha' && (
-          <Link href={'/new-chotha'} passHref>
-            <a title={'New Chotha'}>New Chotha</a>
+          <Link title={'New Chotha'} href={'/new-chotha'}>
+            New Chotha
           </Link>
         )}
       </div>

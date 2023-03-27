@@ -19,6 +19,7 @@ export default async function handle(req, res) {
           .status(400)
           .json({ status: 400, message: 'error', error: e.message });
       }
+      break;
     }
     case 'PUT': {
       try {
@@ -30,7 +31,7 @@ export default async function handle(req, res) {
         const update = req.body;
         const result = await Post.findByIdAndUpdate(id, update, { new: true });
 
-        await res.unstable_revalidate('/');
+        await res.revalidate('/');
         return res
           .status(200)
           .json({ status: 200, message: 'success', result });
@@ -39,11 +40,13 @@ export default async function handle(req, res) {
           .status(400)
           .json({ status: 400, message: 'Error!', error: e.message });
       }
+      break;
     }
     default: {
       return res
         .status(400)
         .json({ status: 400, message: 'Cannot ' + req.method });
+      break;
     }
   }
 }

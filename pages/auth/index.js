@@ -101,10 +101,12 @@ const Authentication = ({ ...props }) => {
             <div className={styles['logo-wrapper']}>
               <Image
                 priority
-                layout='fill'
-                objectFit='cover'
                 src='/chotha.svg'
                 alt='Logo'
+                fill
+                style={{
+                  objectFit: 'cover',
+                }}
               />
             </div>
             <span className={styles['logo-title']}>CHOTHA</span>
@@ -156,13 +158,14 @@ const Authentication = ({ ...props }) => {
                     }}
                   >
                     <Image
+                      alt='password-visibility'
                       src={
                         showpass
                           ? '/images/eye-open.png'
                           : '/images/eye-closed.png'
                       }
-                      width='20px'
-                      height='20px'
+                      width={20}
+                      height={20}
                     />
                   </button>
                 </legend>
@@ -199,13 +202,14 @@ const Authentication = ({ ...props }) => {
                       }}
                     >
                       <Image
+                        alt='password-visibility'
                         src={
                           showpass
                             ? '/images/eye-open.png'
                             : '/images/eye-closed.png'
                         }
-                        width='20px'
-                        height='20px'
+                        width={20}
+                        height={20}
                       />
                     </button>
                   </legend>

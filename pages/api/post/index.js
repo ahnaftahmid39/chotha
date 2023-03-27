@@ -19,19 +19,22 @@ export default async function handle(req, res) {
       try {
         await dbConnect();
         authorize(req, res);
-
-        const post = new Post(req.body);
-        post.user = req.user._id;
-        const result = await post.save();
-        await res.unstable_revalidate('/');
+        // const post = new Post(req.body);
+        // post.user = req.user._id;
+        // const result = await post.save();
+        console.log(req.user);
+        const newPost = { ...req.body, user: req.user._id };
+        const result = await Post.create(newPost)
+        await res.revalidate('/');
         return res.status(201).json({ message: 'success', result });
       } catch (e) {
+        console.log(e.message);
         return res.status(400).json({ message: 'failed', error: e.message });
       }
     }
 
     default: {
-      res.json({
+      return res.json({
         message: 'failed!',
         error: 'Can not handle ' + req.method + ' request',
       });

@@ -52,25 +52,27 @@ const Editor = () => {
     taRef.current.toggleWrap(wrap);
   };
 
-  const addData = ({ title, description }) => {
-    fetch('/api/post', {
-      body: JSON.stringify({
-        markdown: text.value,
-        title: title,
-        description: description,
-      }),
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        router.replace('/');
+  const addData = async ({ title, description }) => {
+    try {
+      const data = await fetch('/api/post', {
+        body: JSON.stringify({
+          markdown: text.value,
+          title: title,
+          description: description,
+        }),
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
       });
+      const result = await data.json();
+      console.log(result);
+      router.replace('/');
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 
   if (Object.keys(userInfo).length == 0)
@@ -89,10 +91,8 @@ const Editor = () => {
         }}
       >
         Sorry you have to login to create a new chotha
-        <Link href={'/auth'}>
-          <a className='btn' style={{ fontSize: '1.4rem' }}>
-            Login
-          </a>
+        <Link className='btn' style={{ fontSize: '1.4rem' }} href={'/auth'}>
+          Login
         </Link>
       </div>
     );

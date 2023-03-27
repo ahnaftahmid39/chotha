@@ -15,10 +15,13 @@ const AuthButton = ({ ...props }) => {
   }
 
   return (
-    <Link href={btnInfo.link} passHref>
-      <a {...props} className={styles['auth-btn']} title={btnInfo.btnName}>
-        {btnInfo.btnName}
-      </a>
+    <Link
+      {...props}
+      className={styles['auth-btn']}
+      title={btnInfo.btnName}
+      href={btnInfo.link}
+    >
+      {btnInfo.btnName}
     </Link>
   );
 };

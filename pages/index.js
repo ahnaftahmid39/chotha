@@ -26,7 +26,11 @@ export default function Home({ posts }) {
             {posts?.length > 0 &&
               posts.map((post) => {
                 return (
-                  <Link key={post._id} passHref href={`/posts/${post._id}`}>
+                  <Link
+                    key={post._id}
+                    title={post.title}
+                    href={`/posts/${post._id}`}
+                  >
                     <PostCard
                       post={post}
                       onClick={() => {

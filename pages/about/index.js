@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import styles from '../../styles/About.module.css';
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
         <p className={styles['about']}>
           Hi. This is just a hobby project. We wish to see it grow bigger. It is
           open source. Feel free to contribute. Check our github:{'  '}
-          <a href='https://github.com/ahnaftahmid39/chotha'> Chotha </a>
+          <Link href='https://github.com/ahnaftahmid39/chotha'> Chotha </Link>
         </p>
       </div>
     </div>
