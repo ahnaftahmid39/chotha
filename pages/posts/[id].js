@@ -1,7 +1,7 @@
-// import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 import styles from '../../styles/Posts.module.css';
 import markdownStyles from '../../components/markdown_editor/Markdown.module.css';
+// import dynamic from 'next/dynamic';
 // const ImageMarkdown = dynamic(() =>
 //   import('../../components/markdown_editor/image_markdown/ImageMarkdown')
 // );
@@ -10,6 +10,12 @@ import markdownStyles from '../../components/markdown_editor/Markdown.module.css
 // );
 import ImageMarkdown from '../../components/markdown_editor/image_markdown/ImageMarkdown';
 import CodeMarkdown from '../../components/markdown_editor/code_markdown/CodeMarkdown';
+
+import remarkGfm from 'remark-gfm';
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
+
+import 'katex/dist/katex.min.css';
 
 import {
   getAllPostsWithoutMarkdown,
@@ -46,6 +52,8 @@ const Post = ({ post }) => {
         </div>
         <ReactMarkdown
           className={markdownStyles['markdown-body']}
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeKatex]}
           components={{
             img: ImageMarkdown,
             code: CodeMarkdown,
