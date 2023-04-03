@@ -2,7 +2,7 @@
   --hue: 220;
   --bg-clr: hsl(var(--hue), 10%, 90%); /* background color */
   --bg-clr: hsl(210, 50%, 96%);
-  --bg-clr-light: hsl(var(--hue), 30%, 96%);
+  --bg-clr-light: hsl(var(--hue), 30%, 92%);
   --bg-clr2: hsl(0, 0%, 93%);
 
   --fo-clr: hsl(0, 0%, 0%); /* forground color */

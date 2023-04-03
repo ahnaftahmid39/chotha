@@ -1,13 +1,24 @@
 .markdown-body {
+  --td-bg-clr: var(--bg-clr);
+  --td-2n-bg-clr: var(--bg-clr-light);
+  --td-border-clr: hsl(220, 10%, 80%);
+  --tr-border-clr: hsla(220, 10%, 80%);
+
   box-sizing: border-box;
   padding: 1rem;
   flex-grow: 0;
   padding-top: 0.3rem;
   overflow: auto;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   /* font-family: Georgia, 'Times New Roman', 'SolaimanLipi', Times, serif; */
   font-size: 1.1rem;
   line-height: 1.5rem;
+}
+
+[data-theme='dark'] .markdown-body {
+  --td-border-clr: hsla(220, 10%, 40%);
+  --tr-border-clr: hsla(220, 10%, 40%);
 }
 
 .markdown-body a {
@@ -26,6 +37,42 @@
   background-size: 100% 200%;
   background-position: 0 -100%;
   transition: background-position 100ms ease-out;
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #d0d7de;
+  border-color: var(--td-border-clr);
+}
+
+.markdown-body table tr {
+  background-color: var(--td-bg-clr);
+  border-top: 1px solid hsla(210, 18%, 87%, 1);
+  border-color: var(--tr-border-clr);
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+  background-color: var(--td-2n-bg-clr);
 }
 
 .markdown-body a:hover {
