@@ -14,7 +14,7 @@
 
 ### Frontend
 
-- [ ] Katex support
+- [x] Katex support
 - [ ] Add support for realtime editing
 - [ ] Add support for commenting
 - [ ] Add support for editing and deleting posts

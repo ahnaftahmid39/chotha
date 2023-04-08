@@ -1,13 +1,19 @@
-/* .loader-container {
-    position: relative;
-    z-index: 1;
-} */
+.spinner-container {
+  position: relative;
+}
+
+.spinner-container > * {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .spinner {
   border: 3px solid;
   position: absolute;
   border-color: var(--fo-clr) transparent transparent transparent;
   border-radius: 50%;
+  transform-origin: center;
   animation: clockwise-rotate 0.7s linear infinite;
 }
 .spinner-background {
@@ -20,10 +26,10 @@
 
 @keyframes clockwise-rotate {
   0% {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 

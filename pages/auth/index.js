@@ -7,6 +7,8 @@ import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { UserContext } from '../../providers/UserProvider';
 
 import styles from '../../styles/Auth.module.css';
+import ChothaBrand from '../../components/svgs/ChothaBrand';
+import ChothaBrandDark from '../../components/svgs/ChothaBrandDark';
 
 const Authentication = ({ ...props }) => {
   const [name, setName] = useState('');
@@ -26,7 +28,6 @@ const Authentication = ({ ...props }) => {
   const emailref = useRef();
 
   const router = useRouter();
-
   useEffect(() => {
     if (!isLogin) nameref.current.focus();
     else emailref.current.focus();
@@ -42,8 +43,6 @@ const Authentication = ({ ...props }) => {
       clearTimeout(t);
     };
   }, [errMsg]);
-
-  const logoSrc = theme == 'dark' ? '/chotha-dark.svg' : '/chotha.svg';
 
   const handleLoginSubmit = async () => {
     try {
@@ -102,6 +101,24 @@ const Authentication = ({ ...props }) => {
     }
   };
 
+  const getThemedLogo = () => {
+    let logo = null;
+    if (theme == 'system') {
+      if (systemTheme == 'dark') {
+        logo = <ChothaBrandDark />;
+      } else {
+        logo = <ChothaBrand />;
+      }
+    } else {
+      if (theme == 'dark') {
+        logo = <ChothaBrandDark />;
+      } else {
+        logo = <ChothaBrand />;
+      }
+    }
+    return logo;
+  };
+
   return (
     <>
       <Head>
@@ -109,15 +126,7 @@ const Authentication = ({ ...props }) => {
       </Head>
       <main className='main'>
         <div className={styles['auth-container']}>
-          <div className={styles['logo-wrapper']}>
-            <Image
-              priority
-              layout='fill'
-              objectFit='contain'
-              src={logoSrc}
-              alt='Logo'
-            />
-          </div>
+          <div className={styles['logo-wrapper']}>{getThemedLogo()}</div>
           <div className={styles['form-container']}>
             <div className={styles['form-error']}>{errMsg}</div>
             <div className={styles['form-success']}>{successMsg}</div>

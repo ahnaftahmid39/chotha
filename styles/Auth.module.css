@@ -8,7 +8,7 @@
 
 .logo-wrapper {
   position: relative;
-  width: 200px;
+  padding: 1rem;
   transition: transform 100ms ease-in;
 }
 
@@ -51,15 +51,20 @@
 
 .auth-form fieldset {
   border-radius: 8px;
+  border-color: dimgray;
+  border-width: 1px;
+  padding-inline-start: 1.5rem;
 }
 
 .auth-form :is(label, legend) {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
 }
 
 .auth-form input:is([type='text'], [type='email'], [type='password']) {
   /* border-radius: 100vw; */
-  padding: 0.1rem 1rem;
+  padding: 0.1rem 0rem;
   border: none;
   font-size: 1rem;
   min-width: 20vw;
@@ -86,6 +91,7 @@
 }
 
 .submit-container {
+  margin-top: 0.5rem;
   display: flex;
   gap: 1rem;
 }
@@ -94,46 +100,31 @@
 .btn-signup {
   border: none;
   outline: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  padding: 0rem 1.5rem;
+  padding: 0.5rem 1rem;
   font-size: 1rem;
   font-weight: 600;
   color: white;
+  background-color: hsl(220, 62%, 13%);
 }
-
+[data-theme='dark'] :is(.btn-login,.btn-signup) {
+  background-color: hsl(217, 100%, 94%);
+  color: black;
+}
 :is(.btn-login, .btn-signup):active {
   transform: translateY(4px);
 }
 
-.btn-login {
-  background-color: hsl(220, 100%, 62%);
-}
-
-.btn-signup {
-  background-color: rgb(56, 151, 27);
-}
-
 .submit-container div[role='button'] {
-  text-decoration: underline;
-  padding: 1rem;
-  border-radius: 4px;
-  height: min-content;
+  text-decoration: none;
   cursor: pointer;
-  background-image: linear-gradient(
-    to bottom,
-    var(--hd-clr) 50%,
-    transparent 50%
-  );
-  background-size: 100% 200%;
-  background-position: 0 -100%;
-  transition: background-position 200ms ease-out;
+  align-self: center;
+  margin-left: 0.125rem;
 }
 
 .submit-container div[role='button']:hover {
-  text-decoration: none;
-  color: var(--bg-clr);
-  background-position: 0 0;
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
@@ -143,9 +134,5 @@
     margin-top: 2rem;
     gap: 1rem;
     justify-content: start;
-  }
-  .logo-wrapper {
-    width: 100px;
-    height: 100px;
   }
 }

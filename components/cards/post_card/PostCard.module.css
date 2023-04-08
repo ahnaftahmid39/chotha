@@ -2,14 +2,13 @@
   width: 100%;
   min-height: 30vh;
   padding: 2em;
-  border-radius: 10px;
+  border-radius: 16px;
   background: var(--card-bg);
 }
 
 .card:hover,
 .card:active {
   box-shadow: var(--card-shadow);
-  border-radius: 15px;
 }
 
 .card > * {

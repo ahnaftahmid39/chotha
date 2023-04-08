@@ -2,7 +2,7 @@ import styles from './Loading.module.css';
 
 const Loading = ({ size = 40, spinnerWidth = 3 }) => {
   return (
-    <div className={styles['loader-container']}>
+    <div className={styles['spinner-container']}>
       <div
         className={styles['spinner-background']}
         style={{
