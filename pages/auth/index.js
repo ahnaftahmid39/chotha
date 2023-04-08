@@ -20,7 +20,7 @@ const Authentication = ({ ...props }) => {
   const [errMsg, setErrMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
-  const { setUserInfo } = useContext(UserContext);
+  const { userInfo, setUserInfo } = useContext(UserContext);
   const { theme, systemTheme } = useTheme();
   const passref = useRef();
   const confirmpassref = useRef();

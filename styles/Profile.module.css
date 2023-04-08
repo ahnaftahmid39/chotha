@@ -1,42 +1,150 @@
 .profile-container {
+  display: flex;
+  flex-direction: column;
   min-height: 90vh;
+  padding: 2rem;
 }
 
+@media (min-width: 768px) {
+  .profile-container {
+    padding: 2rem 5rem;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1080px) {
+  .profile-container {
+    padding: 2rem 10rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .profile-container {
+    padding: 2rem 20rem;
+  }
+}
+
+/* for debugging */
+/* .profile-container * {
+  outline: 1px solid rgb(112, 127, 253);
+} */
+
 .profile {
+  flex: 1;
   display: flex;
-  margin-top: 2rem;
   flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.all-posts {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile-photo {
-  width: 200px;
-  height: 200px;
-  background-color: var(--fo-clr);
-  border-radius: 16px;
-  margin: 1rem;
+  padding: 2rem;
+  width: 100%;
+  border-radius: 100vw;
+  margin: 0 auto;
 }
 
-.name, .email {
-  padding: 1rem;
+.profile-photo img,
+.profile-photo div {
+  border-radius: 100vw;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.profile-photo div {
+  background-color: gray;
 }
 
+.profile-description {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 24px;
+  background: hsla(220, 100%, 96%, 1);
+  background: hsl(220, 30%, 90%);
+}
 
-.btn-logout {
+.profile-description > *,
+.social > * {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.name {
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.bio,
+.phone-value,
+.email-value,
+.social-title + a {
+  font-size: 13px;
+  color: #1c1c1c;
+}
+
+.contact,
+.social {
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  gap: 1rem;
+}
+
+.phone,
+.email {
+  font-weight: normal;
+}
+
+.btn-logout,
+.btn-edit-profile {
   cursor: pointer;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: rgb(214, 37, 37);
   color: white;
   padding: 0.5rem 1rem;
   font-size: 1rem;
 }
 
+.btn-edit-profile {
+  background-color: hsl(220, 52%, 40%);
+}
+
+.btn-edit-profile:hover {
+  background-color: hsl(220, 52%, 60%);
+}
+
 .btn-logout:hover {
   background-color: rgb(219, 103, 103);
 }
 
-.btn-logout:active {
-  transform: translateY(-4px);
+.btn-logout:active,
+.btn-edit-profile:active {
+  transform: translateY(4px);
+}
+
+.all-posts {
+  background: hsl(220, 30%, 90%);
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.all-posts-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.post {
+  border-radius: 16px;
 }

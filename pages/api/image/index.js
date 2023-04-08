@@ -3,14 +3,13 @@ import fs from 'fs';
 import formHandle from '../../../lib/middlewares/form_data';
 
 export default async function handle(req, res) {
-  const imagekit = new ImageKit({
-    privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
-    publicKey: process.env.IMAGEKIT_PRIVATE_KEY,
-    urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
-  });
-
   switch (req.method) {
     case 'POST':
+      const imagekit = new ImageKit({
+        privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+        publicKey: process.env.IMAGEKIT_PRIVATE_KEY,
+        urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
+      });
       {
         try {
           // follwing middleware uses callback, so I had to use promise

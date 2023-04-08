@@ -33,7 +33,7 @@ const ImageMarkdown = React.memo(({ src, alt }) => {
           fontStyle: 'italic',
         }}
       >
-        Figure: {alt}
+        {alt != '' && `Figure: ${alt}`}
       </span>
 
       <ImageModal
