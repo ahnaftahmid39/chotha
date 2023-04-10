@@ -5,6 +5,7 @@ import PostCard from '../components/cards/post_card/PostCard';
 import Loading from '../components/loading_indicator/Loading';
 import { getAllPostsWithoutMarkdown } from '../lib/controllers/post';
 import styles from '../styles/Home.module.css';
+import SearchBar from '../components/search/SearchBar';
 
 export default function Home({ posts }) {
   const [leaving, setLeaving] = useState(false);
@@ -21,7 +22,15 @@ export default function Home({ posts }) {
         <title>Chotha Home page</title>
       </Head>
       <div className={`main ${styles['container']}`}>
-        <main style={{ width: '100%' }}>
+        <main
+          style={{
+            marginTop: '1rem',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <SearchBar />
           <div className={styles['postcard-group']}>
             {posts?.length > 0 &&
               posts.map((post) => {

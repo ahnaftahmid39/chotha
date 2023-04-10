@@ -1,0 +1,37 @@
+.searchbar-container {
+  display: flex;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.searchbar-input,
+.searchbar-btn {
+  border: none;
+}
+.searchbar-input {
+  width: 92%;
+  background-color: var(--bg-clr-light);
+  outline: transparent;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+}
+
+.searchbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--btn-bg-clr);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+@media (min-width: 400px) {
+  .searchbar-btn {
+    flex: 1;
+  }
+}
+
+.searchbar-btn svg * {
+  stroke: var(--fo-clr-light);
+}

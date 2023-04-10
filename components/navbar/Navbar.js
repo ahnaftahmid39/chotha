@@ -22,7 +22,7 @@ const Navbar = ({}) => {
         )}
         {router.pathname != '/new-chotha' && (
           <Link href={'/new-chotha'} passHref>
-            <a title={'New Chotha'}>New Chotha</a>
+            <a title={'New Chotha'}>New</a>
           </Link>
         )}
       </div>

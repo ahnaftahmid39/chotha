@@ -1,6 +1,6 @@
 .markdown-body {
   --td-bg-clr: var(--bg-clr);
-  --td-2n-bg-clr: var(--bg-clr-light);
+  --td-2n-bg-clr: hsl(var(--hue), 30%, 92%);
   --td-border-clr: hsl(220, 10%, 80%);
   --tr-border-clr: hsla(220, 10%, 80%);
 
