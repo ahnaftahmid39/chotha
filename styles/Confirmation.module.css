@@ -1,0 +1,25 @@
+.confirmation-container {
+  display: flex;
+  min-height: 80vh;
+  flex-direction: column;
+  padding: 1rem 3%;
+  align-items: center;
+  justify-content: center;
+}
+
+.error,
+.check-email {
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.error {
+  background-color: hsla(10, 96%, 60%, 0.1);
+  color: hsl(10, 96%, 60%);
+}
+
+.check-email {
+  background-color: hsla(220, 96%, 60%, 0.1);
+  color: hsl(220, 96%, 60%);
+}

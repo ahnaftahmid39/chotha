@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../../providers/UserProvider';
 import styles from './AuthButton.module.css';
 
-const AuthButton = ({ ...props }) => {
+const AuthButton = ({ className, ...props }) => {
   let btnInfo = {};
 
   const { userInfo } = useContext(UserContext);
@@ -16,7 +16,11 @@ const AuthButton = ({ ...props }) => {
 
   return (
     <Link href={btnInfo.link} passHref>
-      <a {...props} className={styles['auth-btn']} title={btnInfo.btnName}>
+      <a
+        {...props}
+        className={`${className} ${styles['auth-btn']}`}
+        title={btnInfo.btnName}
+      >
         {btnInfo.btnName}
       </a>
     </Link>

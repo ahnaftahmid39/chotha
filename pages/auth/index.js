@@ -10,6 +10,7 @@ import styles from '../../styles/Auth.module.css';
 import ChothaBrand from '../../components/svgs/ChothaBrand';
 import ChothaBrandDark from '../../components/svgs/ChothaBrandDark';
 import ls from '../../lib/ls';
+import BrandIcon from '../../components/brand_icon/BrandIcon';
 
 const Authentication = ({ ...props }) => {
   const [name, setName] = useState('');
@@ -21,7 +22,7 @@ const Authentication = ({ ...props }) => {
   const [errMsg, setErrMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { setUserInfo } = useContext(UserContext);
   const { theme, systemTheme } = useTheme();
   const passref = useRef();
   const confirmpassref = useRef();
@@ -102,24 +103,6 @@ const Authentication = ({ ...props }) => {
     }
   };
 
-  const getThemedLogo = () => {
-    let logo = null;
-    if (theme == 'system') {
-      if (systemTheme == 'dark') {
-        logo = <ChothaBrandDark />;
-      } else {
-        logo = <ChothaBrand />;
-      }
-    } else {
-      if (theme == 'dark') {
-        logo = <ChothaBrandDark />;
-      } else {
-        logo = <ChothaBrand />;
-      }
-    }
-    return logo;
-  };
-
   return (
     <>
       <Head>
@@ -127,7 +110,9 @@ const Authentication = ({ ...props }) => {
       </Head>
       <main className='main'>
         <div className={styles['auth-container']}>
-          <div className={styles['logo-wrapper']}>{getThemedLogo()}</div>
+          <div className={styles['logo-wrapper']}>
+            <BrandIcon />
+          </div>
           <div className={styles['form-container']}>
             <div className={styles['form-error']}>{errMsg}</div>
             <div className={styles['form-success']}>{successMsg}</div>
@@ -205,7 +190,6 @@ const Authentication = ({ ...props }) => {
                       className={styles['btn-visibility']}
                       onClick={(e) => {
                         e.preventDefault();
-                        console.log('The fuck what');
                         if (confirmpassref.current.type == 'password') {
                           confirmpassref.current.type = 'text';
                           passref.current.type = 'text';

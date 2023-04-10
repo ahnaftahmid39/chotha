@@ -1,14 +1,53 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import PostCard from '../components/cards/post_card/PostCard';
 import Loading from '../components/loading_indicator/Loading';
-import { getAllPostsWithoutMarkdown } from '../lib/controllers/post';
 import styles from '../styles/Home.module.css';
 import SearchBar from '../components/search/SearchBar';
+import {
+  emptyTemporaryPosts,
+  getTemporaryPosts,
+  savePostsTemporarily,
+} from '../lib/ls/localStorage';
 
-export default function Home({ posts }) {
+export default function Home({}) {
   const [leaving, setLeaving] = useState(false);
+  const [posts, setPosts] = useState();
+
+  const fetchAllPosts = useCallback(async () => {
+    try {
+      const tempPosts = getTemporaryPosts();
+      console.log(tempPosts);
+      if (!!tempPosts) {
+        setPosts(tempPosts);
+      } else {
+        const res = await fetch('/api/post', { method: 'GET', headers: {} });
+        const data = await res.json();
+        if (!res.ok) {
+          throw Error(data.error);
+        } else {
+          setPosts(data.posts);
+          savePostsTemporarily(data.posts);
+        }
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  }, []);
+
+  const handleTabClosing = () => {
+    emptyTemporaryPosts();
+  };
+
+  useEffect(() => {
+    window.addEventListener('unload', handleTabClosing);
+    fetchAllPosts();
+    return () => {
+      emptyTemporaryPosts();
+      window.removeEventListener('unload', handleTabClosing);
+    };
+  }, []);
 
   if (leaving)
     return (
@@ -16,6 +55,35 @@ export default function Home({ posts }) {
         <Loading />
       </div>
     );
+
+  const handleSearch = async (text) => {
+    try {
+      const res = await fetch('/api/post/filter', {
+        method: 'POST',
+        body: JSON.stringify({
+          search: text,
+          sortBy: 'createdAt',
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await res.json();
+      if (res.status != 200) {
+        throw data.error;
+      } else {
+        setPosts(data.posts);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleEmptyInput = () => {
+    fetchAllPosts();
+  };
+
   return (
     <>
       <Head>
@@ -30,9 +98,12 @@ export default function Home({ posts }) {
             flexDirection: 'column',
           }}
         >
-          <SearchBar />
+          <SearchBar
+            handleEmptyInput={handleEmptyInput}
+            handleSearch={handleSearch}
+          />
           <div className={styles['postcard-group']}>
-            {posts?.length > 0 &&
+            {posts?.length > 0 ? (
               posts.map((post) => {
                 return (
                   <Link key={post._id} passHref href={`/posts/${post._id}`}>
@@ -44,19 +115,13 @@ export default function Home({ posts }) {
                     />
                   </Link>
                 );
-              })}
+              })
+            ) : (
+              <div>No posts found</div>
+            )}
           </div>
         </main>
       </div>
     </>
   );
 }
-
-export const getStaticProps = async () => {
-  const posts = await getAllPostsWithoutMarkdown();
-  return {
-    props: {
-      posts: JSON.parse(JSON.stringify(posts)),
-    },
-  };
-};

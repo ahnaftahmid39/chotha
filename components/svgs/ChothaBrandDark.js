@@ -1,8 +1,8 @@
-const ChothaBrandDark = () => {
+const ChothaBrandDark = ({width = 160, height = 175}) => {
   return (
     <svg
-      width='160'
-      height='175'
+      width={width}
+      height={height}
       viewBox='0 0 160 175'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

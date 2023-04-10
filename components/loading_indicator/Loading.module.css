@@ -1,5 +1,6 @@
 .spinner-container {
   position: relative;
+  display: flex;
 }
 
 .spinner-container > * {

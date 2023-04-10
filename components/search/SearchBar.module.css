@@ -12,7 +12,7 @@
   width: 92%;
   background-color: var(--bg-clr-light);
   outline: transparent;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   font-size: 1.2rem;
   font-family: inherit;
 }

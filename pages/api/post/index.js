@@ -23,7 +23,6 @@ export default async function handle(req, res) {
         const post = new Post(req.body);
         post.user = req.user._id;
         const result = await post.save();
-        await res.unstable_revalidate('/');
         return res.status(201).json({ message: 'success', result });
       } catch (e) {
         return res.status(400).json({ message: 'failed', error: e.message });

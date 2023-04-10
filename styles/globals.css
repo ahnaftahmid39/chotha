@@ -227,5 +227,5 @@ a.anchor:hover {
 
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 50rem var(--bg-clr) inset !important;
-  -webkit-text-fill-color: rgb(36, 133, 36);
+  -webkit-text-fill-color: hsl(120, 80%, 34%);
 }

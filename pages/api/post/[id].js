@@ -30,7 +30,7 @@ export default async function handle(req, res) {
         const update = req.body;
         const result = await Post.findByIdAndUpdate(id, update, { new: true });
 
-        await res.unstable_revalidate('/');
+        await res.unstable_revalidate(`/posts/${id}`);
         return res
           .status(200)
           .json({ status: 200, message: 'success', result });

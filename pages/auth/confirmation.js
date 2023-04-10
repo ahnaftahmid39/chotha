@@ -3,10 +3,13 @@ import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../providers/UserProvider';
 import ls from '../../lib/ls';
+import styles from '../../styles/Confirmation.module.css';
+import Loading from '../../components/loading_indicator/Loading';
 
 export default function Confirmation({ ...props }) {
   const router = useRouter();
   const { userInfo, setUserInfo } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -30,17 +33,26 @@ export default function Confirmation({ ...props }) {
           ls.setToken(res.token);
           const decoded = jwtDecode(res.token);
           setUserInfo({ ...decoded, token: res.token });
+          setIsLoading(false);
           router.replace('/profile');
         })
-        .catch((err) => {});
+        .catch((err) => {
+          setIsLoading(false);
+          setError(err.message);
+        });
   }, [router.query.shortToken]);
 
   return (
-    <div className='container'>
-      <div className='main'>
-        {error && <div>{error}</div>}
-        Check your email <></>{' '}
-      </div>
+    <div className={`${styles['confirmation-container']}`}>
+      {isLoading ? (
+        <Loading size={50} />
+      ) : error ? (
+        <div className={styles['error']}>{error}</div>
+      ) : (
+        <div className={styles['check-email']}>
+          Please check your email for confirmation link.
+        </div>
+      )}
     </div>
   );
 }
