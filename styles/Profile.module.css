@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 100%;
   padding: 2rem;
+  color: var(--fo-clr);
 }
 
 @media (min-width: 768px) {
@@ -53,13 +54,15 @@
 }
 
 .profile-photo img,
-.profile-photo div {
+.profile-photo svg {
   border-radius: 100vw;
   aspect-ratio: 1/1;
   object-fit: cover;
 }
-.profile-photo div {
-  background-color: gray;
+
+.profile-photo svg * {
+  stroke: var(--fo-clr-light);
+  stroke-width: 3;
 }
 
 .profile-description {
@@ -70,8 +73,11 @@
   padding: 2rem;
   gap: 1rem;
   border-radius: 24px;
-  background: hsla(220, 100%, 96%, 1);
-  background: hsl(220, 30%, 90%);
+}
+
+.profile-description,
+.all-posts {
+  background-color: var(--card-bg);
 }
 
 .profile-description > *,
@@ -91,7 +97,7 @@
 .email-value,
 .social-title + a {
   font-size: 13px;
-  color: #1c1c1c;
+  color: var(--fo-clr-light);
 }
 
 .contact,
@@ -138,7 +144,6 @@
 }
 
 .all-posts {
-  background: hsl(220, 30%, 90%);
   border-radius: 24px;
   padding: 2rem;
   display: flex;

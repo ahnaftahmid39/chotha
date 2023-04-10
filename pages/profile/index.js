@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { UserContext } from '../../providers/UserProvider';
 import ls from '../../lib/ls';
 import styles from '../../styles/Profile.module.css';
+import ProfilePlaceholder from '../../components/svgs/ProfilePlaceholder';
 
 export default function Profile() {
   const router = useRouter();
@@ -59,7 +60,7 @@ export default function Profile() {
                     height='100%'
                   />
                 ) : (
-                  <div></div>
+                  <ProfilePlaceholder width={`100%`} height={`100%`}/>
                 )}
               </div>
               <div className={styles['profile-description']}>
