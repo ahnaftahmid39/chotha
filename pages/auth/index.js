@@ -4,11 +4,12 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { UserContext } from '../../providers/UserProvider';
 
+import { UserContext } from '../../providers/UserProvider';
 import styles from '../../styles/Auth.module.css';
 import ChothaBrand from '../../components/svgs/ChothaBrand';
 import ChothaBrandDark from '../../components/svgs/ChothaBrandDark';
+import ls from '../../lib/ls';
 
 const Authentication = ({ ...props }) => {
   const [name, setName] = useState('');
@@ -63,7 +64,7 @@ const Authentication = ({ ...props }) => {
       if (data.status != 200) {
         setErrMsg(data.error ?? data.message);
       } else {
-        localStorage.setItem('token', data.token);
+        ls.setToken(data.token);
         setSuccessMsg('Login successful');
         const decoded = jwtDecode(data.token);
         setUserInfo({ ...decoded, token: data.token });

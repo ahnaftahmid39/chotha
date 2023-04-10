@@ -1,5 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import { createContext, useEffect, useState } from 'react';
+import ls from '../lib/ls';
 
 export const UserContext = createContext(null);
 const UserProvider = ({ children }) => {
@@ -7,7 +8,7 @@ const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (Object.keys(userInfo).length == 0) {
-      const token = localStorage.getItem('token');
+      const token = ls.getToken();
       if (token) {
         const decoded = jwtDecode(token);
         if (new Date().getTime() < decoded.exp * 1000) {
@@ -16,7 +17,7 @@ const UserProvider = ({ children }) => {
             token: token,
           });
         } else {
-          localStorage.setItem('token', '');
+          ls.setToken('');
         }
       }
     }

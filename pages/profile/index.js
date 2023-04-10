@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../providers/UserProvider';
-import styles from '../../styles/Profile.module.css';
-import { dateDiff, timeDiffString } from '../../lib/utils/date';
-import Image from 'next/image';
 import Link from 'next/link';
+
+import { UserContext } from '../../providers/UserProvider';
+import ls from '../../lib/ls';
+import styles from '../../styles/Profile.module.css';
 
 export default function Profile() {
   const router = useRouter();
@@ -14,12 +14,12 @@ export default function Profile() {
   const [posts, setPosts] = useState(null);
 
   useEffect(async () => {
-    if (!localStorage.getItem('token')) router.replace('/auth');
+    if (!ls.getToken()) router.replace('/auth');
     else {
       try {
         const res = await fetch('/api/profile', {
           method: 'GET',
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+          headers: { Authorization: `Bearer ${ls.getToken()}` },
         });
         const data = await res.json();
         console.log(data);
@@ -36,13 +36,13 @@ export default function Profile() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.setItem('token', '');
+    ls.setToken('');
     setUserInfo({});
     router.replace('/auth');
   };
 
   return (
-    <div>
+    <>
       <Head>
         <title>User Profile</title>
       </Head>
@@ -86,7 +86,7 @@ export default function Profile() {
                             <div className={styles['social-title']}>
                               Facebook
                             </div>
-                            <a href={user.socials.facebook}>
+                            <a className='anchor' href={user.socials.facebook}>
                               {user.socials.facebook}
                             </a>
                           </div>
@@ -106,10 +106,10 @@ export default function Profile() {
                   </>
                 )}
                 <button className={styles['btn-edit-profile']}>
-                  Edit Profile
+                  <span>Edit Profile</span>
                 </button>
                 <button className={styles['btn-logout']} onClick={handleLogout}>
-                  Logout
+                  <span>Logout</span>
                 </button>
               </div>
             </div>
@@ -128,6 +128,6 @@ export default function Profile() {
           </>
         )}
       </div>
-    </div>
+    </>
   );
 }

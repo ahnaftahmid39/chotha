@@ -2,6 +2,7 @@ import jwtDecode from 'jwt-decode';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../providers/UserProvider';
+import ls from '../../lib/ls';
 
 export default function Confirmation({ ...props }) {
   const router = useRouter();
@@ -26,7 +27,7 @@ export default function Confirmation({ ...props }) {
             throw Error(res.message);
           }
 
-          localStorage.setItem('token', res.token);
+          ls.setToken(res.token);
           const decoded = jwtDecode(res.token);
           setUserInfo({ ...decoded, token: res.token });
           router.replace('/profile');

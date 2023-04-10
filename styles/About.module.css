@@ -5,34 +5,7 @@
   margin: 0 3%;
 }
 
-.about {
-  font-weight: 600;
-}
 
-
-.about  a {
-  display: inline-block;
-  text-decoration: underline;
-  color: var(--hd-clr);
-}
-.about a {
-  text-decoration: underline var(--hd-clr);
-  color: var(--hd-clr);
-  background-image: linear-gradient(
-    to bottom,
-    var(--hd-clr) 50%,
-    transparent 50%
-  );
-  background-size: 100% 200%;
-  background-position: 0 -100%;
-  transition: background-position 100ms ease-out;
-}
-
-.about  a:hover {
-  background-position: 0 0;
-  text-decoration-color: var(--hd-clr);
-  color: var(--bg-clr);
-}
 
 
 @media screen and (min-width: 768px) {

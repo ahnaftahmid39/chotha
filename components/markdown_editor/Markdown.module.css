@@ -4,8 +4,8 @@
   --td-border-clr: hsl(220, 10%, 80%);
   --tr-border-clr: hsla(220, 10%, 80%);
 
-  font-family:Georgia, 'Times New Roman', Times, serif;
-  font-family: 'Gentium Plus', serif;
+  /* font-family:Georgia, 'Times New Roman', Times, serif; */
+  /* font-family: 'Gentium Plus', serif; */
 
   box-sizing: border-box;
   padding: 1rem;
