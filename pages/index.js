@@ -61,6 +61,7 @@ export default function Home({}) {
 
   const handleSearch = async (text) => {
     setIsloading(true);
+    if (!text || text == '') return;
     try {
       const res = await fetch('/api/post/filter', {
         method: 'POST',

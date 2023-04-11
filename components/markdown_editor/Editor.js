@@ -24,10 +24,11 @@ const Editor = () => {
     taRef.current.boldItalic('italic');
   };
 
-  const addImgLink = (link) => {
+  const addImgLink = (image) => {
+    const markdownImageLink = `![${image.title}](${image.url})\n\n`
     setText({
       ...text,
-      value: text.value + '  \n' + link,
+      value: text.value + '  \n' + markdownImageLink,
     });
     taRef.current.focus();
   };

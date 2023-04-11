@@ -7,12 +7,16 @@ import { UserContext } from '../../providers/UserProvider';
 import ls from '../../lib/ls';
 import styles from '../../styles/Profile.module.css';
 import ProfilePlaceholder from '../../components/svgs/ProfilePlaceholder';
+import AddImageModal from '../../components/modals/add_image_modal/AddImageModal';
 
 export default function Profile() {
   const router = useRouter();
   const { userInfo, setUserInfo } = useContext(UserContext);
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState(null);
+  const [edit, setEdit] = useState(false);
+  const [profilePhotoUploadModalShow, setProfilePhotoUploadModalShow] =
+    useState(false);
 
   useEffect(async () => {
     if (!ls.getToken()) router.replace('/auth');
@@ -23,7 +27,6 @@ export default function Profile() {
           headers: { Authorization: `Bearer ${ls.getToken()}` },
         });
         const data = await res.json();
-        console.log(data);
         setUser(data.user);
         setPosts(data.posts);
         if (res.status != 200) {
@@ -41,6 +44,38 @@ export default function Profile() {
     setUserInfo({});
     router.replace('/auth');
   };
+  const handleEditButton = () => {
+    setEdit(true);
+  };
+
+  const handleUpdateProfilePhoto = () => {
+    setProfilePhotoUploadModalShow(true);
+  };
+
+  const handleImage = async ({ url }) => {
+    try {
+      const res = await fetch('/api/profile', {
+        body: JSON.stringify({
+          photo: url,
+        }),
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      if (res.ok) {
+        setUser(data.user);
+      }
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setProfilePhotoUploadModalShow(false);
+    }
+  };
 
   return (
     <>
@@ -51,18 +86,34 @@ export default function Profile() {
         {userInfo && (
           <>
             <div className={styles['profile']}>
-              <div className={styles['profile-photo']}>
+              <div
+                onClick={handleUpdateProfilePhoto}
+                className={styles['profile-photo']}
+              >
                 {user?.photo ? (
-                  <img
-                    alt='profile picture'
-                    src={user.photo}
-                    width='100%'
-                    height='100%'
-                  />
+                  <>
+                    <img
+                      alt='profile picture'
+                      src={user.photo}
+                      width='100%'
+                      height='100%'
+                    ></img>
+                    <div className={styles['profile-photo-overlay']}>
+                      <div>Upload New</div>
+                    </div>
+                  </>
                 ) : (
-                  <ProfilePlaceholder width={`100%`} height={`100%`}/>
+                  <ProfilePlaceholder width={`100%`} height={`100%`} />
                 )}
               </div>
+              <AddImageModal
+                hasTitle={false}
+                show={profilePhotoUploadModalShow}
+                handleClose={() => {
+                  setProfilePhotoUploadModalShow(false);
+                }}
+                handleImage={handleImage}
+              />
               <div className={styles['profile-description']}>
                 <div className={styles['name']}>{userInfo.name}</div>
                 <div className={styles['bio']}>{user?.bio}</div>
@@ -106,25 +157,37 @@ export default function Profile() {
                     )}
                   </>
                 )}
-                <button className={styles['btn-edit-profile']}>
+                <button
+                  type='button'
+                  className={styles['btn-edit-profile']}
+                  onClick={handleEditButton}
+                >
                   <span>Edit Profile</span>
                 </button>
-                <button className={styles['btn-logout']} onClick={handleLogout}>
+                <button
+                  type='button'
+                  className={styles['btn-logout']}
+                  onClick={handleLogout}
+                >
                   <span>Logout</span>
                 </button>
               </div>
             </div>
             <div className={styles['all-posts']}>
               <div className={styles['all-posts-title']}>All Posts</div>
-              {posts?.map((post) => {
-                return (
-                  <div className={styles['post']} key={post._id}>
-                    <Link key={post._id} passHref href={`/posts/${post._id}`}>
-                      <a href={`/posts/${post._id}`}>{post.title}</a>
-                    </Link>
-                  </div>
-                );
-              })}
+              {posts?.length > 0 ? (
+                posts.map((post) => {
+                  return (
+                    <div className={styles['post']} key={post._id}>
+                      <Link key={post._id} passHref href={`/posts/${post._id}`}>
+                        <a href={`/posts/${post._id}`}>{post.title}</a>
+                      </Link>
+                    </div>
+                  );
+                })
+              ) : (
+                <div>You have no post yet</div>
+              )}
             </div>
           </>
         )}

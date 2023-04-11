@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 100%;
   padding: 2rem;
+  gap: 2rem;
   color: var(--fo-clr);
 }
 
@@ -21,7 +22,7 @@
 
 @media (min-width: 1500px) {
   .profile-container {
-    padding: 2rem 20rem;
+    padding: 2rem 15rem;
   }
 }
 
@@ -31,16 +32,15 @@
 } */
 
 .profile {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
   padding-bottom: 0;
   gap: 1rem;
 }
 
 .all-posts {
-  flex: 3;
+  flex: 5;
   display: flex;
   flex-direction: column;
 }
@@ -51,6 +51,31 @@
   max-width: 300px;
   border-radius: 100vw;
   margin: 0 auto;
+  cursor: pointer;
+  position: relative;
+}
+
+.profile-photo-overlay {
+  position: absolute;
+  padding: inherit;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+.profile-photo-overlay div {
+  display: grid;
+  place-items: center;
+  height: 0%;
+  border-radius: 100vw;
+  color: transparent;
+  transition: backdrop-filter 200ms ease-in;
+}
+
+.profile-photo:hover .profile-photo-overlay div {
+  backdrop-filter: blur(8px) brightness(50%);
+  color: white;
+  height: 100%;
 }
 
 .profile-photo img,

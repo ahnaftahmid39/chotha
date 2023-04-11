@@ -25,14 +25,14 @@ export default async function handle(req, res) {
               function (error, result) {
                 if (error) throw error;
                 else {
-                  res.status(200).json({ status: 200, message: 'ok', result });
+                  return res.status(200).json({ status: 200, message: 'ok', result });
                 }
               }
             );
           });
         } catch (e) {
           console.log(e.message);
-          res.status(400).json({ status: 400, error: e.message });
+          return res.status(400).json({ status: 400, error: e.message });
         }
       }
       break;

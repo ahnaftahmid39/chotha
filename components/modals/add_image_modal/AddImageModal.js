@@ -1,33 +1,13 @@
-import { memo, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Modal from '../../modals/modal/Modal';
-import styles from './UsefulButtons.module.css';
+import styles from '../../markdown_editor/useful_buttons/UsefulButtons.module.css';
 
-const ImageIcon = memo(() => {
-  return (
-    <svg
-      width='24'
-      viewBox='0 0 230 200'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-      className={`${styles['svg-icon-stroke']}`}
-    >
-      <path
-        d='M48 8.00003H182C204.091 8.00003 222 25.9086 222 48V152C222 174.091 204.091 192 182 192H48C25.9086 192 8 174.091 8 152V48C8 25.9086 25.9086 8.00003 48 8.00003Z'
-        className={`${styles['svg-image-icon-fill']}`}
-      />
-      <path
-        d='M110 57C110 69.1503 100.15 79 88 79C75.8497 79 66 69.1503 66 57C66 44.8497 75.8497 35 88 35C100.15 35 110 44.8497 110 57Z'
-        className={` ${styles['dark-fill']}`}
-      />
-      <path d='M8 153C8 153 34.0286 101.147 48.8364 101.147C63.6442 101.147 86.3847 153 98.5482 153C110.712 153 148.789 66.4154 169.414 72.2855C190.039 78.1557 222 153 222 153' />
-    </svg>
-  );
-});
-
-ImageIcon.displayName = 'ImageIcon';
-
-const AddImageBtn = ({ addImgLink, hasTitle = true }) => {
-  const [imgModal, setImgModal] = useState(false);
+const AddImageModal = ({
+  handleImage,
+  show = false,
+  handleClose,
+  hasTitle = true,
+}) => {
   const [linkStatus, setLinkStatus] = useState('');
   const ref = useRef();
   const [imgData, setImgData] = useState({
@@ -37,8 +17,8 @@ const AddImageBtn = ({ addImgLink, hasTitle = true }) => {
   });
 
   useEffect(() => {
-    if (imgModal) ref.current.focus();
-  }, [imgModal]);
+    if (hasTitle) ref.current?.focus();
+  }, []);
 
   const handleGetImageLink = async () => {
     if (!imgData.data) return;
@@ -58,14 +38,12 @@ const AddImageBtn = ({ addImgLink, hasTitle = true }) => {
       setLinkStatus('Success!');
       const image = { url, title: imgData.title };
       setTimeout(() => {
-        addImgLink(image);
-        setImgModal(false);
+        handleImage(image);
         setImgData({ title: '', data: null });
         setLinkStatus('');
       }, 500);
     } catch (error) {
       console.log(error.message);
-      setImgModal(false);
       setImgData({ title: error.message, data: null });
       setLinkStatus('');
     }
@@ -73,19 +51,10 @@ const AddImageBtn = ({ addImgLink, hasTitle = true }) => {
 
   return (
     <>
-      <div
-        className={`${styles['svg-icon-parent']} `}
-        onClick={() => {
-          setImgModal(true);
-        }}
-      >
-        <ImageIcon />
-      </div>
-
-      {imgModal && (
+      {show && (
         <Modal
           className={`${styles['modal']} ${styles['image-modal']}`}
-          modal={imgModal}
+          modal={show}
         >
           {hasTitle && (
             <input
@@ -133,8 +102,8 @@ const AddImageBtn = ({ addImgLink, hasTitle = true }) => {
             <button
               onClick={() => {
                 setImgData({ title: '', data: null, fileName: '' });
-                setImgModal(false);
                 setLinkStatus('');
+                handleClose();
               }}
             >
               Cancel
@@ -146,4 +115,4 @@ const AddImageBtn = ({ addImgLink, hasTitle = true }) => {
   );
 };
 
-export default AddImageBtn;
+export default AddImageModal;

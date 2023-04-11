@@ -83,6 +83,16 @@
     width: 50vw;
   }
 }
+@media (min-width: 1080px) {
+  .modal {
+    width: 40vw;
+  }
+}
+@media (min-width: 1400px) {
+  .modal {
+    width: 30vw;
+  }
+}
 
 .svg-icon-parent {
   transition: transform 0.1s;
