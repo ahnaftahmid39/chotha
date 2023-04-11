@@ -13,12 +13,13 @@ import {
 
 export default function Home({}) {
   const [leaving, setLeaving] = useState(false);
+  const [isLoading, setIsloading] = useState(false);
   const [posts, setPosts] = useState();
 
   const fetchAllPosts = useCallback(async () => {
+    setIsloading(true);
     try {
       const tempPosts = getTemporaryPosts();
-      console.log(tempPosts);
       if (!!tempPosts) {
         setPosts(tempPosts);
       } else {
@@ -33,6 +34,8 @@ export default function Home({}) {
       }
     } catch (err) {
       console.log(err.message);
+    } finally {
+      setIsloading(false);
     }
   }, []);
 
@@ -57,6 +60,7 @@ export default function Home({}) {
     );
 
   const handleSearch = async (text) => {
+    setIsloading(true);
     try {
       const res = await fetch('/api/post/filter', {
         method: 'POST',
@@ -77,6 +81,8 @@ export default function Home({}) {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsloading(false);
     }
   };
 
@@ -102,24 +108,38 @@ export default function Home({}) {
             handleEmptyInput={handleEmptyInput}
             handleSearch={handleSearch}
           />
-          <div className={styles['postcard-group']}>
-            {posts?.length > 0 ? (
-              posts.map((post) => {
-                return (
-                  <Link key={post._id} passHref href={`/posts/${post._id}`}>
-                    <PostCard
-                      post={post}
-                      onClick={() => {
-                        setLeaving(true);
-                      }}
-                    />
-                  </Link>
-                );
-              })
-            ) : (
-              <div>No posts found</div>
-            )}
-          </div>
+          {isLoading ? (
+            <div
+              style={{
+                display: 'grid',
+                placeItems: 'center',
+                minHeight: '60vh',
+              }}
+            >
+              <Loading />
+            </div>
+          ) : (
+            <div className={styles['postcard-group']}>
+              {posts?.length > 0 ? (
+                posts.map((post) => {
+                  return (
+                    <Link key={post._id} passHref href={`/posts/${post._id}`}>
+                      <PostCard
+                        post={post}
+                        onClick={() => {
+                          setLeaving(true);
+                        }}
+                      />
+                    </Link>
+                  );
+                })
+              ) : (
+                <div style={{ fontSize: '1.2rem', margin: '1rem' }}>
+                  No posts found
+                </div>
+              )}
+            </div>
+          )}
         </main>
       </div>
     </>
