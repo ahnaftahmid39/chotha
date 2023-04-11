@@ -34,17 +34,13 @@ export default async function handle(req, res) {
         } else {
           sort[sortBy] = order;
         }
-        console.log(args, sort);
-        try {
-          const posts = await Post.find(args, proj)
-            .populate('user', 'name email')
-            .sort(sort)
-            .skip(skip)
-            .limit(limit);
-          return res.status(200).json({ message: 'success', posts });
-        } catch (err) {
-          throw err;
-        }
+
+        const posts = await Post.find(args, proj)
+          .populate('user', 'name email')
+          .sort(sort)
+          .skip(skip)
+          .limit(limit);
+        return res.status(200).json({ message: 'success', posts });
       } catch (e) {
         console.log(err);
         return res.status(400).json({ message: e.message, error: e });
