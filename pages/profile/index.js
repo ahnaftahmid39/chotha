@@ -98,13 +98,13 @@ export default function Profile() {
                       width='100%'
                       height='100%'
                     ></img>
-                    <div className={styles['profile-photo-overlay']}>
-                      <div>Upload New</div>
-                    </div>
                   </>
                 ) : (
                   <ProfilePlaceholder width={`100%`} height={`100%`} />
                 )}
+                <div className={styles['profile-photo-overlay']}>
+                  <div>Upload New</div>
+                </div>
               </div>
               <AddImageModal
                 hasTitle={false}
