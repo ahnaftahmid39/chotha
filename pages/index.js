@@ -10,10 +10,11 @@ import {
   getTemporaryPosts,
   savePostsTemporarily,
 } from '../lib/ls/localStorage';
+import LoadingCard from '../components/loading_indicator/LoadingCard';
 
 export default function Home({}) {
   const [leaving, setLeaving] = useState(false);
-  const [isLoading, setIsloading] = useState(false);
+  const [isLoading, setIsloading] = useState(true);
   const [posts, setPosts] = useState();
 
   const fetchAllPosts = useCallback(async () => {
@@ -109,15 +110,11 @@ export default function Home({}) {
             handleEmptyInput={handleEmptyInput}
             handleSearch={handleSearch}
           />
-          {isLoading ? (
-            <div
-              style={{
-                display: 'grid',
-                placeItems: 'center',
-                minHeight: '60vh',
-              }}
-            >
-              <Loading />
+          {isLoading? (
+            <div className={styles['postcard-group']}>
+              {Array.from(Array(9).keys()).map((i) => {
+                return <LoadingCard key={i} />;
+              })}
             </div>
           ) : (
             <div className={styles['postcard-group']}>
