@@ -24,7 +24,7 @@
 
   --nav-bg-clr: hsla(var(--hue), 20%, 90%, 1);
   --nav-fo-clr: hsl(0, 0%, 10%);
-  --nav-shadow: 1px 1px 10px hsl(var(--hue), 11%, 60%);
+  --nav-shadow: 1px 1px 4px hsl(var(--hue), 11%, 60%);
 
   --post-info-fo-clr: hsl(0, 0%, 20%);
   --post-title-bg-clr: hsl(var(--hue), 30%, 90%);
@@ -55,7 +55,7 @@
 
   --nav-bg-clr: hsla(var(--hue), 9%, 22%, 1);
   --nav-fo-clr: hsl(0, 0%, 100%);
-  --nav-shadow: 1px 1px 10px hsl(var(--hue), 11%, 11%);
+  --nav-shadow: 1px 1px 4px hsl(var(--hue), 11%, 11%);
 
   --post-info-fo-clr: hsl(0, 0%, 80%);
   --post-title-bg-clr: var(--btn-bg-clr);

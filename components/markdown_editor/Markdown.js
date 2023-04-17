@@ -38,7 +38,11 @@ const Markdown = ({ contentRef }) => {
         img: ImageMarkdown,
         code: CodeMarkdown,
         // below code is to fix the warning: <div> cannot appear as descendant of <p>
-        p: ({ children, ...props }) => <div {...props}>{children}</div>,
+        p: ({ children, className, ...props }) => (
+          <div className={`${className} ${styles['p']}`} {...props}>
+            {children}
+          </div>
+        ),
       }}
     >
       {content}

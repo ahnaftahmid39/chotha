@@ -21,6 +21,13 @@
   --tr-border-clr: hsla(220, 10%, 40%);
 }
 
+[data-theme='dark'] .markdown-body strong {
+  font-weight: 900;
+}
+
+.markdown-body .p {
+  margin-bottom: 1rem;
+}
 .markdown-body a {
   display: inline-block;
   text-decoration: underline;

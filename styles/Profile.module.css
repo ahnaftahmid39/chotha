@@ -69,11 +69,12 @@
   height: 0%;
   border-radius: 100vw;
   color: transparent;
-  transition: backdrop-filter 200ms ease-in;
+  transition: backdrop-filter 200ms;
 }
 
 .profile-photo:hover .profile-photo-overlay div {
-  backdrop-filter: blur(8px) brightness(50%);
+  backdrop-filter: brightness(50%);
+  font-weight: bold;
   color: white;
   height: 100%;
 }

@@ -68,7 +68,7 @@ export default function Home({}) {
         method: 'POST',
         body: JSON.stringify({
           search: text,
-          sortBy: 'createdAt',
+          sortBy: 'relevance',
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ export default function Home({}) {
             handleEmptyInput={handleEmptyInput}
             handleSearch={handleSearch}
           />
-          {isLoading? (
+          {isLoading ? (
             <div className={styles['postcard-group']}>
               {Array.from(Array(9).keys()).map((i) => {
                 return <LoadingCard key={i} />;

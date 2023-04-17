@@ -198,13 +198,13 @@ const TextAreaInput = ({ spaces = 4, className, text, setText }, ref) => {
 
       setText({ value: newText, caret: caret, target: e.target });
     }
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      let newText =
-        content.substring(0, caret) + '  \n' + content.substring(caret);
+    // if (e.key === 'Enter') {
+    //   e.preventDefault();
+    //   let newText =
+    //     content.substring(0, caret) + '  \n' + content.substring(caret);
 
-      setText({ value: newText, caret: caret - 1, target: e.target });
-    }
+    //   setText({ value: newText, caret: caret - 1, target: e.target });
+    // }
     if (e.ctrlKey && e.shiftKey && e.key == 'S') {
       const element = document.createElement('a');
       element.style.display = 'none';
