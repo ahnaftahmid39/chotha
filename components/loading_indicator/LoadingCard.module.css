@@ -9,10 +9,16 @@
 }
 
 .loading-card > * {
+  --loading-bg: hsl(220, 8%, 80%);
+  --loading-bg2: hsl(220, 8%, 70%);
   border-radius: 100vw;
-  background-color: hsl(220, 8%, 10%);
   opacity: 0.8;
-  animation: 1s loading linear infinite alternate;
+  animation: 500ms loading linear infinite alternate;
+}
+
+[data-theme='dark'] .loading-card > * {
+  --loading-bg: hsl(220, 8%, 8%);
+  --loading-bg2: hsl(220, 8%, 15%);
 }
 
 .loading-title {
@@ -36,10 +42,10 @@
 
 @keyframes loading {
   0% {
-    background-color: hsl(220, 8%, 10%);
+    background-color: var(--loading-bg);
   }
 
   100% {
-    background-color: hsl(220, 8%, 15%);
+    background-color: var(--loading-bg2);
   }
 }
