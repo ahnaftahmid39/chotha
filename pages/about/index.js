@@ -18,6 +18,25 @@ export default function Home() {
             {' '}
             Chotha{' '}
           </a>
+          <p>
+            <strong>Technologies Used:</strong>
+            <ul className={styles['lists']}>
+              <li>nextjs</li>
+              <li>react-markdown</li>
+              <ul>
+                <li>Github flavoured markdown plugin</li>
+                <li>Remark math plugin</li>
+                <li>Rehype KaTex</li>
+              </ul>
+              <li>next-themes</li>
+              <li>nodemailer</li>
+              <li>Imagekit.io</li>
+              <li>jsonwebtoken</li>
+              <li>Mongodb</li>
+              <li>Mongoose</li>
+              <li>Lot of CSS</li>
+            </ul>
+          </p>
         </p>
       </div>
     </div>

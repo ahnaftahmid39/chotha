@@ -74,6 +74,8 @@
 }
 
 .file-input .file-input-browse {
+  display: flex;
+  align-items: center;
   background-color: var(--btn-bg-clr);
   color: var(--btn-fo-clr);
   font-weight: 600;
