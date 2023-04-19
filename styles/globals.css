@@ -63,7 +63,7 @@
   
   --fo-clr: hsl(var(--hue), 41%, 90%);
   --fo-clr-2: hsl(var(--hue), 70%, 93%);
-  --fo-clr-light: hsl(var(--hue), 41%, 95%);
+  --fo-clr-light: hsl(var(--hue), 31%, 80%);
 
   --btn-bg-clr: hsl(var(--hue), 10%, 25%);
   --btn-fo-clr: hsl(0, 0%, 90%);

@@ -19,27 +19,36 @@
 .card .title {
   font-size: 1.2rem;
   font-weight: 600;
+  margin-bottom: 0;
 }
 
 .card .description {
+  color: var(--fo-clr-light);
   font-size: 1rem;
   font-weight: 400;
+  margin-bottom: 0.5rem;
 }
 
 .meta {
-  display: grid;
+  display: flex;
   gap: 0.5rem;
-  grid-template-columns: 5% 90%;
-  grid-template-rows: auto;
+  flex-direction: column;
+  font-size: small;
 }
 
 .icon {
   display: flex;
   align-items: center;
 }
+
+.author-wrapper,
+.time-wrapper {
+  display: flex;
+}
+
 .author,
 .time {
-  font-size: small;
+  margin-left: 0.5rem;
 }
 
 .readmore {
