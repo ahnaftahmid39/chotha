@@ -1,6 +1,7 @@
 .loading-card {
   width: 100%;
-  background-color: var(--card-bg);
+  background: var(--card-bg);
+  border: var(--default-border);
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -9,8 +10,8 @@
 }
 
 .loading-card > * {
-  --loading-bg: hsl(var(--hue), 8%, 80%);
-  --loading-bg2: hsl(var(--hue), 8%, 70%);
+  --loading-bg: hsl(var(--hue), 28%, 80%);
+  --loading-bg2: hsl(var(--hue), 28%, 70%);
   border-radius: 100vw;
   opacity: 0.8;
   animation: 500ms loading linear infinite alternate;

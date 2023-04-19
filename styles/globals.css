@@ -8,7 +8,6 @@
   --fo-clr2: hsl(var(--hue), 70%, 15%);
   --fo-clr-light: hsl(var(--hue), 70%, 30%);
 
-
   /* --btn-bg-clr: hsl(var(--hue), 9%, 82%); */
   --btn-bg-clr: hsl(var(--hue), 20%, 85%);
   --btn-fo-clr: var(--nav-fo-clr);
@@ -47,6 +46,8 @@
 
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
   --scroll-thumb-bg-clr: hsla(0, 0%, 50%, 0.6);
+
+  --default-border: 1px solid hsla(var(--hue), 55%, 30%, 0.2);
 }
 
 [data-theme='dark'] {

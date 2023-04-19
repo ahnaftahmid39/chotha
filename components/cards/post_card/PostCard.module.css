@@ -4,7 +4,7 @@
   padding: 2em;
   border-radius: 16px;
   background: var(--card-bg);
-  border: 1px solid hsla(var(--hue), 75%, 20%, 0.5);
+  border: var(--default-border);
 }
 
 .card:hover,
