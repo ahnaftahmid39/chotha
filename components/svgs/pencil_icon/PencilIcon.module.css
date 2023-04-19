@@ -1,0 +1,8 @@
+.pencil-icon {
+  fill: var(--bg-clr-light);
+}
+
+.pencil-icon :first-child,
+.pencil-icon :last-child {
+  fill: var(--fo-clr-light);
+}

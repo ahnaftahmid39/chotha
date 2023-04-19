@@ -1,10 +1,14 @@
 .card {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 30vh;
   padding: 2em;
+  gap: 0.7rem;
   border-radius: 16px;
   background: var(--card-bg);
   border: var(--default-border);
+  pointer-events: none;
 }
 
 .card:hover,
@@ -12,23 +16,47 @@
   box-shadow: var(--card-shadow);
 }
 
-.card > * {
-  margin-top: 0.7em;
-}
-
 .card .title {
   font-size: 1.2rem;
   font-weight: 600;
 }
-.card .author {
-  font-size: 1.1rem;
-}
+
 .card .description {
   font-size: 1rem;
   font-weight: 400;
 }
 
-.card .time {
-  font-size: 0.9rem;
-  font-weight: 300;
+.meta {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 5% 90%;
+  grid-template-rows: auto;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+.author,
+.time {
+  font-size: small;
+}
+
+.readmore {
+  background-color: inherit;
+  font-size: small;
+  cursor: pointer;
+  pointer-events: auto;
+  align-self: flex-end;
+  margin-top: auto;
+  width: fit-content;
+  border-radius: 8px;
+  border: var(--default-border);
+  padding: 0.5rem 0.5rem;
+}
+
+.readmore:hover,
+.readmore:active {
+  background-color: var(--fo-clr);
+  color: var(--bg-clr);
 }

@@ -1,0 +1,8 @@
+.date-icon {
+  fill: var(--bg-clr);
+  stroke: var(--bg-clr);
+}
+
+.date-icon :first-child {
+  fill: var(--fo-clr);
+}

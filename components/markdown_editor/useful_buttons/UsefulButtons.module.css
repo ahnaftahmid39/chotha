@@ -118,7 +118,7 @@
 }
 
 .svg-image-icon-fill {
-  fill: var(--btn-bg-clr);
+  fill: var(--btn-bg-clr);f
 }
 
 [data-theme='dark'] .dark-fill {

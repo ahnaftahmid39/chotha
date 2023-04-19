@@ -29,22 +29,24 @@
   margin-bottom: 1rem;
 }
 .markdown-body a {
-  display: inline-block;
-  text-decoration: underline;
-  color: var(--hd-clr);
-}
-.markdown-body a {
-  text-decoration: underline var(--hd-clr);
-  color: var(--hd-clr);
+  text-decoration: underline var(--fo-clr);
+  color: var(--fo-clr);
   background-image: linear-gradient(
     to bottom,
-    var(--hd-clr) 50%,
+    var(--fo-clr) 50%,
     transparent 50%
   );
   background-size: 100% 200%;
   background-position: 0 -100%;
-  transition: background-position 100ms ease-out;
+  transition: background-position 200ms ease-out;
 }
+
+.markdown-body a:hover {
+  background-position: 0% 0%;
+  text-decoration-color: var(--fo-clr);
+  color: var(--bg-clr);
+}
+
 
 .markdown-body table {
   border-spacing: 0;
@@ -82,11 +84,6 @@
   background-color: var(--td-2n-bg-clr);
 }
 
-.markdown-body a:hover {
-  background-position: 0 0;
-  text-decoration-color: var(--hd-clr);
-  color: var(--bg-clr);
-}
 
 .markdown-body pre {
   padding: 1rem;

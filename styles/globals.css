@@ -1,19 +1,22 @@
 :root {
   --hue: 220;
-  --bg-clr: hsl(var(--hue), 60%, 95%); /* background color */
+  /* background color */
+  --bg-clr: hsl(var(--hue), 60%, 95%);
   --bg-clr-light: hsl(var(--hue), 35%, 92%);
-  --bg-clr2: hsl(0, 0%, 93%);
+  --bg-clr-2: hsl(0, 0%, 93%);
 
-  --fo-clr: hsla(var(--hue), 75%, 20%, 1); /* forground color */
-  --fo-clr2: hsl(var(--hue), 70%, 15%);
+  /* forground color */
+  --fo-clr: hsla(var(--hue), 75%, 20%, 1);
+  --fo-clr-2: hsl(var(--hue), 70%, 15%);
   --fo-clr-light: hsl(var(--hue), 70%, 30%);
 
-  /* --btn-bg-clr: hsl(var(--hue), 9%, 82%); */
+  /* btn styles */
   --btn-bg-clr: hsl(var(--hue), 20%, 85%);
-  --btn-fo-clr: var(--nav-fo-clr);
+  --btn-fo-clr: var(--fo-clr-2);
   --btn-blur-bg-clr: hsla(0, 0%, 0%, 0.6);
   --btn-blur-fo-clr: hsl(0, 0%, 90%);
 
+  /* PostCard styles */
   --card-bg: hsl(var(--hue), 25%, 90%);
   --card-bg: linear-gradient(
     180deg,
@@ -21,11 +24,11 @@
     hsla(var(--hue), 84%, 93%, 0.345) 52.08%,
     hsla(var(--hue), 90%, 93%, 0.5) 97.92%
   );
-
-  --card-bg2: hsl(var(--hue), 25%, 80%);
+  --card-bg-2: hsl(var(--hue), 25%, 80%);
   --card-shadow: 0px 6px 0px hsl(220, 50%, 78%);
   --card-border-clr: hsl(0, 0%, 86%);
 
+  /* navbar styles */
   --nav-bg-clr: hsla(var(--hue), 20%, 90%, 1);
   --nav-bg: linear-gradient(
     180deg,
@@ -35,15 +38,19 @@
   --nav-fo-clr: hsl(var(--hue), 52%, 40%);
   --nav-shadow: 1px 1px 4px hsl(var(--hue), 11%, 60%);
 
+  /* Post page styles */
   --post-info-fo-clr: hsl(220, 50%, 20%);
   --post-title-bg-clr: hsl(var(--hue), 50%, 90%);
 
+  /* searchbar styles */
   --search-bar-input-bg-clr: hsla(var(--hue), 70%, 80%, 0.1);
   --search-bar-btn-bg-clr: hsla(var(--hue), 70%, 60%, 0.1);
 
+  /* theme switcher */
   --theme-switch-bg-clr: hsla(var(--hue), 30%, 30%, 0.9);
   --theme-switch-thumb-left: 27px;
 
+  /* scrollbar */
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
   --scroll-thumb-bg-clr: hsla(0, 0%, 50%, 0.6);
 
@@ -52,13 +59,11 @@
 
 [data-theme='dark'] {
   --bg-clr: hsl(var(--hue), 9%, 15%);
-
   --bg-clr-light: hsl(var(--hue), 11%, 19%);
+  
   --fo-clr: hsl(var(--hue), 41%, 90%);
-  --fo-clr2: hsl(var(--hue), 70%, 93%);
+  --fo-clr-2: hsl(var(--hue), 70%, 93%);
   --fo-clr-light: hsl(var(--hue), 41%, 95%);
-
-  --hd-clr: hsl(var(--hue), 51%, 73%); /* heading color (h1, h2, h3) */
 
   --btn-bg-clr: hsl(var(--hue), 10%, 25%);
   --btn-fo-clr: hsl(0, 0%, 90%);
@@ -69,7 +74,7 @@
     hsl(var(--hue), 10%, 20%) 0%,
     hsla(var(--hue), 10%, 20%, 0.8) 100%
   );
-  --card-bg2: hsl(var(--hue), 8%, 13%);
+  --card-bg-2: hsl(var(--hue), 8%, 13%);
   --card-shadow: 0px 6px 0px hsl(var(--hue), 10%, 11%);
   --card-border-clr: hsl(var(--hue), 10%, 25%);
 
@@ -90,6 +95,8 @@
 
   --theme-switch-bg-clr: hsla(var(--hue), 20%, 40%, 0.5);
   --theme-switch-thumb-left: 4px;
+
+  --default-border: 1px solid hsla(var(--hue), 55%, 70%, 0.1);
 
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
 }
@@ -235,13 +242,11 @@ a {
 
 a.anchor {
   display: inline-block;
-  text-decoration: underline;
-  color: var(--hd-clr);
-  text-decoration: underline var(--hd-clr);
-  color: var(--hd-clr);
+  text-decoration: underline var(--fo-clr);
+  color: var(--fo-clr);
   background-image: linear-gradient(
     to bottom,
-    var(--hd-clr) 50%,
+    var(--fo-clr) 50%,
     transparent 50%
   );
   background-size: 100% 200%;
@@ -251,7 +256,7 @@ a.anchor {
 
 a.anchor:hover {
   background-position: 0 0;
-  text-decoration-color: var(--hd-clr);
+  text-decoration-color: var(--fo-clr);
   color: var(--bg-clr);
 }
 
