@@ -22,7 +22,7 @@ const Markdown = ({ contentRef }) => {
   // TODO: use debounce if possible
   useEffect(() => {
     const intervalfn = setInterval(() => {
-      setContent(contentRef.current.value);
+      setContent(contentRef.current?.value);
     }, 300);
     return () => {
       clearInterval(intervalfn);

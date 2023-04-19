@@ -46,10 +46,7 @@ const Post = ({ post }) => {
         <div className={styles['head-container']}>
           <span className={styles['title']}>{post.title}</span>
         </div>
-        <div className={styles['info']}>
-          <div className={styles['author']}>By: {post.user?.name}</div>
-          <div className={styles['time']}>Posted On: {date}</div>
-        </div>
+        
         <ReactMarkdown
           className={markdownStyles['markdown-body']}
           remarkPlugins={[remarkGfm, remarkMath]}
@@ -61,6 +58,10 @@ const Post = ({ post }) => {
         >
           {post.markdown}
         </ReactMarkdown>
+        <div className={styles['info']}>
+          <div className={styles['author']}>By: {post.user?.name}</div>
+          <div className={styles['time']}>Posted On: {date}</div>
+        </div>
       </main>
     </div>
   );

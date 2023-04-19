@@ -4,6 +4,7 @@
   padding: 2em;
   border-radius: 16px;
   background: var(--card-bg);
+  border: 1px solid hsla(var(--hue), 75%, 20%, 0.5);
 }
 
 .card:hover,
@@ -28,7 +29,6 @@
 }
 
 .card .time {
-  font-style: italic;
   font-size: 0.9rem;
   font-weight: 300;
 }

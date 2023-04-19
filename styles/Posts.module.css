@@ -2,19 +2,16 @@
   display: flex;
   flex-direction: column;
   background-color: var(--post-title-bg-clr);
-  color: var(--btn-fo-clr);
   border-radius: 0 0 10px 10px;
   padding: 1.5rem;
-  /* box-shadow: var(--card-shadow); */
-}
-
-.title {
+  color: var(--fo-clr);
   font-size: 3rem;
   text-align: center;
 }
 
 .info {
-  margin-top: 1rem;
+  margin: 1rem 0;
+  margin-left: auto;
   font-size: 0.9rem;
   font-weight: 500;
   padding: 0 1rem;

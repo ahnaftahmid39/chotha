@@ -1,9 +1,9 @@
 .markdown-body {
   --td-bg-clr: var(--bg-clr);
   --td-2n-bg-clr: hsl(var(--hue), 30%, 92%);
-  --td-border-clr: hsl(220, 10%, 80%);
-  --tr-border-clr: hsla(220, 10%, 80%);
-
+  --td-border-clr: hsl(var(--hue), 10%, 80%);
+  --tr-border-clr: hsla(var(--hue), 10%, 80%);
+  color: var(--fo-clr2);
   /* font-family:Georgia, 'Times New Roman', Times, serif; */
   /* font-family: 'Gentium Plus', serif; */
 
@@ -17,8 +17,8 @@
 }
 
 [data-theme='dark'] .markdown-body {
-  --td-border-clr: hsla(220, 10%, 40%);
-  --tr-border-clr: hsla(220, 10%, 40%);
+  --td-border-clr: hsla(var(--hue), 10%, 40%);
+  --tr-border-clr: hsla(var(--hue), 10%, 40%);
 }
 
 [data-theme='dark'] .markdown-body strong {
@@ -108,6 +108,6 @@
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3 {
-  color: var(--hd-clr);
+  color: var(--fo-clr);
   line-height: 110%;
 }

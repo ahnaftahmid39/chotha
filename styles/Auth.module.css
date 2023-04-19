@@ -106,9 +106,9 @@
   font-size: 1rem;
   font-weight: 600;
   color: white;
-  background-color: hsl(220, 62%, 13%);
+  background-color: hsl(var(--hue), 62%, 13%);
 }
-[data-theme='dark'] :is(.btn-login,.btn-signup) {
+[data-theme='dark'] :is(.btn-login, .btn-signup) {
   background-color: hsl(217, 100%, 94%);
   color: black;
 }

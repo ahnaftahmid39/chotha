@@ -1,15 +1,13 @@
 :root {
-  --hue: 220;
-  --bg-clr: hsl(var(--hue), 15%, 90%); /* background color */
-  --bg-clr: hsl(210, 50%, 96%);
+  --hue: 210;
+  --bg-clr: hsl(var(--hue), 60%, 95%); /* background color */
   --bg-clr-light: hsl(var(--hue), 35%, 92%);
   --bg-clr2: hsl(0, 0%, 93%);
 
-  --fo-clr: hsl(0, 0%, 0%); /* forground color */
-  --fo-clr2: hsl(0, 0%, 14%);
-  --fo-clr-light: hsl(0, 0%, 20%);
+  --fo-clr: hsla(var(--hue), 75%, 20%, 1); /* forground color */
+  --fo-clr2: hsl(var(--hue), 70%, 15%);
+  --fo-clr-light: hsl(var(--hue), 70%, 30%);
 
-  --hd-clr: hsl(var(--hue), 10%, 10%); /* heading color (h1, h2, h3) */
 
   /* --btn-bg-clr: hsl(var(--hue), 9%, 82%); */
   --btn-bg-clr: hsl(var(--hue), 20%, 85%);
@@ -18,18 +16,33 @@
   --btn-blur-fo-clr: hsl(0, 0%, 90%);
 
   --card-bg: hsl(var(--hue), 25%, 90%);
+  --card-bg: linear-gradient(
+    180deg,
+    hsla(var(--hue), 79%, 93%, 0.5) 0%,
+    hsla(var(--hue), 84%, 93%, 0.345) 52.08%,
+    hsla(var(--hue), 90%, 93%, 0.5) 97.92%
+  );
+
   --card-bg2: hsl(var(--hue), 25%, 80%);
-  --card-shadow: 0px 2px 5px hsl(0, 0%, 78%);
+  --card-shadow: 0px 6px 0px hsl(220, 50%, 78%);
   --card-border-clr: hsl(0, 0%, 86%);
 
   --nav-bg-clr: hsla(var(--hue), 20%, 90%, 1);
-  --nav-fo-clr: hsl(0, 0%, 10%);
+  --nav-bg: linear-gradient(
+    180deg,
+    hsla(var(--hue), 100%, 96%, 0.8) 0%,
+    hsl(var(--hue), 100%, 96%) 100%
+  );
+  --nav-fo-clr: hsl(var(--hue), 52%, 40%);
   --nav-shadow: 1px 1px 4px hsl(var(--hue), 11%, 60%);
 
-  --post-info-fo-clr: hsl(0, 0%, 20%);
-  --post-title-bg-clr: hsl(var(--hue), 30%, 90%);
+  --post-info-fo-clr: hsl(220, 50%, 20%);
+  --post-title-bg-clr: hsl(var(--hue), 50%, 90%);
 
-  --theme-switch-bg-clr: hsla(var(--hue), 20%, 40%, 0.8);
+  --search-bar-input-bg-clr: hsla(var(--hue), 70%, 80%, 0.1);
+  --search-bar-btn-bg-clr: hsla(var(--hue), 70%, 60%, 0.1);
+
+  --theme-switch-bg-clr: hsla(var(--hue), 30%, 30%, 0.9);
   --theme-switch-thumb-left: 27px;
 
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
@@ -40,8 +53,9 @@
   --bg-clr: hsl(var(--hue), 9%, 15%);
 
   --bg-clr-light: hsl(var(--hue), 11%, 19%);
-  --fo-clr: hsl(0, 0%, 85%);
-  --fo-clr-light: hsl(0, 0%, 70%);
+  --fo-clr: hsl(var(--hue), 41%, 90%);
+  --fo-clr2: hsl(var(--hue), 70%, 93%);
+  --fo-clr-light: hsl(var(--hue), 41%, 95%);
 
   --hd-clr: hsl(var(--hue), 51%, 73%); /* heading color (h1, h2, h3) */
 
@@ -49,16 +63,29 @@
   --btn-fo-clr: hsl(0, 0%, 90%);
 
   --card-bg: hsl(var(--hue), 8%, 20%);
+  --card-bg: linear-gradient(
+    180deg,
+    hsl(var(--hue), 10%, 20%) 0%,
+    hsla(var(--hue), 10%, 20%, 0.8) 100%
+  );
   --card-bg2: hsl(var(--hue), 8%, 13%);
   --card-shadow: 0px 6px 0px hsl(var(--hue), 10%, 11%);
   --card-border-clr: hsl(var(--hue), 10%, 25%);
 
   --nav-bg-clr: hsla(var(--hue), 9%, 22%, 1);
-  --nav-fo-clr: hsl(0, 0%, 100%);
+  --nav-bg: linear-gradient(
+    180deg,
+    hsl(var(--hue), 10%, 20%) 0%,
+    hsla(var(--hue), 10%, 20%, 0.8) 100%
+  );
+  --nav-fo-clr: hsl(var(--hue), 52%, 90%);
   --nav-shadow: 1px 1px 4px hsl(var(--hue), 11%, 11%);
 
-  --post-info-fo-clr: hsl(0, 0%, 80%);
+  --post-info-fo-clr: var(--fo-clr-light);
   --post-title-bg-clr: var(--btn-bg-clr);
+
+  --search-bar-input-bg-clr: hsl(var(--hue), 10%, 20%);
+  --search-bar-btn-bg-clr: hsl(var(--hue), 10%, 25%);
 
   --theme-switch-bg-clr: hsla(var(--hue), 20%, 40%, 0.5);
   --theme-switch-thumb-left: 4px;

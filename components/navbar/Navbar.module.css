@@ -1,6 +1,7 @@
 .navbar-container {
   display: flex;
-  background-color: var(--nav-bg-clr);
+  background: var(--nav-bg);
+  backdrop-filter: blur(4px);
   flex-grow: 1;
   position: sticky;
   top: 0;

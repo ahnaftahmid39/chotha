@@ -5,7 +5,7 @@ const PostCard = forwardRef(({ post, onClick, href }, ref) => {
   return (
     <a title={title} onClick={onClick} href={href} ref={ref}>
       <div className={`${styles['card']}`}>
-        <div className={styles['author']}>{user?.name}</div>
+        <h2 className={styles['title']}>{title}</h2>
         <div className={styles['time']}>
           {new Date(createdAt).toLocaleDateString('en-UK', {
             month: 'long',
@@ -13,7 +13,7 @@ const PostCard = forwardRef(({ post, onClick, href }, ref) => {
             year: 'numeric',
           })}{' '}
         </div>
-        <h2 className={styles['title']}>{title}</h2>
+        <div className={styles['author']}>{user?.name}</div>
         <div className={styles['description']}>{description}</div>
       </div>
     </a>

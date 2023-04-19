@@ -3,6 +3,7 @@
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
+  border: 1px solid hsla(var(--hue), 75%, 20%, 0.5)
 }
 .searchbar-input,
 .searchbar-btn {
@@ -10,7 +11,8 @@
 }
 .searchbar-input {
   width: 92%;
-  background-color: var(--bg-clr-light);
+  background-color: var(--search-bar-input-bg-clr);
+  color: var(--fo-clr-light);
   outline: transparent;
   padding: 1rem 1.5rem;
   font-size: 1.2rem;
@@ -21,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--btn-bg-clr);
+  background-color: var(--search-bar-btn-bg-clr);
   padding: 1rem;
   cursor: pointer;
 }
