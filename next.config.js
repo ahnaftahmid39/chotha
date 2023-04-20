@@ -1,8 +1,7 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
-module.exports = withBundleAnalyzer({
-  reactStictMode: true,  
+module.exports = withBundleAnalyzer({ 
   images: {
     domains: ['ik.imagekit.io'],
   },

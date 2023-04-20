@@ -96,7 +96,7 @@
   --theme-switch-bg-clr: hsla(var(--hue), 20%, 40%, 0.5);
   --theme-switch-thumb-left: 4px;
 
-  --default-border: 1px solid hsla(var(--hue), 55%, 70%, 0.1);
+  --default-border: 1px solid hsla(var(--hue), 55%, 80%, 0.2);
 
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
 }

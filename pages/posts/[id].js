@@ -46,7 +46,6 @@ const Post = ({ post }) => {
         <div className={styles['head-container']}>
           <span className={styles['title']}>{post.title}</span>
         </div>
-        
         <ReactMarkdown
           className={markdownStyles['markdown-body']}
           remarkPlugins={[remarkGfm, remarkMath]}

@@ -3,7 +3,6 @@ import dbConnect from '../../../lib/middlewares/mongoose';
 import { User } from '../../../lib/models/user';
 import { Post } from '../../../lib/models/post';
 import _ from 'lodash';
-import { Types } from 'mongoose';
 
 export default async function handle(req, res) {
   switch (req.method) {

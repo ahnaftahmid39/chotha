@@ -3,48 +3,50 @@ import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 
-import { UserContext } from '../../providers/UserProvider';
-import ls from '../../lib/ls';
-import styles from '../../styles/Profile.module.css';
-import ProfilePlaceholder from '../../components/svgs/ProfilePlaceholder';
-import AddImageModal from '../../components/modals/add_image_modal/AddImageModal';
+import { UserContext } from '../../../providers/UserProvider';
+import ls from '../../../lib/ls';
+import styles from '../../../styles/Profile.module.css';
+import ProfilePlaceholder from '../../../components/svgs/ProfilePlaceholder';
+import AddImageModal from '../../../components/modals/add_image_modal/AddImageModal';
 
-export default function Profile() {
+export default function UserProfile() {
   const router = useRouter();
   const { userInfo, setUserInfo } = useContext(UserContext);
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState(null);
+  const [isMyself, setIsMyself] = useState(false);
   const [profilePhotoUploadModalShow, setProfilePhotoUploadModalShow] =
     useState(false);
 
   useEffect(() => {
-    let shouldUpdate = true;
-    if (!ls.getToken()) router.replace('/auth');
-    else {
-      async function fetchProfile() {
-        try {
-          const res = await fetch('/api/profile', {
-            method: 'GET',
-            headers: { Authorization: `Bearer ${ls.getToken()}` },
-          });
-          const data = await res.json();
-          if (shouldUpdate) {
-            setUser(data.user);
-            setPosts(data.posts);
-          }
-          if (res.status != 200) {
-            console.log(data.message);
-          }
-        } catch (e) {
-          console.log(e.message);
-        }
+    if (!!router.query.userId && !!userInfo._id)
+      if (router.query.userId === userInfo._id) {
+        setIsMyself(true);
+      } else {
+        if (isMyself) setIsMyself(false);
       }
-      fetchProfile();
+  }, [userInfo, router.query.userId]);
+
+  useEffect(() => {
+    async function getUserData() {
+      if (!!!router.query.userId) return;
+      try {
+        const res = await fetch('/api/users/' + router.query.userId, {
+          method: 'GET',
+        });
+        const data = await res.json();
+        setUser(data.user);
+        setPosts(data.posts);
+        if (res.status != 200) {
+          console.log(data.message);
+        }
+      } catch (e) {
+        console.log(e.message || e);
+      }
     }
-    return () => {
-      shouldUpdate = false;
-    };
-  }, []);
+    getUserData();
+    return () => {};
+  }, [router.query.userId]);
 
   const handleLogout = () => {
     ls.setToken('');
@@ -52,6 +54,7 @@ export default function Profile() {
     router.replace('/auth');
   };
   const handleEditButton = () => {
+    // TODO: add code for routing to profile
   };
 
   const handleUpdateProfilePhoto = () => {
@@ -89,7 +92,7 @@ export default function Profile() {
         <title>User Profile</title>
       </Head>
       <div className={styles['profile-container']}>
-        {userInfo && (
+        {user && (
           <>
             <div className={styles['profile']}>
               <div
@@ -108,20 +111,24 @@ export default function Profile() {
                 ) : (
                   <ProfilePlaceholder width={`100%`} height={`100%`} />
                 )}
-                <div className={styles['profile-photo-overlay']}>
-                  <div>Upload New</div>
-                </div>
+                {isMyself && (
+                  <div className={styles['profile-photo-overlay']}>
+                    <div>Upload New</div>
+                  </div>
+                )}
               </div>
-              <AddImageModal
-                hasTitle={false}
-                show={profilePhotoUploadModalShow}
-                handleClose={() => {
-                  setProfilePhotoUploadModalShow(false);
-                }}
-                handleImage={handleImage}
-              />
+              {isMyself && (
+                <AddImageModal
+                  hasTitle={false}
+                  show={profilePhotoUploadModalShow}
+                  handleClose={() => {
+                    setProfilePhotoUploadModalShow(false);
+                  }}
+                  handleImage={handleImage}
+                />
+              )}
               <div className={styles['profile-description']}>
-                <div className={styles['name']}>{userInfo.name}</div>
+                <div className={styles['name']}>{user?.name}</div>
                 <div className={styles['bio']}>{user?.bio}</div>
                 {user && (
                   <>
@@ -138,9 +145,9 @@ export default function Profile() {
                     </div>
                     {user.socials && (
                       <>
-                        <div className={styles['social']}>Socials</div>
+                        <div className={styles['socials']}>Socials</div>
                         {user.socials.facebook && (
-                          <div>
+                          <div className={styles['social-link']}>
                             <div className={styles['social-title']}>
                               Facebook
                             </div>
@@ -150,33 +157,37 @@ export default function Profile() {
                           </div>
                         )}
                         {user.socials.twitter && (
-                          <div>
+                          <div className={styles['social-link']}>
                             <div className={styles['social-title']}>
                               Twitter
                             </div>
-                            <div
-                              className={styles['social-twt']}
-                            >{`twitter: ${user.socials?.twitter}`}</div>
+                            <a className='anchor' href={user.socials.twitter}>
+                              {user.socials.twitter}
+                            </a>
                           </div>
                         )}
                       </>
                     )}
                   </>
                 )}
-                <button
-                  type='button'
-                  className={styles['btn-edit-profile']}
-                  onClick={handleEditButton}
-                >
-                  <span>Edit Profile</span>
-                </button>
-                <button
-                  type='button'
-                  className={styles['btn-logout']}
-                  onClick={handleLogout}
-                >
-                  <span>Logout</span>
-                </button>
+                {isMyself && (
+                  <>
+                    <button
+                      type='button'
+                      className={styles['btn-edit-profile']}
+                      onClick={handleEditButton}
+                    >
+                      <span>Edit Profile</span>
+                    </button>
+                    <button
+                      type='button'
+                      className={styles['btn-logout']}
+                      onClick={handleLogout}
+                    >
+                      <span>Logout</span>
+                    </button>
+                  </>
+                )}
               </div>
             </div>
             <div className={styles['all-posts']}>
@@ -185,8 +196,10 @@ export default function Profile() {
                 posts.map((post) => {
                   return (
                     <div className={styles['post']} key={post._id}>
-                      <Link key={post._id} passHref href={`/posts/${post._id}`}>
-                        <a href={`/posts/${post._id}`}>{post.title}</a>
+                      <Link key={post._id} passHref href={`${user._id}/posts/${post._id}`}>
+                        <a href={`${user._id}/posts/${post._id}`}>
+                          {post.title}
+                        </a>
                       </Link>
                     </div>
                   );
