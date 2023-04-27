@@ -9,6 +9,10 @@
 .searchbar-btn {
   border: none;
 }
+
+.searchbar-input::placeholder {
+  color: var(--fo-clr-light-2);
+}
 .searchbar-input {
   width: 92%;
   background-color: var(--search-bar-input-bg-clr);
@@ -24,6 +28,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--search-bar-btn-bg-clr);
+  border-left: var(--default-border);
   padding: 1rem;
   cursor: pointer;
 }

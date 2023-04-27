@@ -25,12 +25,11 @@ export default async function handle(req, res) {
         authorize(req, res);
         let post = await Post.findById(id);
         if (!post) throw Error('Post not found!');
-        if (post.user != req.user._id)
+        if (String(post.user) != req.user._id)
           throw Error("You shall not pass! It's not  your post");
         const update = req.body;
         const result = await Post.findByIdAndUpdate(id, update, { new: true });
-
-        await res.unstable_revalidate(`/posts/${id}`);
+        await res.revalidate(`/posts/${id}`);
         return res
           .status(200)
           .json({ status: 200, message: 'success', result });

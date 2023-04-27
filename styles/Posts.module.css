@@ -17,3 +17,17 @@
   line-height: 1.6rem;
   color: var(--post-info-fo-clr);
 }
+
+.btn-edit {
+  margin-left: auto;
+  margin-top: 1rem;
+  border-radius: 8px;
+  background-color: var(--bg-clr-light);
+  padding: 0.5rem 1rem;
+}
+.btn-edit:hover {
+  background-color: var(--btn-bg-clr);
+}
+.btn-edit:active {
+  transform: translateY(4px);
+}

@@ -1,6 +1,6 @@
 .date-icon {
-  fill: var(--bg-clr);
-  stroke: var(--bg-clr);
+  fill: var(--bg-clr-light);
+  stroke: var(--bg-clr-light);
 }
 
 .date-icon :first-child {

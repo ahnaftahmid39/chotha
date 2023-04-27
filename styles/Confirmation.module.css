@@ -21,5 +21,5 @@
 
 .check-email {
   background-color: hsla(var(--hue), 96%, 60%, 0.1);
-  color: hsl(var(--hue), 96%, 60%);
+  color: var(--fo-clr);
 }

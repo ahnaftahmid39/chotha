@@ -23,8 +23,11 @@ const SaveIcon = memo(() => {
 
 SaveIcon.displayName = 'SaveIcon';
 
-const AddDataButton = ({ addData }) => {
-  const [data, setData] = useState({ title: '', description: '' });
+const AddDataButton = ({ addData, post }) => {
+  const [data, setData] = useState({
+    title: post?.title || '',
+    description: post?.description || '',
+  });
   const [dataModal, setDataModal] = useState(false);
   const inputRef = useRef();
 

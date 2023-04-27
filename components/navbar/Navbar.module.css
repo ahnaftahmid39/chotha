@@ -1,11 +1,12 @@
 .navbar-container {
   display: flex;
   background: var(--nav-bg);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(18px);
   flex-grow: 1;
   position: sticky;
   top: 0;
-  box-shadow: var(--nav-shadow);
+  /* box-shadow: var(--nav-shadow); */
+  border-bottom: var(--default-border);
   z-index: 2;
   overflow: hidden;
 }
@@ -18,6 +19,7 @@
 
 .links a {
   color: var(--nav-fo-clr);
+  text-shadow: 0 2px 0px var(--bg-clr-light);
   padding: 1rem;
   font-weight: 700;
   transition: transform 100ms;

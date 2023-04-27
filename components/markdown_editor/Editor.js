@@ -11,9 +11,13 @@ import { useRouter } from 'next/router';
 import { UserContext } from '../../providers/UserProvider';
 import Link from 'next/link';
 
-const Editor = () => {
+const Editor = ({ post }) => {
   const { userInfo } = useContext(UserContext);
-  const [text, setText] = useState({ value: '', caret: -1, target: null });
+  const [text, setText] = useState({
+    value: post?.markdown || '',
+    caret: -1,
+    target: null,
+  });
   const router = useRouter();
   const taRef = useRef();
   const bolden = () => {
@@ -25,7 +29,7 @@ const Editor = () => {
   };
 
   const addImgLink = (image) => {
-    const markdownImageLink = `![${image.title}](${image.url})\n\n`
+    const markdownImageLink = `![${image.title}](${image.url})\n\n`;
     setText({
       ...text,
       value: text.value + '  \n' + markdownImageLink,
@@ -54,13 +58,13 @@ const Editor = () => {
   };
 
   const addData = ({ title, description }) => {
-    fetch('/api/post', {
+    fetch(post?._id ? `/api/post/${post._id}` : '/api/post' || '/api/post', {
       body: JSON.stringify({
         markdown: text.value,
         title: title,
         description: description,
       }),
-      method: 'POST',
+      method: post?._id ? 'PUT' : 'POST' || 'POST',
       headers: {
         Accept: 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
@@ -69,7 +73,7 @@ const Editor = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        if (res.error) return;
         router.replace('/');
       });
   };
@@ -101,6 +105,10 @@ const Editor = () => {
   return (
     <>
       <UsefulButtons
+        post={{
+          title: post?.title || '',
+          description: post?.description || '',
+        }}
         addImgLink={addImgLink}
         addLink={addLink}
         bolden={bolden}

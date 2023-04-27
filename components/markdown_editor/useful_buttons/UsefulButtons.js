@@ -44,6 +44,7 @@ const AddNewLineIcon = memo(() => {
 AddNewLineIcon.displayName = 'AddNewLineIcon';
 
 const UsefulButtons = ({
+  post,
   addImgLink,
   bolden,
   italicen,
@@ -132,7 +133,7 @@ const UsefulButtons = ({
         </span>
       </label>
       <AddLinkButton addLink={addLink} />
-      <AddDataButton addData={addData} />
+      <AddDataButton addData={addData} post={post} />
     </div>
   );
 };

@@ -1,14 +1,15 @@
 import { useTheme } from 'next-themes';
 import ChothaBrand from '../svgs/ChothaBrand';
 import ChothaBrandDark from '../svgs/ChothaBrandDark';
+import { memo } from 'react';
 
-const BrandIcon = ({ size = 160 }) => {
+const BrandIcon = memo(({ size = 160 }) => {
   const { theme, systemTheme } = useTheme();
 
   let logo = null;
   const width = size;
   const height = size * 1.09375;
-  console.log({width, height});
+  
   if (theme == 'system') {
     if (systemTheme == 'dark') {
       logo = <ChothaBrandDark width={width} height={height} />;
@@ -23,6 +24,8 @@ const BrandIcon = ({ size = 160 }) => {
     }
   }
   return logo;
-};
+});
+
+BrandIcon.displayName = 'BrandIcon';
 
 export default BrandIcon;

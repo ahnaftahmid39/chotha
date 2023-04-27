@@ -40,7 +40,8 @@ export default function Confirmation({ ...props }) {
           setIsLoading(false);
           setError(err.message);
         });
-  }, [router.query.shortToken]);
+    // eslint-disable-line
+  }, [router]);
 
   return (
     <div className={`${styles['confirmation-container']}`}>

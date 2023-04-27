@@ -1,31 +1,26 @@
+import Head from 'next/head';
+import Link from 'next/link';
+import { useContext, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import styles from '../../styles/Posts.module.css';
-import markdownStyles from '../../components/markdown_editor/Markdown.module.css';
-// import dynamic from 'next/dynamic';
-// const ImageMarkdown = dynamic(() =>
-//   import('../../components/markdown_editor/image_markdown/ImageMarkdown')
-// );
-// const CodeMarkdown = dynamic(() =>
-//   import('../../components/markdown_editor/code_markdown/CodeMarkdown')
-// );
-import ImageMarkdown from '../../components/markdown_editor/image_markdown/ImageMarkdown';
-import CodeMarkdown from '../../components/markdown_editor/code_markdown/CodeMarkdown';
-
 import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
-
 import 'katex/dist/katex.min.css';
 
+import styles from '../../../styles/Posts.module.css';
+import markdownStyles from '../../../components/markdown_editor/Markdown.module.css';
+import ImageMarkdown from '../../../components/markdown_editor/image_markdown/ImageMarkdown';
+import CodeMarkdown from '../../../components/markdown_editor/code_markdown/CodeMarkdown';
 import {
   getAllPostsWithoutMarkdown,
   getPostById,
-} from '../../lib/controllers/post';
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
+} from '../../../lib/controllers/post';
+import { UserContext } from '../../../providers/UserProvider';
 
 const Post = ({ post }) => {
   // following was added to prevent the hydration error
+  const { userInfo } = useContext(UserContext);
+
   const [date, setDate] = useState();
   useEffect(() => {
     let str = new Date(post.createdAt).toLocaleDateString('en-UK', {
@@ -35,7 +30,6 @@ const Post = ({ post }) => {
     });
     setDate(str);
   }, [post]);
-
   if (!post) return null;
   return (
     <div className='container'>
@@ -46,6 +40,11 @@ const Post = ({ post }) => {
         <div className={styles['head-container']}>
           <span className={styles['title']}>{post.title}</span>
         </div>
+        {post.user && post.user._id == userInfo._id && (
+          <Link href={`/posts/${post._id}/edit`}>
+            <a className={styles['btn-edit']}>Edit</a>
+          </Link>
+        )}
         <ReactMarkdown
           className={markdownStyles['markdown-body']}
           remarkPlugins={[remarkGfm, remarkMath]}

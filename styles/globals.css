@@ -2,6 +2,12 @@
   --hue: 220;
   /* background color */
   --bg-clr: hsl(var(--hue), 60%, 95%);
+  --bg-clr: radial-gradient(
+      76.94% 76.94% at 50% 50%,
+      #ffffff 0%,
+      hsl(218, 78%, 90%) 100%
+    ),
+    #f2f7ff;
   --bg-clr-light: hsl(var(--hue), 35%, 92%);
   --bg-clr-2: hsl(0, 0%, 93%);
 
@@ -9,6 +15,7 @@
   --fo-clr: hsla(var(--hue), 75%, 20%, 1);
   --fo-clr-2: hsl(var(--hue), 70%, 15%);
   --fo-clr-light: hsl(var(--hue), 70%, 30%);
+  --fo-clr-light-2: hsla(var(--hue), 30%, 60%, 1);
 
   /* btn styles */
   --btn-bg-clr: hsl(var(--hue), 20%, 85%);
@@ -33,7 +40,7 @@
   --nav-bg: linear-gradient(
     180deg,
     hsla(var(--hue), 100%, 96%, 0.8) 0%,
-    hsl(var(--hue), 100%, 96%) 100%
+    hsla(var(--hue), 100%, 96%, 1) 100%
   );
   --nav-fo-clr: hsl(var(--hue), 52%, 40%);
   --nav-shadow: 1px 1px 4px hsl(var(--hue), 11%, 60%);
@@ -44,7 +51,7 @@
 
   /* searchbar styles */
   --search-bar-input-bg-clr: hsla(var(--hue), 70%, 80%, 0.1);
-  --search-bar-btn-bg-clr: hsla(var(--hue), 70%, 60%, 0.1);
+  --search-bar-btn-bg-clr: hsla(var(--hue), 50%, 70%, 0.2);
 
   /* theme switcher */
   --theme-switch-bg-clr: hsla(var(--hue), 30%, 30%, 0.9);
@@ -54,16 +61,24 @@
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
   --scroll-thumb-bg-clr: hsla(0, 0%, 50%, 0.6);
 
-  --default-border: 1px solid hsla(var(--hue), 55%, 30%, 0.2);
+  --border-color: hsla(var(--hue), 55%, 30%, 0.2);
+  --default-border: 1px solid var(--border-color);
 }
 
 [data-theme='dark'] {
   --bg-clr: hsl(var(--hue), 9%, 15%);
+  --bg-clr: radial-gradient(
+      50% 50% at 50% 50%,
+      hsla(220, 35%, 25%, 0.5) 10%,
+      hsla(220, 9%, 15%, 1) 90%
+    ),
+    hsl(223, 9%, 15%);
   --bg-clr-light: hsl(var(--hue), 11%, 19%);
-  
+
   --fo-clr: hsl(var(--hue), 41%, 90%);
   --fo-clr-2: hsl(var(--hue), 70%, 93%);
   --fo-clr-light: hsl(var(--hue), 31%, 80%);
+  --fo-clr-light-2: hsla(var(--hue), 50%, 80%, 0.5);
 
   --btn-bg-clr: hsl(var(--hue), 10%, 25%);
   --btn-fo-clr: hsl(0, 0%, 90%);
@@ -71,8 +86,8 @@
   --card-bg: hsl(var(--hue), 8%, 20%);
   --card-bg: linear-gradient(
     180deg,
-    hsl(var(--hue), 10%, 20%) 0%,
-    hsla(var(--hue), 10%, 20%, 0.8) 100%
+    hsla(var(--hue), 10%, 20%, 0.5) 0%,
+    hsla(var(--hue), 10%, 20%, 0.2) 100%
   );
   --card-bg-2: hsl(var(--hue), 8%, 13%);
   --card-shadow: 0px 6px 0px hsl(var(--hue), 10%, 11%);
@@ -81,8 +96,8 @@
   --nav-bg-clr: hsla(var(--hue), 9%, 22%, 1);
   --nav-bg: linear-gradient(
     180deg,
-    hsl(var(--hue), 10%, 20%) 0%,
-    hsla(var(--hue), 10%, 20%, 0.8) 100%
+    hsl(var(--hue), 10%, 20%, 0.5) 0%,
+    hsla(var(--hue), 10%, 20%, 0.2) 100%
   );
   --nav-fo-clr: hsl(var(--hue), 52%, 90%);
   --nav-shadow: 1px 1px 4px hsl(var(--hue), 11%, 11%);
@@ -90,21 +105,21 @@
   --post-info-fo-clr: var(--fo-clr-light);
   --post-title-bg-clr: var(--btn-bg-clr);
 
-  --search-bar-input-bg-clr: hsl(var(--hue), 10%, 20%);
-  --search-bar-btn-bg-clr: hsl(var(--hue), 10%, 25%);
+  --search-bar-input-bg-clr: hsla(var(--hue), 10%, 20%, 0.2);
+  --search-bar-btn-bg-clr: hsl(var(--hue), 10%, 35%, 0.2);
 
   --theme-switch-bg-clr: hsla(var(--hue), 20%, 40%, 0.5);
   --theme-switch-thumb-left: 4px;
 
-  --default-border: 1px solid hsla(var(--hue), 55%, 80%, 0.2);
+  --border-color: hsla(var(--hue), 55%, 80%, 0.2);
 
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
 }
 
 html,
 body {
-  background: var(--bg-clr);
   color: var(--fo-clr);
+  height: 100vh;
   padding: 0;
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -112,6 +127,16 @@ body {
   /* user-select: none; */
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  content: '';
+  z-index: -10;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-clr);
 }
 
 a {

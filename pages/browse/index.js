@@ -4,15 +4,15 @@ import React, { useEffect, useState, useCallback } from 'react';
 
 import PostCard from '../../components/cards/post_card/PostCard';
 import Loading from '../../components/loading_indicator/Loading';
-import styles from '../../styles/Home.module.css';
+import styles from '../../styles/Browse.module.css';
 import SearchBar from '../../components/search/SearchBar';
 import {
   emptyTemporaryPosts,
   getTemporaryPosts,
   savePostsTemporarily,
-} from '../lib/ls/localStorage';
+} from '../../lib/ls/localStorage';
 
-import LoadingCard from '../components/loading_indicator/LoadingCard';
+import LoadingCard from '../../components/loading_indicator/LoadingCard';
 
 export default function Browse({}) {
   const [leaving, setLeaving] = useState(false);
