@@ -53,6 +53,8 @@ export default function Browse({}) {
       emptyTemporaryPosts();
       window.removeEventListener('unload', handleTabClosing);
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (leaving)

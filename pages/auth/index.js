@@ -160,6 +160,7 @@ const Authentication = ({ ...props }) => {
                     }}
                   >
                     <Image
+                      alt='password visibility toggle'
                       src={
                         showpass
                           ? '/images/eye-open.png'
@@ -202,6 +203,7 @@ const Authentication = ({ ...props }) => {
                       }}
                     >
                       <Image
+                        alt='password visibility toggle'
                         src={
                           showpass
                             ? '/images/eye-open.png'

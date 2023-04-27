@@ -13,6 +13,7 @@ const ImageMarkdown = React.memo(({ src, alt }) => {
 
   return (
     <span style={{ display: 'grid', placeItems: 'center' }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         onClick={(e) => {
           setImgModal(true);

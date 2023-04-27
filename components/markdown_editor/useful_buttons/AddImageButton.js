@@ -113,6 +113,7 @@ const AddImageBtn = ({ addImgLink, hasTitle = true }) => {
           </label>
           <span style={{ display: 'grid', placeItems: 'center' }}>
             {imgData.data && (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 style={{ maxHeight: '50vh', maxWidth: '100%' }}
                 src={URL.createObjectURL(imgData.data)}

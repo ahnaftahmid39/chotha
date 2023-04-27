@@ -40,11 +40,11 @@ export default function Confirmation({ ...props }) {
           setIsLoading(false);
           setError(err.message);
         });
-    // eslint-disable-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   return (
-    <div className={`${styles['confirmation-container']}`}>
+    <div className={`${styles['confirmation-container']}`} {...props}>
       {isLoading ? (
         <Loading size={50} />
       ) : error ? (

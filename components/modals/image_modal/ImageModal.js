@@ -45,6 +45,7 @@ const ImageModal = ({ modal, className, src, alt, setImgModal, ...props }) => {
                   }}
                   contentStyle={{ cursor: 'grab' }}
                 >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img alt={alt} src={`${src}`} />
                 </TransformComponent>
               </div>

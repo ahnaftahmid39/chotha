@@ -44,15 +44,14 @@ export default function Profile() {
     return () => {
       shouldUpdate = false;
     };
-  }, []);
+  }, [router]);
 
   const handleLogout = () => {
     ls.setToken('');
     setUserInfo({});
     router.replace('/auth');
   };
-  const handleEditButton = () => {
-  };
+  const handleEditButton = () => {};
 
   const handleUpdateProfilePhoto = () => {
     setProfilePhotoUploadModalShow(true);
@@ -98,12 +97,13 @@ export default function Profile() {
               >
                 {user?.photo ? (
                   <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       alt='profile picture'
                       src={user.photo}
                       width='100%'
                       height='100%'
-                    ></img>
+                    />
                   </>
                 ) : (
                   <ProfilePlaceholder width={`100%`} height={`100%`} />
