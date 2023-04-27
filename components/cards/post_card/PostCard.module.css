@@ -48,11 +48,14 @@
 
 .author,
 .time {
+  font-weight: 400;
+  font-size: 0.9rem;
   margin-left: 0.5rem;
 }
 
 .readmore {
   background-color: inherit;
+  font-size: small;
   cursor: pointer;
   pointer-events: auto;
   align-self: flex-end;

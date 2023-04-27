@@ -15,6 +15,11 @@ const Navbar = ({}) => {
             <a title={'Home'}>Home</a>
           </Link>
         )}
+        {router.pathname != '/browse' && (
+          <Link href={'/browse'} passHref>
+            <a title={'Browse'}>Browse</a>
+          </Link>
+        )}
         {router.pathname != '/about' && (
           <Link href={'/about'} passHref>
             <a title={'About'}>About</a>

@@ -14,12 +14,12 @@
 .links {
   display: flex;
   margin-left: auto;
-  margin-right: auto;
+  /* margin-right: auto; */
 }
 
 .links a {
   color: var(--nav-fo-clr);
-  text-shadow: 0 2px 0px var(--bg-clr-light);
+  text-shadow: 0 0px 2px var(--bg-clr-light);
   padding: 1rem;
   font-weight: 700;
   transition: transform 100ms;

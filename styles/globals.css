@@ -8,7 +8,7 @@
       hsl(218, 78%, 90%) 100%
     ),
     #f2f7ff;
-  --bg-clr-light: hsl(var(--hue), 35%, 92%);
+  --bg-clr-light: hsl(var(--hue), 55%, 90%);
   --bg-clr-2: hsl(0, 0%, 93%);
 
   /* forground color */
@@ -18,7 +18,7 @@
   --fo-clr-light-2: hsla(var(--hue), 30%, 60%, 1);
 
   /* btn styles */
-  --btn-bg-clr: hsl(var(--hue), 20%, 85%);
+  --btn-bg-clr: hsl(var(--hue), 40%, 85%);
   --btn-fo-clr: var(--fo-clr-2);
   --btn-blur-bg-clr: hsla(0, 0%, 0%, 0.6);
   --btn-blur-fo-clr: hsl(0, 0%, 90%);
