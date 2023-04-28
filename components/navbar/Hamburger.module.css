@@ -69,15 +69,14 @@
   position: absolute;
   width: 100%;
   background: var(--bg-clr-light);
-  border-bottom: var(--default-border);
-  top: 53px;
+  top: var(--navbar-height);
   right: 0px;
   flex-direction: column;
   z-index: 2;
   text-align: center;
   overflow: hidden;
   max-height: 0;
-  transition: max-height 300ms linear;
+  transition: max-height 200ms ease;
 }
 
 .menu-items a {
@@ -90,5 +89,7 @@
 }
 
 .menu-items[aria-expanded='true'] {
-  max-height: 200px;
+  /* increase max-height as nav-items increases */
+  max-height: 250px;
+  border-bottom: var(--default-border);
 }

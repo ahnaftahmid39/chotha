@@ -1,9 +1,12 @@
 .parent {
   display: flex;
   align-items: center;
+  align-self: center;
   gap: 0.6rem;
   background-color: var(--theme-switch-bg-clr);
   margin: 0.7rem;
+  width: 48px;
+  height: 26px;
   padding: 0 0.3rem;
   border-radius: 1000px;
   position: relative;
@@ -12,9 +15,11 @@
 
 .thumb {
   position: absolute;
+  top: 50%;
+  translate: 0% -50%;
   left: var(--theme-switch-thumb-left);
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 19px;
   background-color: aliceblue;
   border-radius: 1000px;
   transition: left 200ms;

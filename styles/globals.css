@@ -2,7 +2,7 @@
   --hue: 220;
   /* background color */
   --bg-clr: hsl(var(--hue), 60%, 95%);
-  --bg-clr: radial-gradient(
+  --bg-clr-grad: radial-gradient(
       76.94% 76.94% at 50% 50%,
       #ffffff 0%,
       hsl(218, 78%, 90%) 100%
@@ -55,7 +55,7 @@
 
   /* theme switcher */
   --theme-switch-bg-clr: hsla(var(--hue), 30%, 30%, 0.9);
-  --theme-switch-thumb-left: 27px;
+  --theme-switch-thumb-left: 25px;
 
   /* scrollbar */
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
@@ -67,7 +67,7 @@
 
 [data-theme='dark'] {
   --bg-clr: hsl(var(--hue), 9%, 15%);
-  --bg-clr: radial-gradient(
+  --bg-clr-grad: radial-gradient(
       50% 50% at 50% 50%,
       hsla(220, 35%, 25%, 0.5) 10%,
       hsla(220, 9%, 15%, 1) 90%
@@ -136,7 +136,7 @@ body::before {
   z-index: -10;
   width: 100%;
   height: 100vh;
-  background: var(--bg-clr);
+  background: var(--bg-clr-grad);
 }
 
 a {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './Hamburger.module.css';
+import AuthButton from '../buttons/auth_button/AuthButton';
 
 const Hamburger = ({ links = [] }) => {
   const [show, setShow] = useState(false);
@@ -15,7 +16,14 @@ const Hamburger = ({ links = [] }) => {
       >
         <div className={styles['btn-menu']}></div>
       </div>
-      <div aria-expanded={show} className={styles['menu-items']}>{links}</div>
+      <div
+        aria-expanded={show}
+        onClick={handleMenuToggle}
+        className={`${styles['menu-items']}`}
+      >
+        <AuthButton />
+        {links}
+      </div>
     </div>
   );
 };

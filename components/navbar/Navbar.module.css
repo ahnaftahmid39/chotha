@@ -1,4 +1,5 @@
 .navbar-container {
+  --navbar-height: 52px;
   display: flex;
   background: var(--nav-bg);
   backdrop-filter: blur(18px);
@@ -6,6 +7,7 @@
   position: sticky;
   top: 0;
   /* box-shadow: var(--nav-shadow); */
+  height: var(--navbar-height);
   border-bottom: var(--default-border);
   z-index: 2;
 }
@@ -37,10 +39,16 @@
   margin-left: auto;
   /* margin-right: auto; */
 }
+.btn-auth {
+  display: none;
+}
 
 @media (min-width: 800px) {
   .links {
     display: flex;
+  }
+  .btn-auth {
+    display: block;
   }
 }
 

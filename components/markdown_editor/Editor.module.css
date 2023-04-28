@@ -4,10 +4,6 @@
   flex-direction: column;
 }
 
-.preview {
-  background-color: var(--bg-clr);
-}
-
 .edit,
 .preview {
   display: flex;
@@ -24,7 +20,7 @@
 }
 
 .edit .textarea {
-  background-color: var(--bg-clr);
+  background-color: transparent;
   color: var(--fo-clr);
   padding: 1rem;
   box-sizing: border-box;
