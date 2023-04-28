@@ -8,13 +8,40 @@
   /* box-shadow: var(--nav-shadow); */
   border-bottom: var(--default-border);
   z-index: 2;
-  overflow: hidden;
+}
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline: 1rem;
+  margin-left: 2%;
 }
 
+@media (min-width: 800px) {
+  .branding {
+    margin-left: 10%;
+  }
+}
+.branding-text {
+  font-weight: 600;
+}
+.branding rect {
+  fill: transparent;
+  stroke: var(--fo-clr);
+}
+.branding svg path {
+  fill: var(--fo-clr);
+}
 .links {
-  display: flex;
+  display: none;
   margin-left: auto;
   /* margin-right: auto; */
+}
+
+@media (min-width: 800px) {
+  .links {
+    display: flex;
+  }
 }
 
 .links a {

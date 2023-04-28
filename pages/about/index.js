@@ -8,7 +8,7 @@ export default function Home() {
         <title>About Chotha</title>
       </Head>
       <div className={styles['container']}>
-        <p className={styles['about']}>
+        <div className={styles['about']}>
           Hi. This is just a hobby project. We wish to see it grow bigger. It is
           open source. Feel free to contribute. Check our github:{'  '}
           <a
@@ -18,7 +18,7 @@ export default function Home() {
             {' '}
             Chotha{' '}
           </a>
-          <p>
+          <div>
             <strong>Technologies Used:</strong>
             <ul className={styles['lists']}>
               <li>nextjs</li>
@@ -36,8 +36,8 @@ export default function Home() {
               <li>Mongoose</li>
               <li>Lot of CSS</li>
             </ul>
-          </p>
-        </p>
+          </div>
+        </div>
       </div>
     </div>
   );
