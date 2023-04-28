@@ -22,7 +22,16 @@ export default async function handle(req, res) {
     }
     case 'PUT': {
       try {
-        authorize(req, res);
+        let error = authorize(req, res);
+        if (error.status != 200) {
+          return res
+            .status(error.status)
+            .json({
+              status: error.status,
+              message: error.message,
+              error: new Error(error.message),
+            });
+        }
         let post = await Post.findById(id);
         if (!post) throw Error('Post not found!');
         if (String(post.user) != req.user._id)
@@ -37,6 +46,34 @@ export default async function handle(req, res) {
         return res
           .status(400)
           .json({ status: 400, message: 'Error!', error: e.message });
+      }
+    }
+    case 'DELETE': {
+      try {
+        let error = authorize(req, res);
+        if (error.status != 200) {
+          return res
+            .status(error.status)
+            .json({
+              status: error.status,
+              message: error.message,
+              error: error.error,
+            });
+        }
+
+        let post = await Post.findById(id);
+        if (!post) throw Error('Post not found!');
+        if (String(post.user) != req.user._id)
+          throw Error("You shall not pass! It's not  your post");
+        const result = await Post.findByIdAndDelete(id);
+        await res.revalidate(`/posts/${id}`);
+        return res
+          .status(200)
+          .json({ status: 200, message: 'success', result });
+      } catch (e) {
+        return res
+          .status(400)
+          .json({ status: 400, message: e.message, error: e });
       }
     }
     default: {

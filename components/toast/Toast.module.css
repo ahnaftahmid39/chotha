@@ -1,0 +1,37 @@
+.wrapper {
+  width: 250px;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* backdrop-filter: blur(12px); */
+  border-radius: 8px;
+  background: var(--card-bg);
+  border: var(--default-border);
+  position: fixed;
+  left: 50%;
+  translate: -50% 0%;
+  top: 20%;
+  animation: position-animate 600ms ease-out;
+}
+
+@keyframes position-animate {
+  0% {
+    top: 0;
+  } 
+  100% {
+    top: 20%;
+  }
+}
+
+@media (min-width: 400px) {
+  .wrapper {
+    width: 300px;
+  }
+}
+
+@media (min-width: 800px) {
+  .wrapper {
+    width: 400px;
+  }
+}

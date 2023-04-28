@@ -6,7 +6,7 @@
   background-color: var(--bg-clr);
   color: var(--fo-clr);
   z-index: 4;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3), 0 0 0 100vw rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   transition: transform 400ms;
@@ -22,7 +22,11 @@
   z-index: 3;
   backdrop-filter: blur(2px);
 }
-
+@media (min-width: 500px) {
+  .modal {
+    padding: 2rem;
+  }
+}
 @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .modalbg {
     background-color: hsla(0, 0%, 0%, 0.5);

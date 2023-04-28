@@ -2,6 +2,10 @@
 
 ## Short term
 
+- [ ] Filter section in browse
+- [ ] subject/dept based posts
+- [ ] Tutorial
+- [ ] feedback
 - [ ] refactor auth page
 - [ ] Profile page
 - [ ] refactor authentication implementation
@@ -14,6 +18,7 @@
 
 ### Frontend
 
+- [ ] Admin control
 - [x] Katex support
 - [ ] Add support for realtime editing
 - [ ] Add support for commenting

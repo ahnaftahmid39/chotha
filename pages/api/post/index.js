@@ -18,7 +18,16 @@ export default async function handle(req, res) {
     case 'POST': {
       try {
         await dbConnect();
-        authorize(req, res);
+        let error = authorize(req, res);
+        if (error.status != 200) {
+          return res
+            .status(error.status)
+            .json({
+              status: error.status,
+              message: error.message,
+              error: new Error(error.message),
+            });
+        }
 
         const post = new Post(req.body);
         post.user = req.user._id;

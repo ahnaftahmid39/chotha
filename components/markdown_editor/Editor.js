@@ -74,7 +74,7 @@ const Editor = ({ post }) => {
       .then((res) => res.json())
       .then((res) => {
         if (res.error) return;
-        router.replace('/');
+        router.replace('/browse');
       });
   };
 

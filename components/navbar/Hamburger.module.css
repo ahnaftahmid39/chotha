@@ -90,6 +90,6 @@
 
 .menu-items[aria-expanded='true'] {
   /* increase max-height as nav-items increases */
-  max-height: 250px;
+  max-height: 300px;
   border-bottom: var(--default-border);
 }

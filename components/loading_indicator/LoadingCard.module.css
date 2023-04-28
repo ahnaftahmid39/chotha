@@ -18,8 +18,8 @@
 }
 
 [data-theme='dark'] .loading-card > * {
-  --loading-bg: hsl(var(--hue), 8%, 8%);
-  --loading-bg2: hsl(var(--hue), 8%, 15%);
+  --loading-bg: hsla(var(--hue), 8%, 12%, 0.7 );
+  --loading-bg2: hsla(var(--hue), 8%, 8%, 0.7);
 }
 
 .loading-title {

@@ -18,8 +18,8 @@
   top: 50%;
   translate: 0% -50%;
   left: var(--theme-switch-thumb-left);
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
   background-color: aliceblue;
   border-radius: 1000px;
   transition: left 200ms;

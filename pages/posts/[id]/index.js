@@ -16,21 +16,86 @@ import {
   getPostById,
 } from '../../../lib/controllers/post';
 import { UserContext } from '../../../providers/UserProvider';
+import { useRouter } from 'next/router';
+import Toast from '../../../components/toast/Toast';
+import ls from '../../../lib/ls';
+import Modal from '../../../components/modals/modal/Modal';
 
 const Post = ({ post }) => {
   // following was added to prevent the hydration error
   const { userInfo } = useContext(UserContext);
+  const router = useRouter();
 
   const [date, setDate] = useState();
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const [showConfirm, setShowConfirm] = useState(false);
+
   useEffect(() => {
-    let str = new Date(post.createdAt).toLocaleDateString('en-UK', {
+    if (error != '') {
+      let t = setTimeout(() => {
+        setError('');
+      }, 3000);
+      return () => clearTimeout(t);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (success != '') {
+      let t = setTimeout(() => {
+        setSuccess('');
+      }, 3000);
+      return () => clearTimeout(t);
+    }
+  }, [success]);
+
+  useEffect(() => {
+    let str = new Date(post?.createdAt).toLocaleDateString('en-UK', {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
     });
     setDate(str);
   }, [post]);
-  if (!post) return null;
+
+  const handleDeleteBtn = () => {
+    setShowConfirm(true);
+  };
+
+  const handleDeleteCancel = () => {
+    setShowConfirm(false);
+  };
+
+  const handleDelete = async () => {
+    setShowConfirm(false);
+    try {
+      const res = await fetch('/api/post/' + post._id, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${ls.getToken()}`,
+        },
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data);
+        throw data.error;
+      } else {
+        setSuccess('Successfully deleted');
+        setTimeout(() => {
+          router.replace('/browse');
+        }, 2000);
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  if (!post)
+    return (
+      <div style={{ padding: '1rem', textAlign: 'center' }}>
+        {"This post doesn't exist anymore. Might have been deleted"}
+      </div>
+    );
   return (
     <div className='container'>
       <Head>
@@ -40,11 +105,14 @@ const Post = ({ post }) => {
         <div className={styles['head-container']}>
           <span className={styles['title']}>{post.title}</span>
         </div>
-        {post.user && post.user._id == userInfo._id && (
-          <Link href={`/posts/${post._id}/edit`}>
-            <a className={styles['btn-edit']}>Edit</a>
-          </Link>
-        )}
+
+        <Toast show={error != ''} handleClose={() => setError('')}>
+          <div>{error}</div>
+        </Toast>
+        <Toast show={success != ''} handleClose={() => setSuccess('')}>
+          <div>{success}</div>
+        </Toast>
+
         <ReactMarkdown
           className={markdownStyles['markdown-body']}
           remarkPlugins={[remarkGfm, remarkMath]}
@@ -56,9 +124,54 @@ const Post = ({ post }) => {
         >
           {post.markdown}
         </ReactMarkdown>
-        <div className={styles['info']}>
-          <div className={styles['author']}>By: {post.user?.name}</div>
-          <div className={styles['time']}>Posted On: {date}</div>
+        <div className={styles['extras']}>
+          <div className={styles['info']}>
+            <div className={styles['author']}>
+              By: <span>{post.user?.name}</span>
+            </div>
+            <div className={styles['time']}>
+              Posted On: <span>{date}</span>
+            </div>
+          </div>
+          {post.user && post.user._id == userInfo._id && (
+            <div className={styles['btn-group']}>
+              <Link passHref href={`/posts/${post._id}/edit`}>
+                <button type='button' className={styles['btn']}>
+                  Edit
+                </button>
+              </Link>
+              <button
+                type='button'
+                onClick={handleDeleteBtn}
+                className={styles['btn']}
+              >
+                Delete
+              </button>
+              <Modal modal={showConfirm}>
+                <div className={styles['alert']}>
+                  Are you sure you want to delete?
+                </div>
+                <div
+                  className={`${styles['btn-group']} ${styles['btn-group-confirm']}`}
+                >
+                  <button
+                    onClick={handleDeleteCancel}
+                    type='button'
+                    className={styles['btn']}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleDelete}
+                    type='button'
+                    className={styles['btn']}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </Modal>
+            </div>
+          )}
         </div>
       </main>
     </div>

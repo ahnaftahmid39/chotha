@@ -9,7 +9,16 @@ export default async function handle(req, res) {
     case 'GET': {
       try {
         await dbConnect();
-        authorize(req, res);
+        let error = authorize(req, res);
+        if (error.status != 200) {
+          return res
+            .status(error.status)
+            .json({
+              status: error.status,
+              message: error.message,
+              error: new Error(error.message),
+            });
+        }
         const userRecord = await User.findById(req.user._id);
         const posts = await Post.find({ user: req.user._id })
           .lean()
@@ -26,7 +35,16 @@ export default async function handle(req, res) {
     case 'POST': {
       try {
         await dbConnect();
-        authorize(req, res);
+        let error = authorize(req, res);
+        if (error.status != 200) {
+          return res
+            .status(error.status)
+            .json({
+              status: error.status,
+              message: error.message,
+              error: new Error(error.message),
+            });
+        }
         const update = _.pick(req.body, [
           'name',
           'bio',
