@@ -53,6 +53,15 @@
   margin-left: 0.5rem;
 }
 
+.author {
+  pointer-events: auto;
+}
+
+.author:hover,
+.author:active {
+  text-decoration: underline;
+}
+
 .readmore {
   background-color: inherit;
   font-size: small;

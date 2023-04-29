@@ -181,6 +181,7 @@
 .all-posts-title {
   font-weight: bold;
   font-size: 20px;
+  padding-inline-start: 1rem;
 }
 
 .post {

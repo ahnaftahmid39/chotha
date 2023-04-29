@@ -148,6 +148,12 @@ a {
   box-sizing: border-box;
 }
 
+button {
+  padding: unset;
+  border: unset;
+  background: unset;
+}
+
 .container {
   min-height: 100vh;
   display: flex;

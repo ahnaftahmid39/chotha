@@ -1,7 +1,8 @@
 import { forwardRef } from 'react';
 import styles from './PostCard.module.css';
 import PencilIcon from '../../svgs/pencil_icon/PencilIcon';
-import DateIcon from '../../svgs/date_icon/DateIcon';
+import ClockIcon from '../../svgs/clock_icon/ClockIcon';
+import Link from 'next/link';
 const PostCard = forwardRef(({ post, onClick, href }, ref) => {
   const { title, user, description, createdAt } = post;
   return (
@@ -11,7 +12,7 @@ const PostCard = forwardRef(({ post, onClick, href }, ref) => {
       <div className={styles['meta']}>
         <div className={styles['time-wrapper']}>
           <div className={styles['icon']}>
-            <DateIcon />
+            <ClockIcon />
           </div>
           <div className={styles['time']}>
             {new Date(createdAt).toLocaleDateString('en-UK', {
@@ -25,7 +26,13 @@ const PostCard = forwardRef(({ post, onClick, href }, ref) => {
           <div className={styles['icon']}>
             <PencilIcon />
           </div>
-          <div className={styles['author']}>{user?.name}</div>
+          {user && (
+            <Link href={`/users/${user._id}`} passHref>
+              <a className={`${styles['author']}`} type='button'>
+                {user?.name}
+              </a>
+            </Link>
+          )}
         </div>
       </div>
       <a

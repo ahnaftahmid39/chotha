@@ -1,0 +1,4 @@
+.btn-close *{
+  stroke: var(--fo-clr);
+  stroke-width: 2;
+}

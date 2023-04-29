@@ -1,0 +1,4 @@
+.edit-icon * {
+  stroke: var(--fo-clr);
+  stroke-width: 1.2;
+}
