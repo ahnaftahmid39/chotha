@@ -1,0 +1,62 @@
+.wrapper {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  border: var(--default-border);
+  backdrop-filter: blur(16px);
+  border-radius: 16px;
+}
+
+.wrapper > * {
+  border-bottom: var(--default-border);
+}
+
+.wrapper > :last-child {
+  border-bottom: none;
+}
+
+.edit-close-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn,
+.btn-delete {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  padding-right: 2rem;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--fo-clr-light);
+}
+
+.btn-delete {
+  color: hsl(0, 53%, 57%);
+}
+
+:is(.btn, .btn-delete) span,
+.btn-close svg {
+  text-shadow: 0 0 4px var(--bg-clr);
+  transition: scale 100ms;
+}
+
+:is(.btn, .btn-delete):hover span {
+  scale: 1.1;
+}
+
+.btn-close {
+  display: flex;
+  align-items: center;
+  border: var(--default-border);
+  border-radius: 1000px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  background-color: var(--bg-clr-2);
+}

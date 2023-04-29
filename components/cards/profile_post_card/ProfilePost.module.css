@@ -8,11 +8,6 @@
   border-radius: 8px;
 }
 
-/* console.log(css) */
-/* .wrapper,
-.wrapper * {
-  outline: 1px solid orange;
-} */
 
 .title-modify-btn-wrapper {
   display: flex;
@@ -30,6 +25,19 @@
   border: none;
   padding: 0;
   cursor: pointer;
+}
+.modify-btn-modal-wrapper {
+  position: relative;
+}
+.modal-modify {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  display: none;
+}
+.modal-modify[aria-hidden='false'] {
+  display: block;
 }
 
 .date-view-wrapper {

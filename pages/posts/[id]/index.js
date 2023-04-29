@@ -20,6 +20,7 @@ import { useRouter } from 'next/router';
 import Toast from '../../../components/toast/Toast';
 import ls from '../../../lib/ls';
 import Modal from '../../../components/modals/modal/Modal';
+import DeleteAlertModal from '../../../components/modals/delete_alert_modal/DeleteAlertModal';
 
 const Post = ({ post }) => {
   // following was added to prevent the hydration error
@@ -29,7 +30,7 @@ const Post = ({ post }) => {
   const [date, setDate] = useState();
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     if (error != '') {
@@ -59,15 +60,15 @@ const Post = ({ post }) => {
   }, [post]);
 
   const handleDeleteBtn = () => {
-    setShowConfirm(true);
+    setShowAlert(true);
   };
 
   const handleDeleteCancel = () => {
-    setShowConfirm(false);
+    setShowAlert(false);
   };
 
   const handleDelete = async () => {
-    setShowConfirm(false);
+    setShowAlert(false);
     try {
       const res = await fetch('/api/post/' + post._id, {
         method: 'DELETE',
@@ -106,10 +107,18 @@ const Post = ({ post }) => {
           <span className={styles['title']}>{post.title}</span>
         </div>
 
-        <Toast show={error != ''} handleClose={() => setError('')}>
+        <Toast
+          offsetY='2rem'
+          show={error != ''}
+          handleClose={() => setError('')}
+        >
           <div>{error}</div>
         </Toast>
-        <Toast show={success != ''} handleClose={() => setSuccess('')}>
+        <Toast
+          offsetY='2rem'
+          show={success != ''}
+          handleClose={() => setSuccess('')}
+        >
           <div>{success}</div>
         </Toast>
 
@@ -147,29 +156,11 @@ const Post = ({ post }) => {
               >
                 Delete
               </button>
-              <Modal modal={showConfirm}>
-                <div className={styles['alert']}>
-                  Are you sure you want to delete?
-                </div>
-                <div
-                  className={`${styles['btn-group']} ${styles['btn-group-confirm']}`}
-                >
-                  <button
-                    onClick={handleDeleteCancel}
-                    type='button'
-                    className={styles['btn']}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={handleDelete}
-                    type='button'
-                    className={styles['btn']}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </Modal>
+              <DeleteAlertModal
+                show={showAlert}
+                handleDelete={handleDelete}
+                handleDeleteCancel={handleDeleteCancel}
+              />
             </div>
           )}
         </div>

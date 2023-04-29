@@ -1,26 +1,27 @@
 .wrapper {
+  --offsetY: 20%;
   width: 250px;
   min-height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* backdrop-filter: blur(12px); */
   border-radius: 8px;
-  background: var(--card-bg);
+  background: var(--bg-clr-2);
   border: var(--default-border);
   position: fixed;
+  z-index: 11;
   left: 50%;
   translate: -50% 0%;
-  top: 20%;
-  animation: position-animate 600ms ease-out;
+  top: var(--offsetY);
+  animation: position-animate 200ms ease-out;
 }
 
 @keyframes position-animate {
   0% {
     top: 0;
-  } 
+  }
   100% {
-    top: 20%;
+    top: var(--offsetY);
   }
 }
 

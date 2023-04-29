@@ -1,0 +1,37 @@
+.alert {
+  font-size: large;
+  padding: 1rem;
+  text-align: center;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  gap: 1rem;
+  margin-right: auto;
+}
+
+.btn {
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--fo-clr-light);
+  background-color: var(--bg-clr-light);
+  border: var(--default-border);
+  padding: 0.5rem 1rem;
+}
+
+.btn:hover {
+  background-color: var(--btn-bg-clr);
+}
+.btn:active {
+  transform: translateY(4px);
+}
+
+@media (min-width: 600px) {
+  .btn-group {
+    margin-right: 0;
+  }
+}

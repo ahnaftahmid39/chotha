@@ -18,6 +18,8 @@ export default function Home() {
             {' '}
             Chotha{' '}
           </a>
+          <br />
+          <br />
           <div>
             <strong>Technologies Used:</strong>
             <ul className={styles['lists']}>

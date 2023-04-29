@@ -9,7 +9,7 @@
     ),
     #f2f7ff;
   --bg-clr-light: hsl(var(--hue), 55%, 90%);
-  --bg-clr-2: hsl(0, 0%, 93%);
+  --bg-clr-2: hsl(var(--hue), 50%, 90%);
 
   /* forground color */
   --fo-clr: hsla(var(--hue), 75%, 20%, 1);
@@ -74,6 +74,8 @@
     ),
     hsl(223, 9%, 15%);
   --bg-clr-light: hsl(var(--hue), 11%, 19%);
+  --bg-clr-2: hsl(var(--hue), 10%, 25%);
+
 
   --fo-clr: hsl(var(--hue), 41%, 90%);
   --fo-clr-2: hsl(var(--hue), 70%, 93%);

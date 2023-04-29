@@ -184,14 +184,7 @@ export default function Profile() {
               <div className={styles['all-posts-title']}>All Posts</div>
               {posts?.length > 0 ? (
                 posts.map((post, idx) => {
-                  return (
-                    // <div className={styles['post']} key={post._id}>
-                      // <Link key={post._id} passHref href={`/posts/${post._id}`}>
-                      //   <a href={`/posts/${post._id}`}>{post.title}</a>
-                      // </Link>
-                    // </div>
-                    <ProfilePostCard key={idx} post={post} />
-                  );
+                  return <ProfilePostCard key={idx} post={post} />;
                 })
               ) : (
                 <div>You have no post yet</div>
