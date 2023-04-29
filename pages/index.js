@@ -27,16 +27,16 @@ const Home = () => {
             <TypeAnimation
               wrapper='div'
               cursor={false}
-              deletionSpeed={99}
-              repeat={2}
+              omitDeletionAnimation={true}
+              speed={60}
               className={styles['brand-slogan']}
               sequence={[
-                'Teach and Learn',
-                2000,
+                'Learn from others',
+                3000,
+                'Share your notes',
+                3000,
                 'Help Others',
-                2000,
-                'Help yourself',
-                2000,
+                3000,
                 'Teach and Learn',
               ]}
             />
