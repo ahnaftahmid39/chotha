@@ -74,6 +74,7 @@ const AddImageBtn = ({ addImgLink, hasTitle = true }) => {
   return (
     <>
       <div
+        title='Add Image'
         className={`${styles['svg-icon-parent']} `}
         onClick={() => {
           setImgModal(true);

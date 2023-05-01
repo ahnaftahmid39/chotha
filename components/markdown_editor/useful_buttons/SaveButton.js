@@ -1,4 +1,5 @@
-import { useRef, useState, useEffect, memo } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
+
 import Modal from '../../modals/modal/Modal';
 import styles from './UsefulButtons.module.css';
 
@@ -23,7 +24,7 @@ const SaveIcon = memo(() => {
 
 SaveIcon.displayName = 'SaveIcon';
 
-const AddDataButton = ({ addData, post }) => {
+const SaveButton = ({ addData, post, ...props }) => {
   const [data, setData] = useState({
     title: post?.title || '',
     description: post?.description || '',
@@ -46,6 +47,7 @@ const AddDataButton = ({ addData, post }) => {
       <div
         onClick={() => setDataModal(true)}
         className={`${styles['svg-icon-parent']}`}
+        {...props}
       >
         <SaveIcon />
       </div>
@@ -92,4 +94,4 @@ const AddDataButton = ({ addData, post }) => {
   );
 };
 
-export default AddDataButton;
+export default SaveButton;

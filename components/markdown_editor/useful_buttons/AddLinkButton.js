@@ -1,4 +1,5 @@
-import { useRef, useState, useEffect, memo } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
+
 import Modal from '../../modals/modal/Modal';
 import styles from './UsefulButtons.module.css';
 
@@ -19,7 +20,7 @@ const LinkIcon = memo(() => {
 
 LinkIcon.displayName = 'LinkIcon';
 
-const AddLinkButton = ({ addLink }) => {
+const AddLinkButton = ({ addLink, ...props }) => {
   const [link, setLink] = useState({ title: '', url: '' });
   const [linkModal, setLinkModal] = useState(false);
   const inputRef = useRef();
@@ -42,6 +43,7 @@ const AddLinkButton = ({ addLink }) => {
       <div
         onClick={() => setLinkModal(true)}
         className={`${styles['svg-icon-parent']}`}
+        {...props}
       >
         <LinkIcon />
       </div>

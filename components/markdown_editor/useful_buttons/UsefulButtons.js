@@ -1,5 +1,6 @@
 import { memo, useRef, useState } from 'react';
-import AddDataButton from './AddDataButton';
+
+import SaveButton from './SaveButton';
 import AddImageBtn from './AddImageButton';
 import AddLinkButton from './AddLinkButton';
 import styles from './UsefulButtons.module.css';
@@ -60,6 +61,7 @@ const UsefulButtons = ({
     <div className={`${styles['useful-buttons']} custom-scroll`}>
       <AddImageBtn addImgLink={addImgLink} />
       <div
+        title='No horizonal scroll. Breaks long line into new lines instead of scrolling. (No effect on the markdown views)'
         onClick={() => {
           toggleWrap(wrap);
           setWrap(!wrap);
@@ -68,7 +70,11 @@ const UsefulButtons = ({
       >
         <WrapIcon />
       </div>
-      <div onClick={bolden} className={`${styles['svg-icon-parent']}`}>
+      <div
+        title='Bold selected text'
+        onClick={bolden}
+        className={`${styles['svg-icon-parent']}`}
+      >
         <span
           style={{
             fontFamily: 'monospace',
@@ -79,7 +85,11 @@ const UsefulButtons = ({
           B
         </span>
       </div>
-      <div onClick={italicen} className={`${styles['svg-icon-parent']}`}>
+      <div
+        title='Italicize selected text'
+        onClick={italicen}
+        className={`${styles['svg-icon-parent']}`}
+      >
         <span
           style={{
             fontFamily: 'monospace',
@@ -90,10 +100,15 @@ const UsefulButtons = ({
           I
         </span>
       </div>
-      <div onClick={addNewLine} className={`${styles['svg-icon-parent']}`}>
+      <div
+        title='Forcefully add new line (by adding double space before newline)'
+        onClick={addNewLine}
+        className={`${styles['svg-icon-parent']}`}
+      >
         <AddNewLineIcon />
       </div>
       <label
+        title='Heading 1'
         onClick={() => addHeading('h1')}
         className={`${styles['svg-icon-parent']}`}
       >
@@ -107,6 +122,7 @@ const UsefulButtons = ({
         </span>
       </label>
       <label
+        title='Heading 2'
         onClick={() => addHeading('h2')}
         className={`${styles['svg-icon-parent']}`}
       >
@@ -120,6 +136,7 @@ const UsefulButtons = ({
         </span>
       </label>
       <label
+        title='Heading 3'
         onClick={() => addHeading('h3')}
         className={`${styles['svg-icon-parent']}`}
       >
@@ -132,8 +149,8 @@ const UsefulButtons = ({
           H3
         </span>
       </label>
-      <AddLinkButton addLink={addLink} />
-      <AddDataButton addData={addData} post={post} />
+      <AddLinkButton title='Add a url' addLink={addLink} />
+      <SaveButton title='Publish your chotha' addData={addData} post={post} />
     </div>
   );
 };
