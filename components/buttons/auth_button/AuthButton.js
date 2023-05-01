@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useContext } from 'react';
+
 import { UserContext } from '../../../providers/UserProvider';
 import styles from './AuthButton.module.css';
 
@@ -8,8 +9,12 @@ const AuthButton = ({ className, ...props }) => {
 
   const { userInfo } = useContext(UserContext);
   if (Object.keys(userInfo).length > 0) {
-    btnInfo.link = '/profile';
-    btnInfo.btnName = userInfo.name.split(' ')[0];
+    let link = '/profile';
+    let btnName = userInfo.name.split(' ')[0];
+    if (btnName.length > 15) {
+      btnName = btnName.substring(0, 12) + '..';
+    }
+    btnInfo = { link, btnName };
   } else {
     btnInfo = { link: '/auth', btnName: 'Login' };
   }

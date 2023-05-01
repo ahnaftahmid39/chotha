@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import Modal from '../../modals/modal/Modal';
+
 import styles from '../../markdown_editor/useful_buttons/UsefulButtons.module.css';
+import Modal from '../../modals/modal/Modal';
 
 const AddImageModal = ({
   handleImage,
@@ -80,17 +81,17 @@ const AddImageModal = ({
             <span>{!imgData.data ? 'Choose File...' : imgData.data.name}</span>
             <span className={styles['file-input-browse']}>Browse</span>
           </label>
-          <span style={{ display: 'grid', placeItems: 'center' }}>
-            {imgData.data && (
-              // eslint-disable-next-line @next/next/no-img-element
+          {imgData.data && (
+            <span style={{ display: 'grid', placeItems: 'center' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 style={{ maxHeight: '50vh', maxWidth: '100%' }}
                 src={URL.createObjectURL(imgData.data)}
                 alt=''
               />
-            )}
-          </span>
-          <span>{linkStatus}</span>
+            </span>
+          )}
+          {linkStatus && <span>{linkStatus}</span>}
           <div className={styles['modal-btn-group']}>
             <button
               onClick={handleGetImageLink}

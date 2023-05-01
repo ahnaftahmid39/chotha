@@ -1,14 +1,14 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
-import Link from 'next/link';
 
-import { UserContext } from '../../providers/UserProvider';
-import ls from '../../lib/ls';
-import styles from '../../styles/Profile.module.css';
-import ProfilePlaceholder from '../../components/svgs/ProfilePlaceholder';
-import AddImageModal from '../../components/modals/add_image_modal/AddImageModal';
 import ProfilePostCard from '../../components/cards/profile_post_card/ProfilePostCard';
+import AddImageModal from '../../components/modals/add_image_modal/AddImageModal';
+import ProfilePlaceholder from '../../components/svgs/ProfilePlaceholder';
+import ls from '../../lib/ls';
+import { UserContext } from '../../providers/UserProvider';
+import styles from '../../styles/Profile.module.css';
 
 export default function Profile() {
   const router = useRouter();
@@ -26,7 +26,10 @@ export default function Profile() {
         try {
           const res = await fetch('/api/profile', {
             method: 'GET',
-            headers: { Authorization: `Bearer ${ls.getToken()}` },
+            headers: {
+              Authorization: `Bearer ${ls.getToken()}`,
+              fetchposts: true,
+            },
           });
           const data = await res.json();
           if (shouldUpdate) {
@@ -52,7 +55,6 @@ export default function Profile() {
     setUserInfo({});
     router.replace('/auth');
   };
-  const handleEditButton = () => {};
 
   const handleUpdateProfilePhoto = () => {
     setProfilePhotoUploadModalShow(true);
@@ -140,37 +142,29 @@ export default function Profile() {
                     {user.socials && (
                       <>
                         <div className={styles['social']}>Socials</div>
-                        {user.socials.facebook && (
-                          <div>
-                            <div className={styles['social-title']}>
-                              Facebook
-                            </div>
-                            <a className='anchor' href={user.socials.facebook}>
-                              {user.socials.facebook}
-                            </a>
-                          </div>
-                        )}
-                        {user.socials.twitter && (
-                          <div>
-                            <div className={styles['social-title']}>
-                              Twitter
-                            </div>
-                            <div
-                              className={styles['social-twt']}
-                            >{`twitter: ${user.socials?.twitter}`}</div>
-                          </div>
+                        {Object.entries(user.socials).map(
+                          ([site, link], idx) => {
+                            return (
+                              <div key={site} className={styles['social-link']}>
+                                <div className={styles['social-title']}>
+                                  {site}
+                                </div>
+                                <a className='anchor' href={link}>
+                                  {link}
+                                </a>
+                              </div>
+                            );
+                          }
                         )}
                       </>
                     )}
                   </>
                 )}
-                <button
-                  type='button'
-                  className={styles['btn-edit-profile']}
-                  onClick={handleEditButton}
-                >
-                  <span>Edit Profile</span>
-                </button>
+                <Link href={`/profile/edit`} passHref>
+                  <a className={styles['btn-edit-profile']}>
+                    <span>Edit Profile</span>
+                  </a>
+                </Link>
                 <button
                   type='button'
                   className={styles['btn-logout']}

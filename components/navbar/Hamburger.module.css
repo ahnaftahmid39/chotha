@@ -85,9 +85,7 @@
 }
 
 .menu-items a[aria-selected='true'] {
-  color: var(--nav-fo-clr-active);
-  pointer-events: none;
-
+  display: none;
 }
 
 .menu-items a:last-of-type {

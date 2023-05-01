@@ -1,16 +1,13 @@
 import jwtDecode from 'jwt-decode';
-import { useTheme } from 'next-themes';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
+import BrandIcon from '../../components/brand_icon/BrandIcon';
+import ls from '../../lib/ls';
 import { UserContext } from '../../providers/UserProvider';
 import styles from '../../styles/Auth.module.css';
-import ChothaBrand from '../../components/svgs/ChothaBrand';
-import ChothaBrandDark from '../../components/svgs/ChothaBrandDark';
-import ls from '../../lib/ls';
-import BrandIcon from '../../components/brand_icon/BrandIcon';
 
 const Authentication = ({ ...props }) => {
   const [name, setName] = useState('');
@@ -23,7 +20,6 @@ const Authentication = ({ ...props }) => {
   const [successMsg, setSuccessMsg] = useState('');
 
   const { setUserInfo } = useContext(UserContext);
-  const { theme, systemTheme } = useTheme();
   const passref = useRef();
   const confirmpassref = useRef();
   const nameref = useRef();

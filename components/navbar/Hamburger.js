@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import styles from './Hamburger.module.css';
+
 import AuthButton from '../buttons/auth_button/AuthButton';
+import styles from './Hamburger.module.css';
 
 const Hamburger = ({ links = [] }) => {
   const [show, setShow] = useState(false);
@@ -21,8 +22,12 @@ const Hamburger = ({ links = [] }) => {
         onClick={handleMenuToggle}
         className={`${styles['menu-items']}`}
       >
-        <AuthButton />
-        {links}
+        {show && (
+          <>
+            <AuthButton />
+            {links}
+          </>
+        )}
       </div>
     </div>
   );

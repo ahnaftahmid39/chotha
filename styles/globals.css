@@ -64,6 +64,10 @@
 
   --border-color: hsla(var(--hue), 55%, 30%, 0.2);
   --default-border: 1px solid var(--border-color);
+
+  --danger: hsl(0, 39%, 55%);
+  --success: hsl(110, 36%, 38%);
+  --warning: hsl(52, 46%, 36%);
 }
 
 [data-theme='dark'] {
@@ -117,6 +121,10 @@
   --border-color: hsla(var(--hue), 55%, 80%, 0.2);
 
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
+
+  --success: hsl(120, 36%, 53%);
+  --danger: hsl(0, 66%, 64%);
+  --warning: hsl(60, 46%, 58%);
 }
 
 html,
@@ -127,7 +135,6 @@ body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
-  /* user-select: none; */
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }

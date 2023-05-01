@@ -30,6 +30,8 @@
 - [ ] Component
 - [ ] Editing existing chotha
 - [ ] Keyboard Navigation, Shortcuts
+- [ ] Resize image in the client
+- [ ] Patterns for social links
 
 ### Backend
 
@@ -42,6 +44,9 @@
 
 ### Open issues
 
+- [ ] image input file type checking, in front and backend both. I can give any type of file accept attribute not enough
+- [ ] image file size restriction both in front and backend
+- [ ] single backtick \`chunk\` = `chunk` should be styled
 - [ ] Bug inside `<code>`: copying with extra line
 - [ ] Confirmation page sometimes acts weird
 

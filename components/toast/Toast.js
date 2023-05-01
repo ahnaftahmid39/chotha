@@ -1,19 +1,28 @@
-import { useEffect, useState } from 'react';
 import styles from './Toast.module.css';
+
+export const ToastTypes = {
+  INFO: 'info',
+  SUCCESS: 'success',
+  WARNING: 'warning',
+  ERROR: 'error',
+};
 
 const Toast = ({
   children,
-  offsetY = '20%',
-  handleClose,
+  type = 'info' | 'success' | 'error',
+  offsetY = '3rem',
+  handleClose = () => {},
   show,
   classname,
+  style,
   ...props
 }) => {
   return (
     show && (
       <div
         onClick={handleClose}
-        style={{ '--offsetY': offsetY }}
+        aria-label={type}
+        style={{ '--offsetY': offsetY, ...style }}
         className={`${styles['wrapper']} ${classname}`}
         {...props}
       >

@@ -4,6 +4,7 @@ import formHandle from '../../../lib/middlewares/form_data';
 
 export default async function handle(req, res) {
   switch (req.method) {
+    // TODO: authorize
     case 'POST':
       const imagekit = new ImageKit({
         privateKey: process.env.IMAGEKIT_PRIVATE_KEY,

@@ -1,8 +1,9 @@
+import _ from 'lodash';
+
 import { authorize } from '../../../lib/middlewares/authorize';
 import dbConnect from '../../../lib/middlewares/mongoose';
-import { User } from '../../../lib/models/user';
 import { Post } from '../../../lib/models/post';
-import _ from 'lodash';
+import { User, validate } from '../../../lib/models/user';
 
 export default async function handle(req, res) {
   switch (req.method) {
@@ -11,22 +12,24 @@ export default async function handle(req, res) {
         await dbConnect();
         let error = authorize(req, res);
         if (error.status != 200) {
-          return res
-            .status(error.status)
-            .json({
-              status: error.status,
-              message: error.message,
-              error: new Error(error.message),
-            });
+          return res.status(error.status).json({
+            status: error.status,
+            message: error.message,
+            error: new Error(error.message),
+          });
         }
         const userRecord = await User.findById(req.user._id);
-        const posts = await Post.find({ user: req.user._id })
-          .lean()
-          .select('-markdown')
-          .sort({ createdAt: '-1' });
-        return res
-          .status(200)
-          .json({ message: 'success', user: userRecord, posts });
+        if (req.headers['fetchposts'] == 'true') {
+          const posts = await Post.find({ user: req.user._id })
+            .lean()
+            .select('-markdown')
+            .sort({ createdAt: '-1' });
+          return res
+            .status(200)
+            .json({ message: 'success', user: userRecord, posts });
+        } else {
+          return res.status(200).json({ message: 'success', user: userRecord });
+        }
       } catch (e) {
         return res.status(200).json({ message: 'failed', error: e.message });
       }
@@ -35,15 +38,13 @@ export default async function handle(req, res) {
     case 'POST': {
       try {
         await dbConnect();
-        let error = authorize(req, res);
-        if (error.status != 200) {
-          return res
-            .status(error.status)
-            .json({
-              status: error.status,
-              message: error.message,
-              error: new Error(error.message),
-            });
+        let authResult = authorize(req, res);
+        if (authResult.status != 200) {
+          return res.status(authResult.status).json({
+            status: authResult.status,
+            message: authResult.message,
+            error: authResult.error || new Error(authResult.message),
+          });
         }
         const update = _.pick(req.body, [
           'name',
@@ -57,7 +58,7 @@ export default async function handle(req, res) {
         }).select({ password: 0 });
         return res.status(200).json({ message: 'success', user: updatedUser });
       } catch (e) {
-        return res.status(400).json({ message: 'failed', error: e.message });
+        return res.status(400).json({ message: 'failed', error: e });
       }
     }
 

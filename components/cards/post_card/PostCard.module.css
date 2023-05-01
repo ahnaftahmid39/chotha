@@ -79,4 +79,5 @@
 .readmore:active {
   background-color: var(--fo-clr);
   color: var(--bg-clr-light);
+  font-weight: bold;
 }

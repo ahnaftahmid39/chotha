@@ -5,6 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
+  cursor: pointer;
   border-radius: 8px;
   background: var(--bg-clr-2);
   border: var(--default-border);
@@ -14,6 +16,23 @@
   translate: -50% 0%;
   top: var(--offsetY);
   animation: position-animate 200ms ease-out;
+}
+
+.wrapper[aria-label='success'] {
+  color: var(--success);
+  border: 1px solid var(--success)
+}
+
+.wrapper[aria-label='warning'] {
+  color: var(--warning);
+  border: 1px solid var(--warning)
+
+}
+
+.wrapper[aria-label='error'] {
+  color: var(--danger);
+  border: 1px solid var(--danger)
+
 }
 
 @keyframes position-animate {
