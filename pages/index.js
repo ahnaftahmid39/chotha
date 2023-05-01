@@ -1,11 +1,17 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import BrandIcon from '../components/brand_icon/BrandIcon';
-import { TypeAnimation } from 'react-type-animation';
-import Image from 'next/image';
 import { useTheme } from 'next-themes';
+import Head from 'next/head';
+import Image from 'next/image';
+import { useRef } from 'react';
+import { TypeAnimation } from 'react-type-animation';
+
+import styles from '../styles/Home.module.css';
+
+const repeatCount = 2;
+
 const Home = () => {
   const { theme } = useTheme();
+  const counter = useRef(0);
+
   let srcLogo = '/images/logo-light.png';
   if (theme == 'dark') srcLogo = '/images/logo-dark.png';
   return (
@@ -27,9 +33,9 @@ const Home = () => {
             <TypeAnimation
               wrapper='div'
               cursor={false}
-              omitDeletionAnimation={true}
               speed={60}
-              className={styles['brand-slogan']}
+              repeat={repeatCount}
+              className={`${styles['brand-slogan']} ${styles['custom-type-animation-cursor']}`}
               sequence={[
                 'Learn from others',
                 3000,
@@ -38,6 +44,14 @@ const Home = () => {
                 'Help Others',
                 3000,
                 'Teach and Learn',
+                3000,
+                (el) => {
+                  if (counter.current == repeatCount) {
+                    el.classList.remove(styles['custom-type-animation-cursor']);
+                  } else {
+                    counter.current++;
+                  }
+                },
               ]}
             />
           </div>

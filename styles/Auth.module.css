@@ -69,9 +69,12 @@
   font-size: 1rem;
   min-width: 20vw;
   width: 100%;
-  background-color: transparent;
-  outline: none;
+  outline: transparent;
   color: var(--fo-clr);
+  background: transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
 }
 .btn-visibility {
   margin-left: 0.5rem;
