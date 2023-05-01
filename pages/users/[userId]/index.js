@@ -109,9 +109,9 @@ export default function UserProfile() {
             <div className={profileStyles['all-posts']}>
               <div className={profileStyles['all-posts-title']}>All Posts</div>
               {posts?.length > 0 ? (
-                posts.map((post) => {
+                posts.map((post, idx) => {
                   return (
-                    <div className={styles['wrapper']}>
+                    <div key={idx} className={styles['wrapper']}>
                       <div className={styles['title']}>{post.title}</div>
                       <div className={styles['description']}>
                         {post.description}
