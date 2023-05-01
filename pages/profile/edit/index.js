@@ -1,15 +1,21 @@
+import jwtDecode from 'jwt-decode';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
+import Loading from '../../../components/loading_indicator/Loading';
 import Toast, { ToastTypes } from '../../../components/toast/Toast';
 import ls from '../../../lib/ls';
+import { UserContext } from '../../../providers/UserProvider';
 import styles from '../../../styles/ProfileEdit.module.css';
 
 const social_media_list = ['facebook', 'twitter', 'youtube', 'linkedin'];
 
 const ProfileEdit = () => {
   const router = useRouter();
+  const { userInfo, setUserInfo } = useContext(UserContext);
+
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');
   const [socials, setSocials] = useState({
@@ -31,6 +37,8 @@ const ProfileEdit = () => {
     ttl: 3000,
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleToastClose = () =>
     setToast({
       type: ToastTypes.INFO,
@@ -51,6 +59,7 @@ const ProfileEdit = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const token = ls.getToken();
     try {
       console.log({ name, bio, socials, newPass, confirmPass, currentPass });
@@ -87,8 +96,8 @@ const ProfileEdit = () => {
       data = await res.json();
       console.log('Response: ', data);
 
+      if (!data.match) throw Error('Given current password is wrong');
       if (!res.ok) throw Error(data.message);
-      if (!data.match) throw Error('Wrong current password given');
 
       // send POST request for image link generation
       let imageURL = '';
@@ -133,6 +142,9 @@ const ProfileEdit = () => {
 
       if (!res.ok) throw Error(data.error);
 
+      setUserInfo({ ...userInfo, token: data.token, ...jwtDecode(data.token) });
+      ls.setToken(data.token);
+
       setToast({
         ...toast,
         show: true,
@@ -142,6 +154,10 @@ const ProfileEdit = () => {
       });
 
       console.log('Response: ', data);
+      setTimeout(() => {
+        setIsLoading(false);
+        router.push('/profile');
+      }, toast.ttl || 3000);
 
       // show success/error
     } catch (err) {
@@ -150,8 +166,9 @@ const ProfileEdit = () => {
         ...toast,
         show: true,
         type: ToastTypes.ERROR,
-        message: e.message,
+        message: err.message,
       });
+      setIsLoading(false);
     }
   };
 
@@ -203,110 +220,125 @@ const ProfileEdit = () => {
       <Toast type={toast.type} show={toast.show} handleClose={handleToastClose}>
         <span>{toast.message}</span>
       </Toast>
-      <div className={styles['photo']}>
-        <label htmlFor='photo'>Photo</label>
-        <button className={styles['btn-photo']}>
-          <input
-            id='photo'
-            type='file'
-            onChange={(e) => {
-              setImgData(e.target.files[0]);
-              e.target.value = '';
-            }}
-            accept='image/png, image/jpeg, image/jpg, image/gif'
-          />
-        </button>
-        {imgData && (
-          <span style={{ display: 'grid', placeItems: 'center' }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              style={{
-                maxWidth: '300px',
-                maxHeight: '300px',
-                aspectRatio: '1 / 1',
-                borderRadius: '1000px',
+      <div className={styles['form-elements']}>
+        <div className={styles['photo']}>
+          <span className={styles['photo-title']}>Profile picture</span>
+          <label htmlFor='photo'>
+            <span>{!imgData ? 'Choose photo...' : imgData.name}</span>
+            <span className={styles['file-input-browse']}>Browse</span>
+            <input
+              disabled={isLoading}
+              id='photo'
+              type='file'
+              onChange={(e) => {
+                setImgData(e.target.files[0]);
+                e.target.value = '';
               }}
-              src={URL.createObjectURL(imgData)}
-              alt='profile picture'
+              accept='image/png, image/jpeg, image/jpg, image/gif'
             />
-          </span>
-        )}
-      </div>
-      <div className={styles['name']}>
-        <label htmlFor='name'>Name</label>
-        <input
-          type='text'
-          value={name}
-          id='name'
-          maxLength={100}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div className={styles['bio']}>
-        <label htmlFor='bio'>Bio</label>
-        <textarea
-          type='text'
-          maxLength={300}
-          value={bio}
-          id='bio'
-          onChange={(e) => setBio(e.target.value)}
-        />
-      </div>
-      <div className={styles['social-group']}>
-        {social_media_list.map((website_name) => {
-          return (
-            <div className={styles['social']} key={website_name}>
-              <label htmlFor={website_name}>{website_name}</label>
-              <input
-                type='url'
-                name={website_name}
-                value={socials[website_name] || ''}
-                id={website_name}
-                autoComplete={'new-password'}
-                onChange={(e) => {
-                  setSocials({ ...socials, [e.target.name]: e.target.value });
-                }}
+          </label>
+
+          {imgData && (
+            <div className={styles['image-wrapper']}>
+              <Image
+                width={'300px'}
+                height={'300px'}
+                src={URL.createObjectURL(imgData)}
+                alt='profile picture'
               />
             </div>
-          );
-        })}
-      </div>
-      <div className={styles['password']}>
-        <label htmlFor='new-password'>New Password</label>
-        <input
-          type='password'
-          value={newPass}
-          autoComplete={'new-password'}
-          id='new-password'
-          onChange={(e) => setNewPass(e.target.value)}
-        />
+          )}
+        </div>
+        <div className={styles['name']}>
+          <label htmlFor='name'>Name</label>
+          <input
+            disabled={isLoading}
+            type='text'
+            value={name}
+            id='name'
+            maxLength={100}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className={styles['bio']}>
+          <label htmlFor='bio'>Bio</label>
+          <textarea
+            disabled={isLoading}
+            type='text'
+            maxLength={300}
+            value={bio}
+            id='bio'
+            onChange={(e) => setBio(e.target.value)}
+          />
+        </div>
+        <div className={styles['social-group']}>
+          <label>Socials</label>
+          {social_media_list.map((website_name) => {
+            return (
+              <div className={styles['social']} key={website_name}>
+                <label htmlFor={website_name}>{website_name}</label>
+                <input
+                  disabled={isLoading}
+                  type='url'
+                  name={website_name}
+                  value={socials[website_name] || ''}
+                  id={website_name}
+                  autoComplete={'new-password'}
+                  onChange={(e) => {
+                    setSocials({ ...socials, [e.target.name]: e.target.value });
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
+        <div className={styles['password']}>
+          <label htmlFor='new-password'>New Password</label>
+          <input
+            disabled={true}
+            type='password'
+            value={newPass}
+            autoComplete={'new-password'}
+            id='new-password'
+            title='Password should be at least 6 characters long'
+            pattern='^.{6,}$'
+            onChange={(e) => setNewPass(e.target.value)}
+          />
 
-        <label htmlFor='confirm-pass'>Confirm Password</label>
-        <input
-          type='password'
-          value={confirmPass}
-          autoComplete={'new-password'}
-          id='confirm-pass'
-          onChange={(e) => setConfirmPass(e.target.value)}
-        />
-      </div>
+          <label htmlFor='confirm-pass'>Confirm Password</label>
+          <input
+            disabled={isLoading}
+            type='password'
+            value={confirmPass}
+            autoComplete={'new-password'}
+            id='confirm-pass'
+            title='Password should be at least 6 characters long'
+            pattern='^\S{6,}$'
+            onChange={(e) => setConfirmPass(e.target.value)}
+          />
+        </div>
 
-      {/* Should this section be in modal? onSubmit give current password? */}
-      <div className={styles['current-password']}>
-        <label htmlFor='current-pass'>Current Password</label>
-        <input
-          type='password'
-          required
-          value={currentPass}
-          id='current-pass'
-          onChange={(e) => setCurrentPass(e.target.value)}
-        />
-      </div>
-      <div className={styles['actions']}>
-        <button type='submit'>Submit</button>
-        <Link href={'/profile'} passHref>
-          <button type='button'>Cancel</button>
-        </Link>
+        {/* Should this section be in modal? onSubmit give current password? */}
+        <div className={styles['current-password']}>
+          <label htmlFor='current-pass'>
+            Current Password <span>(required)</span>
+          </label>
+          <input
+            disabled={isLoading}
+            type='password'
+            required
+            value={currentPass}
+            id='current-pass'
+            onChange={(e) => setCurrentPass(e.target.value)}
+          />
+        </div>
+        <Loading className={styles['loading']} />
+        <div className={styles['actions']}>
+          <button type='submit'>Submit</button>
+          <Link href={'/profile'} passHref>
+            <button type='button'>Cancel</button>
+          </Link>
+        </div>
       </div>
     </form>
   );

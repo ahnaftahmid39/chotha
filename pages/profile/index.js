@@ -142,20 +142,25 @@ export default function Profile() {
                     {user.socials && (
                       <>
                         <div className={styles['social']}>Socials</div>
-                        {Object.entries(user.socials).map(
-                          ([site, link], idx) => {
-                            return (
-                              <div key={site} className={styles['social-link']}>
-                                <div className={styles['social-title']}>
-                                  {site}
-                                </div>
-                                <a className='anchor' href={link}>
+                        {Object.entries(user.socials).map(([site, link]) => {
+                          return (
+                            <div key={site} className={styles['social-link']}>
+                              <div className={styles['social-title']}>
+                                {site}
+                              </div>
+                              <span>
+                                <a
+                                  target='_blank'
+                                  rel='noopener noreferrer'
+                                  className='anchor'
+                                  href={link}
+                                >
                                   {link}
                                 </a>
-                              </div>
-                            );
-                          }
-                        )}
+                              </span>
+                            </div>
+                          );
+                        })}
                       </>
                     )}
                   </>

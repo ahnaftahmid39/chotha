@@ -1,0 +1,139 @@
+.wrapper {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-elements {
+  margin-bottom: 50vh;
+  min-width: 90%;
+}
+
+@media (min-width: 600px) {
+  .wrapper {
+    padding: 1rem 10%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .form-elements {
+    min-width: 50%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .wrapper {
+    padding: 1rem 20%;
+  }
+}
+
+.photo,
+.name,
+.bio,
+.social-group,
+.password,
+.current-password {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.password,
+.social-group {
+  gap: 0.5rem;
+}
+
+:is(.name, .bio, .social-group, .password, .current-password) > label,
+.photo-title {
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  margin-left: 2px;
+  font-weight: 600;
+}
+.social label {
+  margin-left: 2px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+  font-family: inherit;
+}
+
+:is(.name, .bio, .password, .current-password) > :is(input, textarea),
+.social input {
+  padding: 0.5rem 1rem;
+  border: var(--default-border);
+  background: transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--fo-clr);
+}
+
+.bio textarea {
+  min-height: 6rem;
+}
+
+.photo label {
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  border-radius: 8px;
+  border: var(--default-border);
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+.photo label span {
+  padding: 0.5rem 1rem;
+}
+
+.image-wrapper {
+  margin-top: 1rem;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.image-wrapper img {
+  aspect-ratio: 1/1;
+  border-radius: 100vw;
+  object-fit: cover;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-input-browse {
+  display: flex;
+  align-items: center;
+  background-color: var(--btn-bg-clr);
+}
+.current-password label span {
+  font-weight: normal;
+}
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.actions button {
+  border: var(--default-border);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  background-color: var(--bg-clr-light);
+}
+
+.loading {
+  padding: 1rem;
+  margin: auto;
+  margin-bottom: 2rem;
+}

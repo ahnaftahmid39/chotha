@@ -56,7 +56,10 @@ export default async function handle(req, res) {
         const updatedUser = await User.findByIdAndUpdate(req.user._id, update, {
           new: true,
         }).select({ password: 0 });
-        return res.status(200).json({ message: 'success', user: updatedUser });
+        const token = updatedUser.generateJWT();
+        return res
+          .status(200)
+          .json({ message: 'success', user: updatedUser, token });
       } catch (e) {
         return res.status(400).json({ message: 'failed', error: e });
       }

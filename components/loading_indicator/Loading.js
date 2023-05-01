@@ -1,13 +1,13 @@
 import styles from './Loading.module.css';
 
-const Loading = ({ size = 40, spinnerWidth = 3 }) => {
+const Loading = ({ size = 40, spinnerWidth = 3, className, ...props }) => {
   return (
     <div
       style={{
         height: `${size}px`,
         width: `${size}px`,
       }}
-      className={styles['spinner-container']}
+      className={`${styles['spinner-container']} ${className}`}
     >
       <div
         className={styles['spinner-background']}

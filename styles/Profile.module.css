@@ -121,21 +121,26 @@
 .bio,
 .phone-value,
 .email-value,
-.social-title + a {
+.social-title + span {
   font-size: 13px;
   color: var(--fo-clr-light);
 }
 
 .contact,
-.socials {
-  font-size: 1rem;
+.social {
+  font-size: 1.2rem;
   font-weight: 500;
   display: flex;
   gap: 1rem;
 }
+.social-title {
+  text-transform: capitalize;
+}
 .social-link a {
+  display: inline;
   width: min-content;
 }
+
 .phone,
 .email {
   font-weight: normal;
@@ -178,7 +183,7 @@
   gap: 1rem;
 }
 
-@media(min-width: 769px) {
+@media (min-width: 769px) {
   .all-posts {
     padding: 2rem;
   }
