@@ -1,13 +1,11 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
-import { UserContext } from '../../../providers/UserProvider';
-import ls from '../../../lib/ls';
-import styles from '../../../styles/Profile.module.css';
 import ProfilePlaceholder from '../../../components/svgs/ProfilePlaceholder';
-import AddImageModal from '../../../components/modals/add_image_modal/AddImageModal';
+import profileStyles from '../../../styles/Profile.module.css';
+import styles from '../../../styles/users/UserId.module.css';
 
 export default function UserProfile() {
   const router = useRouter();
@@ -40,13 +38,11 @@ export default function UserProfile() {
       <Head>
         <title>User Profile</title>
       </Head>
-      <div className={styles['profile-container']}>
+      <div className={profileStyles['profile-container']}>
         {user && (
           <>
-            <div className={styles['profile']}>
-              <div
-                className={styles['profile-photo']}
-              >
+            <div className={profileStyles['profile']}>
+              <div className={profileStyles['profile-photo']}>
                 {user?.photo ? (
                   <>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -61,28 +57,32 @@ export default function UserProfile() {
                   <ProfilePlaceholder width={`100%`} height={`100%`} />
                 )}
               </div>
-              <div className={styles['profile-description']}>
-                <div className={styles['name']}>{user?.name}</div>
-                <div className={styles['bio']}>{user?.bio}</div>
+              <div className={profileStyles['profile-description']}>
+                <div className={profileStyles['name']}>{user?.name}</div>
+                <div className={profileStyles['bio']}>{user?.bio}</div>
                 {user && (
                   <>
-                    <div className={styles['contact']}>Contact</div>
+                    <div className={profileStyles['contact']}>Contact</div>
                     {user.phone && (
                       <div>
-                        <div className={styles['phone']}>Phone</div>
-                        <div className={styles['phone-value']}>Phone</div>
+                        <div className={profileStyles['phone']}>Phone</div>
+                        <div className={profileStyles['phone-value']}>
+                          Phone
+                        </div>
                       </div>
                     )}
                     <div>
-                      <div className={styles['email']}>Email</div>
-                      <div className={styles['email-value']}>{user.email}</div>
+                      <div className={profileStyles['email']}>Email</div>
+                      <div className={profileStyles['email-value']}>
+                        {user.email}
+                      </div>
                     </div>
                     {user.socials && (
                       <>
-                        <div className={styles['socials']}>Socials</div>
+                        <div className={profileStyles['socials']}>Socials</div>
                         {user.socials.facebook && (
-                          <div className={styles['social-link']}>
-                            <div className={styles['social-title']}>
+                          <div className={profileStyles['social-link']}>
+                            <div className={profileStyles['social-title']}>
                               Facebook
                             </div>
                             <a className='anchor' href={user.socials.facebook}>
@@ -91,8 +91,8 @@ export default function UserProfile() {
                           </div>
                         )}
                         {user.socials.twitter && (
-                          <div className={styles['social-link']}>
-                            <div className={styles['social-title']}>
+                          <div className={profileStyles['social-link']}>
+                            <div className={profileStyles['social-title']}>
                               Twitter
                             </div>
                             <a className='anchor' href={user.socials.twitter}>
@@ -106,26 +106,42 @@ export default function UserProfile() {
                 )}
               </div>
             </div>
-            <div className={styles['all-posts']}>
-              <div className={styles['all-posts-title']}>All Posts</div>
+            <div className={profileStyles['all-posts']}>
+              <div className={profileStyles['all-posts-title']}>All Posts</div>
               {posts?.length > 0 ? (
                 posts.map((post) => {
                   return (
-                    <div className={styles['post']} key={post._id}>
-                      <Link
-                        key={post._id}
-                        passHref
-                        href={`${user._id}/posts/${post._id}`}
-                      >
-                        <a href={`${user._id}/posts/${post._id}`}>
-                          {post.title}
-                        </a>
-                      </Link>
+                    <div className={styles['wrapper']}>
+                      <div className={styles['title']}>{post.title}</div>
+                      <div className={styles['description']}>
+                        {post.description}
+                      </div>
+                      <div className={styles['date-view-wrapper']}>
+                        <div className={styles['date']}>
+                          {new Date(post.createdAt).toDateString()}
+                        </div>
+                        <Link
+                          key={post._id}
+                          passHref
+                          href={`/posts/${post._id}`}
+                        >
+                          <a className={styles['btn-view']}>View</a>
+                        </Link>
+                      </div>
+                      {post.tags && post.tags.length > 0 && (
+                        <div className={styles['tags']}>
+                          {post.tags.map((tag, idx) => {
+                            <div className={styles['tag']} key={idx}>
+                              {tag}
+                            </div>;
+                          })}
+                        </div>
+                      )}
                     </div>
                   );
                 })
               ) : (
-                <div>You have no post yet</div>
+                <div>This author does not have any post yet</div>
               )}
             </div>
           </>
