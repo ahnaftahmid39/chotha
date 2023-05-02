@@ -149,10 +149,7 @@ body::before {
   background: var(--bg-clr-grad);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+
 
 * {
   box-sizing: border-box;
@@ -168,20 +165,6 @@ button {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.main {
-  display: flex;
-  padding: 0 3%;
-  flex: 1;
-  flex-direction: column;
-  max-width: 100vw;
-}
-
-@media screen and (min-width: 768px) {
-  .main {
-    padding: 0 15%;
-  }
 }
 
 .custom-scroll::-webkit-scrollbar {
@@ -275,6 +258,11 @@ input[type='file'] {
 
 .mt-1 {
   margin-top: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 a {

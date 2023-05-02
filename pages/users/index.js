@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import UserCard from '../../components/cards/user_card/UserCard';
+import Layout from '../../components/layout/Layout';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -28,13 +29,12 @@ const Users = () => {
     };
   }, []);
 
-
   return (
-    <div className='main'>
+    <Layout style={{ flexDirection: 'column' }}>
       {users.map((user, idx) => {
         return <UserCard key={idx} user={user} />;
       })}
-    </div>
+    </Layout>
   );
 };
 

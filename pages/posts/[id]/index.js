@@ -8,6 +8,7 @@ import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
+import Layout from '../../../components/layout/Layout';
 import markdownStyles from '../../../components/markdown_editor/Markdown.module.css';
 import CodeMarkdown from '../../../components/markdown_editor/code_markdown/CodeMarkdown';
 import ImageMarkdown from '../../../components/markdown_editor/image_markdown/ImageMarkdown';
@@ -105,7 +106,7 @@ const Post = ({ post }) => {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <main className='main'>
+      <Layout className={styles['container']}>
         <div className={styles['head-container']}>
           <span className={styles['title']}>{post.title}</span>
         </div>
@@ -167,7 +168,7 @@ const Post = ({ post }) => {
             </div>
           )}
         </div>
-      </main>
+      </Layout>
     </div>
   );
 };

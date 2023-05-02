@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import styles from './Navbar.module.css';
-import ThemeSwitchButton from '../buttons/theme_switch_button/ThemeSwitchButton';
 import AuthButton from '../buttons/auth_button/AuthButton';
+import ThemeSwitchButton from '../buttons/theme_switch_button/ThemeSwitchButton';
+import Layout from '../layout/Layout';
 import Logo from '../svgs/Logo';
 import Hamburger from './Hamburger';
+import styles from './Navbar.module.css';
 
 const paths = [
   { path: '/', title: 'Home' },
@@ -29,7 +30,7 @@ const Navbar = ({}) => {
   });
 
   return (
-    <nav className={styles['navbar-container']}>
+    <Layout wrapper='nav' className={styles['navbar-container']}>
       <Link passHref href={'/'}>
         <div className={styles['branding']}>
           <Logo width={28} height={28} />
@@ -40,7 +41,7 @@ const Navbar = ({}) => {
       <Hamburger links={links} />
       <ThemeSwitchButton />
       <AuthButton className={styles['btn-auth']} />
-    </nav>
+    </Layout>
   );
 };
 

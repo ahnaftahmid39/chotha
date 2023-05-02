@@ -1,4 +1,4 @@
-@media (min-width: 800px) {
+@media (min-width: 950px) {
   .menu-wrapper {
     display: none;
     position: relative;
@@ -94,6 +94,6 @@
 
 .menu-items[aria-expanded='true'] {
   /* increase max-height as nav-items increases */
-  max-height: 300px;
+  max-height: 400px;
   border-bottom: var(--default-border);
 }

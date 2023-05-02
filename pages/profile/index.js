@@ -9,6 +9,7 @@ import ProfilePlaceholder from '../../components/svgs/ProfilePlaceholder';
 import ls from '../../lib/ls';
 import { UserContext } from '../../providers/UserProvider';
 import styles from '../../styles/Profile.module.css';
+import Layout from '../../components/layout/Layout';
 
 export default function Profile() {
   const router = useRouter();
@@ -90,7 +91,7 @@ export default function Profile() {
       <Head>
         <title>User Profile</title>
       </Head>
-      <div className={styles['profile-container']}>
+      <Layout className={styles['profile-container']}>
         {userInfo && (
           <>
             <div className={styles['profile']}>
@@ -191,7 +192,7 @@ export default function Profile() {
             </div>
           </>
         )}
-      </div>
+      </Layout>
     </>
   );
 }

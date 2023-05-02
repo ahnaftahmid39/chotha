@@ -1,18 +1,18 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import PostCard from '../../components/cards/post_card/PostCard';
+import Layout from '../../components/layout/Layout';
 import Loading from '../../components/loading_indicator/Loading';
-import styles from '../../styles/Browse.module.css';
+import LoadingCard from '../../components/loading_indicator/LoadingCard';
 import SearchBar from '../../components/search/SearchBar';
 import {
   emptyTemporaryPosts,
   getTemporaryPosts,
   savePostsTemporarily,
 } from '../../lib/ls/localStorage';
-
-import LoadingCard from '../../components/loading_indicator/LoadingCard';
+import styles from '../../styles/Browse.module.css';
 
 export default function Browse({}) {
   const [leaving, setLeaving] = useState(false);
@@ -101,7 +101,7 @@ export default function Browse({}) {
       <Head>
         <title>Chotha Home page</title>
       </Head>
-      <div className={`main ${styles['container']}`}>
+      <Layout className={`${styles['container']}`}>
         <main
           style={{
             marginTop: '1rem',
@@ -143,7 +143,7 @@ export default function Browse({}) {
             </div>
           )}
         </main>
-      </div>
+      </Layout>
     </>
   );
 }

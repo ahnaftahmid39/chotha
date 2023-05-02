@@ -1,6 +1,7 @@
 .navbar-container {
   --navbar-height: 52px;
   display: flex;
+  flex-direction: row;
   background: var(--nav-bg);
   backdrop-filter: blur(18px);
   flex-grow: 1;
@@ -15,16 +16,17 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding-inline: 1rem;
-  margin-left: 2%;
+  margin-right: 3rem;
+  /* padding-inline: 1rem; */
+  /* margin-left: 2%; */
   cursor: pointer;
 }
 
-@media (min-width: 800px) {
+/* @media (min-width: 800px) {
   .branding {
     margin-left: 10%;
   }
-}
+} */
 .branding-text {
   font-weight: 600;
 }
@@ -37,14 +39,14 @@
 }
 .links {
   display: none;
-  margin-left: auto;
-  /* margin-right: auto; */
+  /* margin-left: auto; */
+  margin-right: auto;
 }
 .btn-auth {
   display: none;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 950px) {
   .links {
     display: flex;
   }

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useContext, useEffect, useRef, useState } from 'react';
 
 import BrandIcon from '../../components/brand_icon/BrandIcon';
+import Layout from '../../components/layout/Layout';
 import ls from '../../lib/ls';
 import { UserContext } from '../../providers/UserProvider';
 import styles from '../../styles/Auth.module.css';
@@ -104,7 +105,7 @@ const Authentication = ({ ...props }) => {
       <Head>
         <title>Authentication</title>
       </Head>
-      <main className='main'>
+      <Layout>
         <div className={styles['auth-container']}>
           <div className={styles['logo-wrapper']}>
             <BrandIcon />
@@ -267,7 +268,7 @@ const Authentication = ({ ...props }) => {
             </form>
           </div>
         </div>
-      </main>
+      </Layout>
     </>
   );
 };

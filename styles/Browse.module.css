@@ -18,13 +18,13 @@
   margin-bottom: 2rem;
 }
 
-@media screen and (min-width: 40rem) {
+@media screen and (min-width: 900px) {
   .postcard-group {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 1600px) {
   .postcard-group {
     grid-template-columns: 1fr 1fr 1fr;
   }

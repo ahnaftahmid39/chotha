@@ -1,0 +1,45 @@
+.layout {
+  --pad-in: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding-inline: var(--pad-in);
+}
+
+/* extra small */
+@media (min-width: 450px) {
+  .layout {
+    --pad-in: 2rem;
+  }
+}
+
+/* small */
+@media (min-width: 640px) {
+  .layout {
+    --pad-in: 3rem;
+  }
+}
+
+/* medium */
+@media (min-width: 768px) {
+  .layout {
+    --pad-in: 5rem;
+  }
+}
+
+/* large */
+@media (min-width: 1024px) {
+  .layout {
+    --pad-in: 8rem;
+  }
+}
+
+/* extra large */
+@media (min-width: 1280px) {
+  .layout {
+    --pad-in: 15rem;
+  }
+}
+
+/* double extra large */
+@media (min-width: 1536px) {
+}

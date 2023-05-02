@@ -21,50 +21,54 @@ const Home = () => {
         <title>Chotha Home page</title>
       </Head>
       <div className={styles['container']}>
-        <section className={styles['sec-branding']}>
-          <Image
-            src={srcLogo}
-            alt='logo'
-            width={150}
-            height={148}
-            objectFit='cover'
-          />
-          <div className={`${styles['brand']} unselectable`}>
-            <div className={styles['brand-name']}>Chotha</div>
-            <TypeAnimation
-              wrapper='div'
-              cursor={false}
-              speed={60}
-              repeat={repeatCount}
-              className={`${styles['brand-slogan']} ${styles['custom-type-animation-cursor']}`}
-              sequence={[
-                'Learn from others',
-                3000,
-                'Share your notes',
-                3000,
-                'Help Others',
-                3000,
-                'Teach and Learn',
-                3000,
-                (el) => {
-                  if (counter.current == repeatCount) {
-                    el.classList.remove(styles['custom-type-animation-cursor']);
-                  } else {
-                    counter.current++;
-                  }
-                },
-              ]}
+        <section className={styles['branding-section-wrapper']}>
+          <div className={styles['branding-wrapper']}>
+            <Image
+              src={srcLogo}
+              alt='logo'
+              width={150}
+              height={148}
+              objectFit='cover'
             />
+            <div className={`${styles['brand']} unselectable`}>
+              <div className={styles['brand-name']}>Chotha</div>
+              <TypeAnimation
+                wrapper='div'
+                cursor={false}
+                speed={60}
+                repeat={repeatCount}
+                className={`${styles['brand-slogan']} ${styles['custom-type-animation-cursor']}`}
+                sequence={[
+                  'Learn from others',
+                  3000,
+                  'Share your notes',
+                  3000,
+                  'Help Others',
+                  3000,
+                  'Teach and Learn',
+                  3000,
+                  (el) => {
+                    if (counter.current == repeatCount) {
+                      el.classList.remove(
+                        styles['custom-type-animation-cursor']
+                      );
+                    } else {
+                      counter.current++;
+                    }
+                  },
+                ]}
+              />
+            </div>
+            <div className={styles['btn-group']}>
+              <Link href={'/browse'} passHref>
+                <button className={styles['btn']}>Start Browsing</button>
+              </Link>
+              <Link href={'/new-chotha'} passHref>
+                <button className={styles['btn']}>Write new chotha</button>
+              </Link>
+            </div>
           </div>
         </section>
-        <div className={styles['btn-group']}>
-          <Link href={'/browse'} passHref>
-            <button className={styles['btn']}>Start Browsing</button>
-          </Link>
-          <Link href={'/new-chotha'} passHref>
-            <button className={styles['btn']}>Write a new chotha</button>
-          </Link>
-        </div>
       </div>
     </>
   );
