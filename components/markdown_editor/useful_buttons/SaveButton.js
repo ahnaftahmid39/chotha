@@ -1,6 +1,4 @@
 import { memo, useEffect, useRef, useState } from 'react';
-import Select from 'react-select/dist/declarations/src/Select';
-
 import Modal from '../../modals/modal/Modal';
 import styles from './UsefulButtons.module.css';
 
@@ -79,9 +77,6 @@ const SaveButton = ({ addData, post, ...props }) => {
           type='text'
           placeholder='Write a small description'
         />
-        <div>
-          <Select />
-        </div>
         <div className={styles['modal-btn-group']}>
           <button onClick={handleAddData}>Done!</button>
           <button
