@@ -1,7 +1,7 @@
 import { Types } from 'mongoose';
-import { authorize } from '../../../lib/middlewares/authorize';
-import dbConnect from '../../../lib/middlewares/mongoose';
-import { Post } from '../../../lib/models/post';
+import { authorize } from '../../../../lib/middlewares/authorize';
+import dbConnect from '../../../../lib/middlewares/mongoose';
+import { Post } from '../../../../lib/models/post';
 
 export default async function handle(req, res) {
   await dbConnect();

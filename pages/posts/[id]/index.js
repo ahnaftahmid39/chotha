@@ -1,26 +1,26 @@
+import 'katex/dist/katex.min.css';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-import 'katex/dist/katex.min.css';
 
-import styles from '../../../styles/Posts.module.css';
 import markdownStyles from '../../../components/markdown_editor/Markdown.module.css';
-import ImageMarkdown from '../../../components/markdown_editor/image_markdown/ImageMarkdown';
 import CodeMarkdown from '../../../components/markdown_editor/code_markdown/CodeMarkdown';
+import ImageMarkdown from '../../../components/markdown_editor/image_markdown/ImageMarkdown';
+import DeleteAlertModal from '../../../components/modals/delete_alert_modal/DeleteAlertModal';
+import Modal from '../../../components/modals/modal/Modal';
+import Toast from '../../../components/toast/Toast';
 import {
   getAllPostsWithoutMarkdown,
   getPostById,
 } from '../../../lib/controllers/post';
-import { UserContext } from '../../../providers/UserProvider';
-import { useRouter } from 'next/router';
-import Toast from '../../../components/toast/Toast';
 import ls from '../../../lib/ls';
-import Modal from '../../../components/modals/modal/Modal';
-import DeleteAlertModal from '../../../components/modals/delete_alert_modal/DeleteAlertModal';
+import { UserContext } from '../../../providers/UserProvider';
+import styles from '../../../styles/Posts.module.css';
 
 const Post = ({ post }) => {
   // following was added to prevent the hydration error
@@ -31,6 +31,15 @@ const Post = ({ post }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [showAlert, setShowAlert] = useState(false);
+
+  useEffect(() => {
+    let shouldUpdate = true;
+    async function fetchComments() {
+      try {
+        const res = await fetch('/api/comment');
+      } catch (err) {}
+    }
+  }, []);
 
   useEffect(() => {
     if (error != '') {
