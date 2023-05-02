@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import styles from './ProfilePost.module.css';
-import EditIcon from '../../svgs/edit_icon/EditIcon';
-import EditCard from '../edit_card/EditCard';
-import Toast from '../../toast/Toast';
-import DeleteAlertModal from '../../modals/delete_alert_modal/DeleteAlertModal';
 import ls from '../../../lib/ls';
+import DeleteAlertModal from '../../modals/delete_alert_modal/DeleteAlertModal';
+import EditIcon from '../../svgs/edit_icon/EditIcon';
+import Toast from '../../toast/Toast';
+import EditCard from '../edit_card/EditCard';
+import styles from './ProfilePost.module.css';
 
 const ProfilePostCard = ({ post }) => {
   const [show, setShow] = useState(false);
@@ -85,7 +85,9 @@ const ProfilePostCard = ({ post }) => {
         toBeDeleted={post.title}
       />
       <div className={styles['title-modify-btn-wrapper']}>
-        <div className={styles['title']}>{post.title}</div>
+        <Link passHref href={`/posts/${post._id}`}>
+          <div className={styles['title']}>{post.title}</div>
+        </Link>
         <div className={styles['modify-btn-modal-wrapper']}>
           {!show && (
             <button

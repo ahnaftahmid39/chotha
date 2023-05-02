@@ -152,7 +152,7 @@ const ProfileEdit = () => {
         show: true,
         type: ToastTypes.SUCCESS,
         message:
-          'Congratulations! you have successfully updated yourself. May this day be remembered',
+          'You have successfully updated.',
       });
 
       console.log('Response: ', data);

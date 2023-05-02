@@ -7,7 +7,7 @@
 }
 
 .sec-branding {
-  min-height: 60vh;
+  min-height: 50vh;
   overflow: auto;
   display: flex;
   align-items: center;
@@ -66,4 +66,30 @@
   50% {
     opacity: 0;
   }
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:1rem;
+  margin-top: -6rem;
+  /* margin-left: 14rem; */
+}
+.btn {
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--fo-clr-light);
+  background-color: transparent;
+  border: var(--default-border);
+  padding: 0.5rem 1rem;
+}
+
+.btn:hover{
+  background-color: var(--bg-clr-light);
+}
+
+.btn:active {
+  translate: 0 4px;
 }

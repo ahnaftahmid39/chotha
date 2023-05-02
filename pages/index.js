@@ -1,6 +1,7 @@
 import { useTheme } from 'next-themes';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
@@ -56,6 +57,14 @@ const Home = () => {
             />
           </div>
         </section>
+        <div className={styles['btn-group']}>
+          <Link href={'/browse'} passHref>
+            <button className={styles['btn']}>Start Browsing</button>
+          </Link>
+          <Link href={'/new-chotha'} passHref>
+            <button className={styles['btn']}>Write a new chotha</button>
+          </Link>
+        </div>
       </div>
     </>
   );

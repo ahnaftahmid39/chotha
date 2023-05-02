@@ -9,6 +9,7 @@ import Hamburger from './Hamburger';
 
 const paths = [
   { path: '/', title: 'Home' },
+  { path: '/tutorial', title: 'Tutorial' },
   { path: '/users', title: 'Users' },
   { path: '/browse', title: 'Browse' },
   { path: '/about', title: 'About' },

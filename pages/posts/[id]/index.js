@@ -12,7 +12,6 @@ import markdownStyles from '../../../components/markdown_editor/Markdown.module.
 import CodeMarkdown from '../../../components/markdown_editor/code_markdown/CodeMarkdown';
 import ImageMarkdown from '../../../components/markdown_editor/image_markdown/ImageMarkdown';
 import DeleteAlertModal from '../../../components/modals/delete_alert_modal/DeleteAlertModal';
-import Modal from '../../../components/modals/modal/Modal';
 import Toast from '../../../components/toast/Toast';
 import {
   getAllPostsWithoutMarkdown,

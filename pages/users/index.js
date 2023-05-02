@@ -1,12 +1,9 @@
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import UserCard from '../../components/cards/user_card/UserCard';
-import ProfilePlaceHolder from '../../components/svgs/ProfilePlaceholder';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const router = useRouter();
   useEffect(() => {
     let shouldUpdate = true;
     async function getAllUsers() {
@@ -31,9 +28,6 @@ const Users = () => {
     };
   }, []);
 
-  const handleUserOnClick = (userId = '123') => {
-    router.push('/users/' + userId);
-  };
 
   return (
     <div className='main'>
