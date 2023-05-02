@@ -100,12 +100,7 @@ const Post = ({ post }) => {
     }
   };
 
-  if (!post)
-    return (
-      <div style={{ padding: '1rem', textAlign: 'center' }}>
-        {"This post doesn't exist anymore. Might have been deleted"}
-      </div>
-    );
+  if (!!!post) return null;
   return (
     <div className='container'>
       <Head>
