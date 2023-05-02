@@ -38,6 +38,7 @@ const ProfileEdit = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   const handleToastClose = () =>
     setToast({
@@ -60,6 +61,7 @@ const ProfileEdit = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setDisabled(true);
     const token = ls.getToken();
     try {
       console.log({ name, bio, socials, newPass, confirmPass, currentPass });
@@ -154,8 +156,9 @@ const ProfileEdit = () => {
       });
 
       console.log('Response: ', data);
+
+      setIsLoading(false);
       setTimeout(() => {
-        setIsLoading(false);
         router.push('/profile');
       }, toast.ttl || 3000);
 
@@ -227,7 +230,7 @@ const ProfileEdit = () => {
             <span>{!imgData ? 'Choose photo...' : imgData.name}</span>
             <span className={styles['file-input-browse']}>Browse</span>
             <input
-              disabled={isLoading}
+              disabled={disabled}
               id='photo'
               type='file'
               onChange={(e) => {
@@ -252,7 +255,7 @@ const ProfileEdit = () => {
         <div className={styles['name']}>
           <label htmlFor='name'>Name</label>
           <input
-            disabled={isLoading}
+            disabled={disabled}
             type='text'
             value={name}
             id='name'
@@ -263,7 +266,7 @@ const ProfileEdit = () => {
         <div className={styles['bio']}>
           <label htmlFor='bio'>Bio</label>
           <textarea
-            disabled={isLoading}
+            disabled={disabled}
             type='text'
             maxLength={300}
             value={bio}
@@ -278,7 +281,7 @@ const ProfileEdit = () => {
               <div className={styles['social']} key={website_name}>
                 <label htmlFor={website_name}>{website_name}</label>
                 <input
-                  disabled={isLoading}
+                  disabled={disabled}
                   type='url'
                   name={website_name}
                   value={socials[website_name] || ''}
@@ -295,7 +298,7 @@ const ProfileEdit = () => {
         <div className={styles['password']}>
           <label htmlFor='new-password'>New Password</label>
           <input
-            disabled={true}
+            disabled={disabled}
             type='password'
             value={newPass}
             autoComplete={'new-password'}
@@ -307,7 +310,7 @@ const ProfileEdit = () => {
 
           <label htmlFor='confirm-pass'>Confirm Password</label>
           <input
-            disabled={isLoading}
+            disabled={disabled}
             type='password'
             value={confirmPass}
             autoComplete={'new-password'}
@@ -324,7 +327,7 @@ const ProfileEdit = () => {
             Current Password <span>(required)</span>
           </label>
           <input
-            disabled={isLoading}
+            disabled={disabled}
             type='password'
             required
             value={currentPass}
@@ -332,7 +335,7 @@ const ProfileEdit = () => {
             onChange={(e) => setCurrentPass(e.target.value)}
           />
         </div>
-        <Loading className={styles['loading']} />
+        {isLoading && <Loading className={styles['loading']} />}
         <div className={styles['actions']}>
           <button type='submit'>Submit</button>
           <Link href={'/profile'} passHref>
