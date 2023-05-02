@@ -1,6 +1,9 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
+import UserCard from '../../components/cards/user_card/UserCard';
+import ProfilePlaceHolder from '../../components/svgs/ProfilePlaceholder';
+
 const Users = () => {
   const [users, setUsers] = useState([]);
   const router = useRouter();
@@ -35,12 +38,7 @@ const Users = () => {
   return (
     <div className='main'>
       {users.map((user, idx) => {
-        return (
-          <div onClick={() => handleUserOnClick(user._id)} key={idx}>
-            <div>{user.name}</div>
-            <div>{user.email}</div>
-          </div>
-        );
+        return <UserCard key={idx} user={user} />;
       })}
     </div>
   );
