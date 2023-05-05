@@ -1,0 +1,36 @@
+.write-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.write-comment input {
+  color: var(--fo-clr);
+  background: transparent;
+  border: var(--default-border);
+  width: 100%;
+  min-height: 2.7rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.write-comment input::placeholder {
+  color: var(--fo-clr-light-2);
+}
+.write-comment input:focus {
+  outline: var(--default-border);
+  outline-width: 2px;
+}
+.write-comment button {
+  width: 100%;
+}
+@media (min-width: 550px) {
+  .write-comment {
+    flex-direction: row;
+  }
+  .write-comment button {
+    width: auto;
+  }
+}

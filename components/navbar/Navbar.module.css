@@ -29,6 +29,7 @@
 } */
 .branding-text {
   font-weight: 600;
+  font-size: larger;
 }
 .branding rect {
   fill: transparent;

@@ -1,3 +1,5 @@
+import styles from './ProfilePlaceholder.module.css';
+
 const ProfilePlaceholder = ({
   hasSize = true,
   width = 300,
@@ -6,6 +8,7 @@ const ProfilePlaceholder = ({
 }) => {
   return (
     <svg
+      className={styles['wrapper']}
       width={hasSize ? width : null}
       height={hasSize ? height : null}
       viewBox='0 0 300 300'

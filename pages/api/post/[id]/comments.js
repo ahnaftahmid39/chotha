@@ -14,8 +14,8 @@ export default async function handle(req, res) {
 
         const postId = Types.ObjectId(req.query.id);
         const result = await Comment.find({ postId: postId }).populate(
-          'userId',
-          'name email'
+          'user',
+          'name photo'
         );
         return res
           .status(200)
@@ -44,9 +44,9 @@ export default async function handle(req, res) {
         }
 
         const postId = Types.ObjectId(req.query.id);
-        const userId = req.user._id;
+        const user = req.user._id;
         const comment = req.body.comment;
-        const result = await Comment.create({ postId, userId, comment });
+        const result = await Comment.create({ postId, user, comment });
 
         return res
           .status(201)

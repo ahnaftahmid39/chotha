@@ -16,7 +16,6 @@
 .info {
   font-size: 0.9rem;
   font-weight: 500;
-  padding: 0 1rem;
   line-height: 1.6rem;
   color: var(--post-info-fo-clr);
 }

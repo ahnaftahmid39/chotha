@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
+import Button from '../components/buttons/button/Button';
+import Layout from '../components/layout/Layout';
 import styles from '../styles/Home.module.css';
 
 const repeatCount = 2;
@@ -20,7 +22,7 @@ const Home = () => {
       <Head>
         <title>Chotha Home page</title>
       </Head>
-      <div className={styles['container']}>
+      <Layout>
         <section className={styles['branding-section-wrapper']}>
           <div className={styles['branding-wrapper']}>
             <Image
@@ -61,15 +63,17 @@ const Home = () => {
             </div>
             <div className={styles['btn-group']}>
               <Link href={'/browse'} passHref>
-                <button className={styles['btn']}>Start Browsing</button>
+                <Button buttonType='outlined' className={styles['btn']}>
+                  Start Browsing
+                </Button>
               </Link>
               <Link href={'/new-chotha'} passHref>
-                <button className={styles['btn']}>Write new chotha</button>
+                <Button className={styles['btn']}>Write new chotha</Button>
               </Link>
             </div>
           </div>
         </section>
-      </div>
+      </Layout>
     </>
   );
 };

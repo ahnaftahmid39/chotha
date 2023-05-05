@@ -1,0 +1,45 @@
+.button {
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--fo-clr);
+  background-color: transparent;
+  border: 2px solid var(--fo-clr);
+  padding: 0.6rem 1rem;
+  transition: all 100ms;
+  height: min-content;
+}
+
+.button:active {
+  translate: 0 4px;
+}
+
+.button.filled {
+  background-color: var(--fo-clr);
+  color: var(--bg-clr);
+}
+
+.button.filled:hover {
+  box-shadow: 0 0 0.5em var(--fo-clr);
+}
+[data-theme='dark'] .button.filled:hover {
+  background-color: aliceblue;
+}
+
+.button.outlined:hover {
+  box-shadow: 0 0.5em 0.9em -0.4em var(--fo-clr);
+}
+
+.button[data-variant='danger'] {
+  --fo-clr: var(--danger);
+}
+.button[data-variant='warning'] {
+  --fo-clr: var(--warning);
+}
+.button[data-variant='success'] {
+  --fo-clr: var(--success);
+}
+.button[data-variant='info'] {
+  --fo-clr: var(--info);
+}

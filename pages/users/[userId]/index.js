@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
+import Layout from '../../../components/layout/Layout';
 import ProfilePlaceholder from '../../../components/svgs/ProfilePlaceholder';
 import profileStyles from '../../../styles/Profile.module.css';
 import styles from '../../../styles/users/UserId.module.css';
@@ -38,7 +39,7 @@ export default function UserProfile() {
       <Head>
         <title>User Profile</title>
       </Head>
-      <div className={profileStyles['profile-container']}>
+      <Layout className={profileStyles['profile-container']}>
         {user && (
           <>
             <div className={profileStyles['profile']}>
@@ -59,9 +60,11 @@ export default function UserProfile() {
               </div>
               <div className={profileStyles['profile-description']}>
                 <div className={profileStyles['name']}>{user?.name}</div>
-                <div className={profileStyles['bio']}>{user?.bio}</div>
                 {user && (
                   <>
+                    {user.bio && (
+                      <div className={profileStyles['bio']}>{user?.bio}</div>
+                    )}
                     <div className={profileStyles['contact']}>Contact</div>
                     {user.phone && (
                       <div>
@@ -146,7 +149,7 @@ export default function UserProfile() {
             </div>
           </>
         )}
-      </div>
+      </Layout>
     </>
   );
 }

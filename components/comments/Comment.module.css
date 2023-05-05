@@ -1,0 +1,71 @@
+.comment-wrapper {
+  display: flex;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  align-items: center;
+}
+
+.dp {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 100vw;
+  cursor: pointer;
+}
+
+.notdp {
+  display: flex;
+  gap: 0.3rem;
+  flex-direction: column;
+  width: 80%;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.name:hover,
+.name:active {
+  text-decoration: underline;
+}
+
+.time {
+  font-size: 0.8rem;
+  align-self: flex-start;
+  color: var(--fo-clr-light);
+}
+
+.comment {
+  font-size: 1rem;
+}
+
+.btn-edit {
+  font-size: large;
+  rotate: 90deg;
+  cursor: pointer;
+  transition: rotate 100ms;
+  padding: 1rem;
+}
+
+.btn-edit:hover {
+  rotate: 0deg;
+}
+
+@media (min-width: 400px) {
+  .notdp {
+    width: 90%;
+  }
+  .description {
+    gap: 0.5rem;
+    flex-direction: row;
+  }
+  .time {
+    align-self: flex-end;
+  }
+}

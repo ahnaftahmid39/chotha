@@ -63,11 +63,13 @@
   --scroll-thumb-bg-clr: hsla(0, 0%, 50%, 0.6);
 
   --border-color: hsla(var(--hue), 55%, 30%, 0.2);
+  --border-color-2: hsla(var(--hue), 55%, 30%, 0.8);
   --default-border: 1px solid var(--border-color);
 
   --danger: hsl(0, 39%, 55%);
+  --info: hsl(210, 59%, 45%);
   --success: hsl(110, 36%, 38%);
-  --warning: hsl(52, 46%, 36%);
+  --warning: hsl(58, 98%, 34%);
 }
 
 [data-theme='dark'] {
@@ -119,12 +121,15 @@
   --theme-switch-thumb-left: 4px;
 
   --border-color: hsla(var(--hue), 55%, 80%, 0.2);
+  --border-color-2: hsla(var(--hue), 55%, 90%, 0.8);
 
   --scroll-bg-clr: hsla(var(--hue), 10%, 50%, 0.4);
 
   --success: hsl(120, 36%, 53%);
   --danger: hsl(0, 66%, 64%);
   --warning: hsl(60, 46%, 58%);
+  --info: hsl(210, 100%, 63%);
+
 }
 
 html,
@@ -148,8 +153,6 @@ body::before {
   height: 100vh;
   background: var(--bg-clr-grad);
 }
-
-
 
 * {
   box-sizing: border-box;

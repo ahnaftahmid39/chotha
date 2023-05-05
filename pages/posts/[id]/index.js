@@ -8,6 +8,7 @@ import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
+import CommentSection from '../../../components/comments/CommentSection';
 import Layout from '../../../components/layout/Layout';
 import markdownStyles from '../../../components/markdown_editor/Markdown.module.css';
 import CodeMarkdown from '../../../components/markdown_editor/code_markdown/CodeMarkdown';
@@ -31,15 +32,6 @@ const Post = ({ post }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [showAlert, setShowAlert] = useState(false);
-
-  useEffect(() => {
-    let shouldUpdate = true;
-    async function fetchComments() {
-      try {
-        const res = await fetch('/api/comment');
-      } catch (err) {}
-    }
-  }, []);
 
   useEffect(() => {
     if (error != '') {
@@ -168,6 +160,7 @@ const Post = ({ post }) => {
             </div>
           )}
         </div>
+        <CommentSection postId={post._id} />
       </Layout>
     </div>
   );
