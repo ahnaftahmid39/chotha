@@ -8,9 +8,7 @@ import Button from '../buttons/button/Button';
 import ProfilePlaceholder from '../svgs/ProfilePlaceholder';
 import styles from './Comment.module.css';
 
-const Comment = ({ comment }) => {
-  const { userInfo } = useContext(UserContext);
-
+const Comment = ({ comment, userId }) => {
   return (
     <div className={styles['comment-wrapper']}>
       <div className={styles['dp']}>
@@ -42,7 +40,11 @@ const Comment = ({ comment }) => {
         </div>
         <div className={styles['comment']}>{comment.comment}</div>
       </div>
-      {userInfo._id == comment.user._id && <button title='Edit' className={styles['btn-edit']}>...</button>}
+      {userId == comment.user._id && (
+        <button title='Edit' className={styles['btn-edit']}>
+          ...
+        </button>
+      )}
     </div>
   );
 };

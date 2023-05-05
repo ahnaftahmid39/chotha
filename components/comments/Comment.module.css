@@ -2,10 +2,10 @@
   display: flex;
   gap: 1rem;
   padding: 0.8rem 0;
-  align-items: center;
 }
 
 .dp {
+  margin-top: 0.2rem;
   aspect-ratio: 1;
   overflow: hidden;
   border-radius: 100vw;
@@ -16,7 +16,7 @@
   display: flex;
   gap: 0.3rem;
   flex-direction: column;
-  width: 80%;
+  width: 70%;
 }
 .description {
   display: flex;
@@ -50,7 +50,7 @@
   rotate: 90deg;
   cursor: pointer;
   transition: rotate 100ms;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .btn-edit:hover {

@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 
 import ls from '../../lib/ls';
+import { UserContext } from '../../providers/UserProvider';
 import Comment from './Comment';
 import CommentInput from './CommentInput';
 import styles from './CommentSection.module.css';
@@ -9,6 +10,7 @@ import CommentSkeleton from './CommentSkeleton';
 const CommentSection = ({ className, postId, ...props }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { userInfo } = useContext(UserContext);
 
   const fetchComments = useCallback(
     async function () {
@@ -59,7 +61,7 @@ const CommentSection = ({ className, postId, ...props }) => {
   return (
     <div className={`${styles['wrapper']} ${className}`} {...props}>
       <div className={styles['heading']}>Comments</div>
-      <CommentInput handleWriteComment={handleWriteComment} />
+      {userInfo._id && <CommentInput handleWriteComment={handleWriteComment} />}
       {isLoading ? (
         <>
           <CommentSkeleton />
@@ -67,7 +69,13 @@ const CommentSection = ({ className, postId, ...props }) => {
         </>
       ) : (
         comments.map((comment) => {
-          return <Comment comment={comment} key={comment._id} />;
+          return (
+            <Comment
+              userId={userInfo._id}
+              comment={comment}
+              key={comment._id}
+            />
+          );
         })
       )}
     </div>
