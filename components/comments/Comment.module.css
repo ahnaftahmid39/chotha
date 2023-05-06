@@ -12,6 +12,12 @@
   cursor: pointer;
 }
 
+.comment {
+  display: flex;
+  word-break: break-all;
+  font-size: 1rem;
+}
+
 .notdp {
   display: flex;
   gap: 0.3rem;
@@ -39,10 +45,6 @@
   font-size: 0.8rem;
   align-self: flex-start;
   color: var(--fo-clr-light);
-}
-
-.comment {
-  font-size: 1rem;
 }
 
 .btn-edit {
