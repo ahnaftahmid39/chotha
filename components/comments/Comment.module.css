@@ -47,18 +47,6 @@
   color: var(--fo-clr-light);
 }
 
-.btn-edit {
-  font-size: large;
-  rotate: 90deg;
-  cursor: pointer;
-  transition: rotate 100ms;
-  padding: 1rem 0;
-}
-
-.btn-edit:hover {
-  rotate: 0deg;
-}
-
 @media (min-width: 400px) {
   .notdp {
     width: 90%;

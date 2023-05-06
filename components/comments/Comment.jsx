@@ -40,11 +40,6 @@ const Comment = ({ comment, userId }) => {
         </div>
         <div className={styles['comment']}>{comment.comment}</div>
       </div>
-      {userId == comment.user._id && (
-        <button title='Edit' className={styles['btn-edit']}>
-          ...
-        </button>
-      )}
     </div>
   );
 };
