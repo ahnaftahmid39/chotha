@@ -116,7 +116,7 @@ export default function Browse({}) {
           />
           {isLoading ? (
             <div className={styles['postcard-group']}>
-              {Array.from(Array(9).keys()).map((i) => {
+              {Array.from(Array(3).keys()).map((i) => {
                 return <LoadingCard key={i} />;
               })}
             </div>
