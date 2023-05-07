@@ -31,9 +31,11 @@ const Users = () => {
 
   return (
     <Layout style={{ flexDirection: 'column' }}>
-      {users.map((user, idx) => {
-        return <UserCard key={idx} user={user} />;
-      })}
+      <div style={{ marginTop: '1rem', border: 'var(--default-border)', borderRadius: '16px'}}>
+        {users.map((user, idx) => {
+          return <UserCard key={idx} user={user} />;
+        })}
+      </div>
     </Layout>
   );
 };

@@ -11,17 +11,39 @@ const ProfilePlaceholder = ({
       className={styles['wrapper']}
       width={hasSize ? width : null}
       height={hasSize ? height : null}
-      viewBox='0 0 300 300'
+      viewBox='0 0 90 90'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
       {...props}
     >
-      <circle cx='150' cy='127.765' r='48.9118' stroke='black' />
-      <circle cx='150' cy='150' r='125' stroke='black' />
-      <path
-        d='M65.1765 238.941C102.647 166.176 196.529 162.396 235.647 238.941'
+      <circle cx='45' cy='37.5883' r='16.4706' fill='black' />
+      <circle
+        cx='45'
+        cy='45'
+        r='40.6765'
         stroke='black'
+        style={{ fill: 'none' }}
       />
+      <mask
+        id='mask0_233_724'
+        style={{ maskType: 'alpha' }}
+        maskUnits='userSpaceOnUse'
+        x='3'
+        y='3'
+        width='84'
+        height='84'
+      >
+        <circle
+          cx='45'
+          cy='45'
+          r='41.1765'
+          fill='black'
+          style={{ stroke: 'none' }}
+        />
+      </mask>
+      <g mask='url(#mask0_233_724)'>
+        <circle cx='45' cy='88' r='30' fill='black' />
+      </g>
     </svg>
   );
 };

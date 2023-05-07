@@ -17,6 +17,9 @@ const Hamburger = ({ links = [] }) => {
       >
         <div className={styles['btn-menu']}></div>
       </div>
+      {show && (
+        <div onClick={() => setShow(false)} className={styles['menu-bg']}></div>
+      )}
       <div
         aria-expanded={show}
         onClick={handleMenuToggle}

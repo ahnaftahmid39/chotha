@@ -67,10 +67,6 @@
   object-fit: cover;
 }
 
-.profile-photo svg * {
-  stroke: var(--fo-clr-light);
-  stroke-width: 8;
-}
 
 .profile-description {
   display: flex;

@@ -1,4 +1,5 @@
 .wrapper * {
   stroke: var(--fo-clr);
-  stroke-width: 8px;
+  fill: var(--fo-clr);
+  stroke-width: 2px;
 }

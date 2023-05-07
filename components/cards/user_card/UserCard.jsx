@@ -6,22 +6,28 @@ import styles from './UserCard.module.css';
 
 const UserCard = ({ user, className, ...props }) => {
   return (
-    <div className={styles['wrapper']}>
-      <div>
-        <div>{user.name}</div>
-        {user.photo ? (
-          <Image
-            alt='profile picture'
-            width={300}
-            height={300}
-            objectFit='cover'
-            src={user.photo}
-          />
-        ) : (
-          <ProfilePlaceholder />
-        )}
+    <Link href={`/users/${user._id}`} passHref>
+      <div className={styles['wrapper']} {...props}>
+        <div className={styles['dp']}>
+          {user.photo ? (
+            <Image
+              alt='profile picture'
+              width={100}
+              height={100}
+              objectFit='cover'
+              src={user.photo}
+            />
+          ) : (
+            <ProfilePlaceholder hasSize={false} />
+          )}
+        </div>
+        <div className={styles['notdp']}>
+          <div className={styles['name']}>{user.name}</div>
+          <div className={styles['email']}>{user.email}</div>
+          <div className={styles['bio']}>{user.bio}</div>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
