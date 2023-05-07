@@ -1,15 +1,16 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useContext, useRef, useState } from 'react';
+
+import { UserContext } from '../../providers/UserProvider';
+import styles from './Editor.module.css';
 // import dynamic from 'next/dynamic';
 // const Markdown = dynamic(() => {
 //   return import('./Markdown');
 // });
 import Markdown from './Markdown';
-import styles from './Editor.module.css';
 import TextAreaInput from './TextAreaInput';
 import UsefulButtons from './useful_buttons/UsefulButtons';
-import { useRouter } from 'next/router';
-import { UserContext } from '../../providers/UserProvider';
-import Link from 'next/link';
 
 const Editor = ({ post }) => {
   const { userInfo } = useContext(UserContext);
@@ -57,12 +58,13 @@ const Editor = ({ post }) => {
     taRef.current.toggleWrap(wrap);
   };
 
-  const addData = ({ title, description }) => {
+  const addData = ({ title, description, tags }) => {
     fetch(post?._id ? `/api/post/${post._id}` : '/api/post' || '/api/post', {
       body: JSON.stringify({
         markdown: text.value,
         title: title,
         description: description,
+        tags: tags,
       }),
       method: post?._id ? 'PUT' : 'POST' || 'POST',
       headers: {

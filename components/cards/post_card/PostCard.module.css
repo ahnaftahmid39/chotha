@@ -1,14 +1,13 @@
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: 30vh;
   padding: 2em;
   gap: 0.7rem;
   border-radius: 16px;
   background: var(--card-bg);
   border: var(--default-border);
-  pointer-events: none;
+  cursor: pointer;
 }
 
 .card:hover,

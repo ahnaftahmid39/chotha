@@ -1,16 +1,23 @@
-import { forwardRef } from 'react';
-import styles from './PostCard.module.css';
-import PencilIcon from '../../svgs/pencil_icon/PencilIcon';
-import ClockIcon from '../../svgs/clock_icon/ClockIcon';
 import Link from 'next/link';
+import { forwardRef } from 'react';
+
+import PencilIcon from '../../svgs/pencil_icon/PencilIcon';
+import DateIcon from '../../svgs/date_icon/DateIcon';
+import styles from './PostCard.module.css';
+
 const PostCard = forwardRef(({ post, onClick, href }, ref) => {
   const { title, user, description, createdAt } = post;
   return (
-    <div className={`${styles['card']}`}>
+    <div
+      onClick={onClick}
+      href={href}
+      ref={ref}
+      role='anchor'
+      className={`${styles['card']}`}
+    >
       <h2 className={styles['title']}>{title}</h2>
       <div className={styles['description']}>{description}</div>
       <div className={styles['meta']}>
-        
         <div className={styles['author-wrapper']}>
           <div className={styles['icon']}>
             <PencilIcon />
@@ -26,7 +33,7 @@ const PostCard = forwardRef(({ post, onClick, href }, ref) => {
 
         <div className={styles['time-wrapper']}>
           <div className={styles['icon']}>
-            <ClockIcon />
+            <DateIcon />
           </div>
           <div className={styles['time']}>
             {new Date(createdAt).toLocaleDateString('en-UK', {
@@ -37,15 +44,6 @@ const PostCard = forwardRef(({ post, onClick, href }, ref) => {
           </div>
         </div>
       </div>
-      <a
-        title={title}
-        href={href}
-        ref={ref}
-        onClick={onClick}
-        className={styles['readmore']}
-      >
-        Read More
-      </a>
     </div>
   );
 });

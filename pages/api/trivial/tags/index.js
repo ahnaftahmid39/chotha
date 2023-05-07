@@ -6,7 +6,7 @@ export default async function handle(req, res) {
   switch (req.method) {
     case 'GET': {
       try {
-        const result = await Tags.find();
+        const result = await Tags.find().sort({ tagName: 1 });
         return res
           .status(200)
           .json({ message: 'success', status: 200, tags: result });
@@ -30,7 +30,9 @@ export default async function handle(req, res) {
         if (!!!req.body.tagName) {
           throw Error('Must provide a tag name');
         }
-        const tagName = req.body.tagName;
+        const tagName = String(req.body.tagName)
+          .toLowerCase()
+          .replace(/[^a-zA-Z0-9]/g, '-');
         const result = await Tags.create({ tagName });
 
         return res

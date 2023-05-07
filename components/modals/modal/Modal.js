@@ -1,10 +1,10 @@
 import styles from './Modal.module.css';
 
-const Modal = ({ modal, className, children, ...props }) => {
+const Modal = ({ modal, handleClose, className, children, ...props }) => {
   if (!modal) return null;
   return (
     <>
-      <div className={styles.modalbg}></div>
+      <div onClick={handleClose} className={styles.modalbg}></div>
       <div className={`${className} ${styles.modal}`} {...props}>
         {children}
       </div>

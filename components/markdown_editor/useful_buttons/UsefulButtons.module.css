@@ -24,22 +24,23 @@
   flex-grow: 1;
   border-radius: 6px;
   font-size: 1rem;
-  border: 0.5px groove black;
   outline: none;
+  background: var(--bg-clr-2);
+  border: var(--default-border);
 }
 
 .modal input[type='text'] {
   padding: 0.6rem;
-  background-color: var(--bg-clr);
   color: var(--fo-clr);
 }
-
+.modal input::placeholder {
+  color: var(--fo-clr-light-2);
+}
 .modal button {
   padding: 0.5rem;
   cursor: pointer;
   color: var(--btn-fo-clr);
   font-weight: 600;
-  background-color: var(--btn-bg-clr);
 }
 
 .modal .modal-btn-group {

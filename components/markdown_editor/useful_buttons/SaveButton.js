@@ -1,5 +1,9 @@
-import { memo, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
+
+import ls from '../../../lib/ls';
+import Button from '../../buttons/button/Button';
 import Modal from '../../modals/modal/Modal';
+import SelectTag from '../../select_tags/SelectTags';
 import styles from './UsefulButtons.module.css';
 
 const SaveIcon = memo(() => {
@@ -27,8 +31,9 @@ const SaveButton = ({ addData, post, ...props }) => {
   const [data, setData] = useState({
     title: post?.title || '',
     description: post?.description || '',
+    tags: [],
   });
-  const [dataModal, setDataModal] = useState(false);
+  const [dataModal, setDataModal] = useState(true);
   const inputRef = useRef();
 
   useEffect(() => {
@@ -41,6 +46,13 @@ const SaveButton = ({ addData, post, ...props }) => {
     setData({ title: '', description: '' });
   };
 
+  const handleSelectTags = useCallback(
+    (selected_tags) => {
+      setData({ ...data, tags: selected_tags });
+    },
+    [data]
+  );
+
   return (
     <>
       <div
@@ -51,14 +63,11 @@ const SaveButton = ({ addData, post, ...props }) => {
         <SaveIcon />
       </div>
       <Modal
+        handleClose={() => {
+          setDataModal(false);
+        }}
         modal={dataModal}
         className={styles['modal']}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            handleAddData();
-          }
-        }}
       >
         <input
           ref={inputRef}
@@ -75,13 +84,14 @@ const SaveButton = ({ addData, post, ...props }) => {
             setData({ ...data, description: e.target.value });
           }}
           type='text'
-          placeholder='Write a small description'
+          placeholder='Write a small description (optional)'
         />
+        <SelectTag onChange={handleSelectTags} />
         <div className={styles['modal-btn-group']}>
           <button onClick={handleAddData}>Done!</button>
           <button
             onClick={() => {
-              setData({ title: '', description: '' });
+              setData({ title: '', description: '', tags: [] });
               setDataModal(false);
             }}
           >

@@ -8,6 +8,7 @@ import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
+import Button from '../../../components/buttons/button/Button';
 import CommentSection from '../../../components/comments/CommentSection';
 import Layout from '../../../components/layout/Layout';
 import markdownStyles from '../../../components/markdown_editor/Markdown.module.css';
@@ -141,17 +142,21 @@ const Post = ({ post }) => {
           {post.user && post.user._id == userInfo._id && (
             <div className={styles['btn-group']}>
               <Link passHref href={`/posts/${post._id}/edit`}>
-                <button type='button' className={styles['btn']}>
+                <Button
+                  buttonType='outlined'
+                  type='button'
+                >
                   Edit
-                </button>
+                </Button>
               </Link>
-              <button
+              <Button
+                buttonType='outlined'
                 type='button'
+                variant='danger'
                 onClick={handleDeleteBtn}
-                className={styles['btn']}
               >
                 Delete
-              </button>
+              </Button>
               <DeleteAlertModal
                 show={showAlert}
                 handleDelete={handleDelete}
