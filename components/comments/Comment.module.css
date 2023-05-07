@@ -2,6 +2,7 @@
   display: flex;
   gap: 1rem;
   padding: 0.8rem 0;
+  justify-content: center;
 }
 
 .dp {
@@ -13,16 +14,16 @@
 }
 
 .comment {
-  display: flex;
   word-break: break-all;
   font-size: 1rem;
 }
 
 .notdp {
   display: flex;
+  flex-grow: 1;
   gap: 0.3rem;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
 }
 .description {
   display: flex;

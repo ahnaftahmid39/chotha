@@ -1,5 +1,5 @@
 .layout {
-  --pad-in: 0.5rem;
+  --pad-in: 1rem;
   display: flex;
   flex-direction: column;
   padding-inline: var(--pad-in);
