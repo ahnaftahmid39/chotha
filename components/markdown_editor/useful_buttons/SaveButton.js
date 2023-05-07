@@ -33,7 +33,7 @@ const SaveButton = ({ addData, post, ...props }) => {
     description: post?.description || '',
     tags: [],
   });
-  const [dataModal, setDataModal] = useState(true);
+  const [dataModal, setDataModal] = useState(false);
   const inputRef = useRef();
 
   useEffect(() => {

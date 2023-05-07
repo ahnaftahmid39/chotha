@@ -1,24 +1,30 @@
 .card {
   display: flex;
   flex-direction: column;
-  min-height: 30vh;
+  min-height: 25vh;
   padding: 2em;
   gap: 0.7rem;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   background: var(--card-bg);
-  border: var(--default-border);
+  border-bottom: var(--default-border);
   cursor: pointer;
+}
+
+.card:last-of-type {
+  border-bottom: none;
 }
 
 .card:hover,
 .card:active {
   box-shadow: var(--card-shadow);
+  filter: contrast(110%);
 }
 
 .card .title {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 .card .description {
@@ -79,4 +85,18 @@
   background-color: var(--fo-clr);
   color: var(--bg-clr-light);
   font-weight: bold;
+}
+
+.tags-wrapper {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.tag {
+  padding: 0.3rem 0.5rem;
+  background-color: var(--bg-clr-2);
+  border-radius: 8px;
 }

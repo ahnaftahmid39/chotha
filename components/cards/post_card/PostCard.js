@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { forwardRef } from 'react';
 
-import PencilIcon from '../../svgs/pencil_icon/PencilIcon';
 import DateIcon from '../../svgs/date_icon/DateIcon';
+import PencilIcon from '../../svgs/pencil_icon/PencilIcon';
 import styles from './PostCard.module.css';
 
 const PostCard = forwardRef(({ post, onClick, href }, ref) => {
-  const { title, user, description, createdAt } = post;
+  const { title, user, description, createdAt, tags } = post;
   return (
     <div
       onClick={onClick}
@@ -44,6 +44,17 @@ const PostCard = forwardRef(({ post, onClick, href }, ref) => {
           </div>
         </div>
       </div>
+      {tags?.length > 0 && (
+        <div className={styles['tags-wrapper']}>
+          {tags.map((tag, idx) => {
+            return (
+              <div className={styles['tag']} key={idx}>
+                {tag}
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 });

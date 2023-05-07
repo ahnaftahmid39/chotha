@@ -32,7 +32,7 @@
     hsla(var(--hue), 90%, 93%, 0.5) 97.92%
   );
   --card-bg-2: hsl(var(--hue), 25%, 80%);
-  --card-shadow: 0px 6px 0px hsl(220, 50%, 78%);
+  --card-shadow: inset 5px 0px hsl(220, 50%, 78%);
   --card-border-clr: hsl(0, 0%, 86%);
 
   /* navbar styles */
@@ -76,7 +76,7 @@
   --bg-clr: hsl(var(--hue), 9%, 15%);
   --bg-clr-grad: radial-gradient(
       50% 50% at 50% 50%,
-      hsla(220, 20%, 30%, 0.5) 10%,
+      hsla(220, 20%, 34%, 0.5) 10%,
       hsla(220, 9%, 15%, 1) 90%
     ),
     hsl(223, 9%, 15%);
@@ -98,7 +98,7 @@
     hsla(var(--hue), 10%, 20%, 0.2) 100%
   );
   --card-bg-2: hsl(var(--hue), 8%, 13%);
-  --card-shadow: 0px 6px 0px hsl(var(--hue), 10%, 11%);
+  --card-shadow: inset 5px 0px 0px var(--border-color);
   --card-border-clr: hsl(var(--hue), 10%, 25%);
 
   --nav-bg-clr: hsla(var(--hue), 9%, 22%, 1);
@@ -129,7 +129,6 @@
   --danger: hsl(0, 66%, 64%);
   --warning: hsl(60, 46%, 58%);
   --info: hsl(210, 100%, 63%);
-
 }
 
 html,
