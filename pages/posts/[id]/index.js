@@ -118,7 +118,16 @@ const Post = ({ post }) => {
         >
           <div>{success}</div>
         </Toast>
-
+        <div className={styles['tags-wrapper']}>
+          {post.tags.length > 0 &&
+            post.tags.map((tag, idx) => {
+              return (
+                <div className={styles['tag']} key={idx}>
+                  {tag}
+                </div>
+              );
+            })}
+        </div>
         <ReactMarkdown
           className={markdownStyles['markdown-body']}
           remarkPlugins={[remarkGfm, remarkMath]}
@@ -142,10 +151,7 @@ const Post = ({ post }) => {
           {post.user && post.user._id == userInfo._id && (
             <div className={styles['btn-group']}>
               <Link passHref href={`/posts/${post._id}/edit`}>
-                <Button
-                  buttonType='outlined'
-                  type='button'
-                >
+                <Button buttonType='outlined' type='button'>
                   Edit
                 </Button>
               </Link>

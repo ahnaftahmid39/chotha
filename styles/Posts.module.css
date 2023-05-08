@@ -30,6 +30,20 @@
   text-align: center;
 }
 
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  background-color: var(--bg-clr-2);
+}
+
 .btn-group {
   display: flex;
   align-items: center;
@@ -71,4 +85,3 @@
     margin-right: 0;
   }
 }
-

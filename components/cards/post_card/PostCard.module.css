@@ -17,7 +17,7 @@
 .card:hover,
 .card:active {
   box-shadow: var(--card-shadow);
-  filter: contrast(110%);
+  backdrop-filter: contrast(110%);
 }
 
 .card .title {

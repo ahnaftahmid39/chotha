@@ -115,6 +115,8 @@
 .social-link a {
   display: inline;
   width: min-content;
+  font-size: 13px;
+
 }
 
 .phone,
