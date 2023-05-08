@@ -11,10 +11,9 @@
 }
 
 .postcard-group {
-  display: grid;
-  grid-template-columns: 1fr;
   margin-top: 1rem;
-  /* gap: 1rem; */
+  display: flex;
+  flex-direction: column;
   margin-bottom: 2rem;
   border-radius: 16px;
   border: var(--default-border);

@@ -1,0 +1,12 @@
+.wrapper pre {
+  overflow: auto;
+}
+
+.wrapper :is(h1, h2, h3) {
+  margin-top: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+.codes {
+  display: flex;
+}

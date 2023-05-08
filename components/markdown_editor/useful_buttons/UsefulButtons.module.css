@@ -4,6 +4,7 @@
   padding: 0.5rem;
   gap: 2.5rem;
   overflow-x: auto;
+  word-break: normal;
 }
 
 @media screen and (min-width: 768px) {

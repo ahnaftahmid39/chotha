@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
 import UserCard from '../../components/cards/user_card/UserCard';
@@ -30,13 +31,24 @@ const Users = () => {
   }, []);
 
   return (
-    <Layout style={{ flexDirection: 'column' }}>
-      <div style={{ marginTop: '1rem', border: 'var(--default-border)', borderRadius: '16px'}}>
-        {users.map((user, idx) => {
-          return <UserCard key={idx} user={user} />;
-        })}
-      </div>
-    </Layout>
+    <>
+      <Head>
+        <title>Users</title>
+      </Head>
+      <Layout style={{ flexDirection: 'column' }}>
+        <div
+          style={{
+            marginTop: '1rem',
+            border: 'var(--default-border)',
+            borderRadius: '16px',
+          }}
+        >
+          {users.map((user, idx) => {
+            return <UserCard key={idx} user={user} />;
+          })}
+        </div>
+      </Layout>
+    </>
   );
 };
 

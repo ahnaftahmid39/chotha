@@ -99,7 +99,7 @@ export default function Browse({}) {
   return (
     <>
       <Head>
-        <title>Chotha Home page</title>
+        <title>Browse chotha</title>
       </Head>
       <Layout className={`${styles['container']}`}>
         <main

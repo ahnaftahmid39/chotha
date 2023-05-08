@@ -16,7 +16,7 @@
 }
 
 .comment {
-  word-break: break-all;
+  /* word-break: break-all; */
   font-size: 1rem;
 }
 

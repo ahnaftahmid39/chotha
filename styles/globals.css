@@ -140,6 +140,7 @@ body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
   scroll-behavior: smooth;
+  word-break: break-word;
   -webkit-font-smoothing: antialiased;
 }
 
