@@ -15,19 +15,13 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
-  border-radius: 16px;
+  border-radius: 8px;
   border: var(--default-border);
   overflow: hidden;
 }
 
-/* @media screen and (min-width: 900px) {
-  .postcard-group {
-    grid-template-columns: 1fr 1fr;
-  }
+.search-filter-wrapper {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
 }
-
-@media screen and (min-width: 1600px) {
-  .postcard-group {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-} */

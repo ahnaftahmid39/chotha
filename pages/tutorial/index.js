@@ -110,7 +110,9 @@ add (29, 40);
           To write math equations, wrap them with <code>$</code> for inline and{' '}
           <code>$$</code> for multiline. Math is done by katex. Search google or
           visit this:{' '}
-          <a className='anchor'>https://sixthform.info/katex/guide.html</a>{' '}
+          <a href='https://sixthform.info/katex/guide.html' className='anchor'>
+            https://sixthform.info/katex/guide.html
+          </a>{' '}
         </p>
         <span>Example:</span>
         <pre>
@@ -127,7 +129,9 @@ $$
         </pre>
         <p>
           Also see this for supported syntax:{' '}
-          <a className='anchor'>https://katex.org/docs/supported.html</a>
+          <a href='https://katex.org/docs/supported.html' className='anchor'>
+            https://katex.org/docs/supported.html
+          </a>
         </p>
         <h2>Tables</h2>
         <p>
@@ -143,7 +147,10 @@ $$
 `}
           </pre>
           Here is a link to more detailed guide:{' '}
-          <a className='anchor'>
+          <a
+            href='https://www.markdownguide.org/extended-syntax/#tables'
+            className='anchor'
+          >
             https://www.markdownguide.org/extended-syntax/#tables
           </a>
         </p>

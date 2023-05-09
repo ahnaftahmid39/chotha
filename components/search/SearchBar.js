@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
+
 import SearchIcon from '../svgs/SearchIcon';
 import styles from './SearchBar.module.css';
 
 const SearchBar = ({
+  text,
+  setText,
   handleEmptyInput,
   handleSearch,
   placeholder = 'Search',
 }) => {
-  const [text, setText] = useState('');
   const handleChange = (e) => {
     setText(e.target.value);
     if (e.target.value == '') {
@@ -17,7 +19,7 @@ const SearchBar = ({
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      handleSearch(text);
+      handleSearch();
     }
   };
   return (
@@ -31,7 +33,7 @@ const SearchBar = ({
       ></input>
       <button
         type='button'
-        onClick={() => handleSearch(text)}
+        onClick={handleSearch}
         className={styles['searchbar-btn']}
       >
         <SearchIcon />

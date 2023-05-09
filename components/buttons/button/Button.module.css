@@ -9,6 +9,7 @@
   padding: 0.6rem 1rem;
   transition: all 100ms;
   height: min-content;
+  word-break: normal;
 }
 
 .button:active {

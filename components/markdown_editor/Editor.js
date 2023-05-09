@@ -61,6 +61,7 @@ const Editor = ({ post }) => {
   const addData = ({ title, description, tags }) => {
     fetch(post?._id ? `/api/post/${post._id}` : '/api/post' || '/api/post', {
       body: JSON.stringify({
+        author: userInfo.name,
         markdown: text.value,
         title: title,
         description: description,

@@ -44,6 +44,10 @@
   background-color: var(--bg-clr-2);
 }
 
+.markdown-body {
+  padding: 0.3rem 0;
+}
+
 .btn-group {
   display: flex;
   align-items: center;

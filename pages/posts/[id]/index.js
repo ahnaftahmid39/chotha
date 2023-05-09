@@ -129,7 +129,7 @@ const Post = ({ post }) => {
             })}
         </div>
         <ReactMarkdown
-          className={markdownStyles['markdown-body']}
+          className={`${markdownStyles['markdown-body']} ${styles['markdown-body']}`}
           remarkPlugins={[remarkGfm, remarkMath]}
           rehypePlugins={[rehypeKatex]}
           components={{

@@ -1,5 +1,8 @@
+import { Types } from 'mongoose';
+
 import dbConnect from '../../../lib/middlewares/mongoose';
 import { Post } from '../../../lib/models/post';
+import { User } from '../../../lib/models/user';
 
 export default async function handle(req, res) {
   switch (req.method) {
@@ -35,8 +38,11 @@ export default async function handle(req, res) {
           sort[sortBy] = order;
         }
 
+        console.log(sort);
+
         const posts = await Post.find(args, proj)
           .populate('user', 'name email')
+          .select('-markdown')
           .sort(sort)
           .skip(skip)
           .limit(limit);

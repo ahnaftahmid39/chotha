@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import PostCard from '../../components/cards/post_card/PostCard';
+import Filter from '../../components/filter/Filter';
 import Layout from '../../components/layout/Layout';
 import Loading from '../../components/loading_indicator/Loading';
 import LoadingCard from '../../components/loading_indicator/LoadingCard';
@@ -18,6 +19,8 @@ export default function Browse({}) {
   const [leaving, setLeaving] = useState(false);
   const [isLoading, setIsloading] = useState(true);
   const [posts, setPosts] = useState();
+  const [filter, setFilter] = useState({});
+  const [text, setText] = useState('');
 
   const fetchAllPosts = useCallback(async () => {
     setIsloading(true);
@@ -64,15 +67,20 @@ export default function Browse({}) {
       </div>
     );
 
-  const handleSearch = async (text) => {
-    if (!text || text == '') return;
+  const handleSearch = async (newFilter) => {
+    if ((!text || text == '') && !newFilter && !filter) return;
     setIsloading(true);
     try {
+      const f = newFilter || filter;
+      console.log(f);
       const res = await fetch('/api/post/filter', {
         method: 'POST',
         body: JSON.stringify({
           search: text,
-          sortBy: 'relevance',
+          sortBy: f?.sortBy,
+          order: f?.order,
+          skip: f?.skip,
+          limit: f?.limit,
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -96,6 +104,15 @@ export default function Browse({}) {
     fetchAllPosts();
   };
 
+  const handleFilter = (filter) => {
+    setFilter(filter);
+    handleSearch(filter);
+  };
+
+  const updateFilter = (filter) => {
+    setFilter(filter);
+  };
+
   return (
     <>
       <Head>
@@ -110,10 +127,15 @@ export default function Browse({}) {
             flexDirection: 'column',
           }}
         >
-          <SearchBar
-            handleEmptyInput={handleEmptyInput}
-            handleSearch={handleSearch}
-          />
+          <div className={styles['search-filter-wrapper']}>
+            <SearchBar
+              text={text}
+              setText={setText}
+              handleEmptyInput={handleEmptyInput}
+              handleSearch={handleSearch}
+            />
+            <Filter updateFilter={updateFilter} handleFilter={handleFilter} />
+          </div>
           {isLoading ? (
             <div className={styles['postcard-group']}>
               {Array.from(Array(3).keys()).map((i) => {
