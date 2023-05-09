@@ -16,15 +16,19 @@ const Tutorial = ({}) => {
           Markdown syntax so you can start writing beautiful blog posts in no
           time. Check this if you want to watch video instead:
         </p>
-        <iframe
-          style={{ display: 'flex', marginInline: 'auto'}}
-          width='560'
-          height='315'
-          src='https://www.youtube.com/embed/HUBNt18RFbo'
-          title='YouTube video player'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-          allowFullScreen
-        ></iframe>
+        <div className={styles['iframe-grandwrapper']}>
+          <div className={styles['iframe-wrapper']}>
+            <iframe
+              width='560'
+              height='315'
+              src='https://www.youtube.com/embed/HUBNt18RFbo'
+              title='YouTube video player'
+              frameBorder='0'
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
         <h2>Headings</h2>
         <p>
           To create a heading, simply prefix your text with a hash symbol (#).
