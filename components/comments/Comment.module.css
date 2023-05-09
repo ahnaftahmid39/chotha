@@ -3,6 +3,7 @@
   gap: 1rem;
   padding: 0.8rem 0;
   justify-content: center;
+  word-break: break-word;
 }
 
 .dp {

@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { getDateTime } from '../../lib/utils/date';
 import ProfilePlaceholder from '../svgs/ProfilePlaceholder';
 import styles from './Comment.module.css';
