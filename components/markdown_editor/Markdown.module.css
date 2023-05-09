@@ -17,6 +17,7 @@
 }
 
 [data-theme='dark'] .markdown-body {
+  --td-2n-bg-clr: hsl(var(--hue), 30%, 8%);
   --td-border-clr: hsla(var(--hue), 10%, 40%);
   --tr-border-clr: hsla(var(--hue), 10%, 40%);
 }
