@@ -8,7 +8,7 @@ import styles from './PostCard.module.css';
 const PostCard = forwardRef(({ post, onClick, href }, ref) => {
   const { title, user, description, createdAt, tags } = post;
   return (
-    <div
+    <a
       onClick={onClick}
       href={href}
       ref={ref}
@@ -55,7 +55,7 @@ const PostCard = forwardRef(({ post, onClick, href }, ref) => {
           })}
         </div>
       )}
-    </div>
+    </a>
   );
 });
 
