@@ -96,7 +96,10 @@
 }
 
 .markdown-body code {
-  color: hsl(0, 0%, 80%);
+  color: var(--fo-clr);
+  background-color: var(--bg-clr-2);
+  border-radius: 8px;
+  padding: 0.3rem;
 }
 
 .markdown-body li + li {

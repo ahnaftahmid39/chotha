@@ -34,6 +34,8 @@
 }
 .iframe-wrapper iframe{
   position: absolute;
+  border: none;
+  border-radius: 8px;
   top:0;
   left: 0;
   width: 100%;

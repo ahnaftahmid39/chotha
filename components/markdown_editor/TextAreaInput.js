@@ -224,6 +224,7 @@ const TextAreaInput = ({ spaces = 4, className, text, setText }, ref) => {
 
   return (
     <textarea
+      autoFocus={true}
       ref={taRef}
       spellCheck={false}
       onChange={handleText}
