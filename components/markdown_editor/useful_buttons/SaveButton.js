@@ -9,7 +9,7 @@ import styles from './UsefulButtons.module.css';
 const SaveIcon = memo(() => {
   return (
     <svg
-      width='20'
+      width='16'
       viewBox='0 0 249 287'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
@@ -68,10 +68,11 @@ const SaveButton = ({ addData, post, ...props }) => {
     <>
       <div
         onClick={() => setDataModal(true)}
-        className={`${styles['svg-icon-parent']}`}
+        className={`${styles['svg-icon-parent']} ${styles['save-icon']}`}
         {...props}
       >
         <SaveIcon />
+        <span>Publish</span>
       </div>
       <Modal
         handleClose={() => {

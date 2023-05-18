@@ -295,3 +295,7 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 50rem var(--bg-clr) inset !important;
   -webkit-text-fill-color: hsl(120, 39%, 53%);
 }
+
+button {
+  font-family: inherit;
+}

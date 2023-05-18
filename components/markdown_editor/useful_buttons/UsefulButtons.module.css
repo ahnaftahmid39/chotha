@@ -7,11 +7,6 @@
   word-break: normal;
 }
 
-@media screen and (min-width: 768px) {
-  .useful-buttons {
-    margin-left: 1rem;
-  }
-}
 .modal {
   width: 100vw;
   gap: 1rem;
@@ -106,8 +101,14 @@
   align-items: center;
   user-select: none;
   color: var(--btn-fo-clr);
+  gap: 0.5rem;
 }
-
+.save-icon {
+  border-radius: 8px;
+  border: var(--default-border);
+  padding: 0.4rem 0.4rem;
+  font-weight: 600;
+}
 .svg-icon-parent:hover {
   transform: scale(1.1);
 }
