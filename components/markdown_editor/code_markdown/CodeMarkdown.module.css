@@ -7,3 +7,12 @@
   padding: 0.3rem;
   line-height: 1.2rem;
 }
+
+.inline {
+  color: var(--fo-clr-light);
+  font-family: monospace;
+  font-size: 1rem;
+  background-color: var(--bg-clr-2);
+  border-radius: 8px;
+  padding: 0.2rem 0.4rem;
+}

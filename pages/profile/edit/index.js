@@ -188,6 +188,7 @@ const ProfileEdit = () => {
             },
           });
           const data = await res.json();
+          console.log(data);
           if (shouldUpdate) {
             setName(data.user.name || '');
             setBio(data.user.bio || '');

@@ -7,23 +7,27 @@ import styles from './CodeMarkdown.module.css';
 const CodeMarkdown = React.memo(
   function ({ node, inline, className, children, ...props }) {
     const match = /language-(\w+)/.exec(className || '');
-    return !inline && match ? (
-      <SyntaxHighlighter
-        style={nord}
-        className={`custom-scroll ${className} ${styles['syntax-highlighter']}`}
-        language={langMap[match[1]] || match[1]}
-        PreTag='div'
-        {...props}
-        customStyle={{ overflowY: 'hidden', padding: 0, margin: 0 }}
-      >
-        {String(children).trim()}
-      </SyntaxHighlighter>
+    return !inline ? (
+      match ? (
+        <SyntaxHighlighter
+          style={nord}
+          className={`custom-scroll ${className} ${styles['syntax-highlighter']}`}
+          language={langMap[match[1]] || match[1]}
+          PreTag='div'
+          {...props}
+          customStyle={{ overflowY: 'hidden', padding: 0, margin: 0 }}
+        >
+          {String(children).trim()}
+        </SyntaxHighlighter>
+      ) : (
+        <div className={`${styles['no-highlight']} custom-scroll`}>
+          <code className={`${className}`} {...props}>
+            {children}
+          </code>
+        </div>
+      )
     ) : (
-      <div className={`${styles['no-highlight']} custom-scroll`}>
-        <code className={`${className}`} {...props}>
-          {children}
-        </code>
-      </div>
+      <code className={styles['inline']}>{children}</code>
     );
   },
   (prev, next) => {

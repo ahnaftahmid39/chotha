@@ -62,6 +62,10 @@
   font-size: 0.9rem;
   margin-left: 0.5rem;
 }
+.author {
+  color: var(--fo-clr);
+  font-weight: 600;
+}
 
 .author:hover,
 .author:active {

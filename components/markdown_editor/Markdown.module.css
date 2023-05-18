@@ -48,7 +48,6 @@
   color: var(--bg-clr);
 }
 
-
 .markdown-body table {
   border-spacing: 0;
   border-collapse: collapse;
@@ -85,7 +84,6 @@
   background-color: var(--td-2n-bg-clr);
 }
 
-
 .markdown-body pre {
   padding: 1rem;
   font-size: 0.9rem;
@@ -95,12 +93,6 @@
   border-radius: 8px;
 }
 
-.markdown-body code {
-  color: var(--fo-clr);
-  background-color: var(--bg-clr-2);
-  border-radius: 8px;
-  padding: 0.3rem;
-}
 
 .markdown-body li + li {
   margin-top: 0.5rem;
