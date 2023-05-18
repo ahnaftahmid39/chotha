@@ -29,10 +29,21 @@ SaveIcon.displayName = 'SaveIcon';
 
 const SaveButton = ({ addData, post, ...props }) => {
   const [data, setData] = useState({
-    title: post?.title || '',
-    description: post?.description || '',
+    title: '',
+    description: '',
     tags: [],
   });
+
+  useEffect(() => {
+    if (post) {
+      setData({
+        title: post.title,
+        description: post.description,
+        tags: post.tags || [],
+      });
+    }
+  }, [post]);
+
   const [dataModal, setDataModal] = useState(false);
   const inputRef = useRef();
 
@@ -86,12 +97,11 @@ const SaveButton = ({ addData, post, ...props }) => {
           type='text'
           placeholder='Write a small description (optional)'
         />
-        <SelectTag onChange={handleSelectTags} />
+        <SelectTag prevTags={data.tags} onChange={handleSelectTags} />
         <div className={styles['modal-btn-group']}>
           <button onClick={handleAddData}>Done!</button>
           <button
             onClick={() => {
-              setData({ title: '', description: '', tags: [] });
               setDataModal(false);
             }}
           >

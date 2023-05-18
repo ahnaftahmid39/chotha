@@ -10,7 +10,6 @@ export default async function handle(req, res) {
       try {
         await dbConnect();
         let sortBy = req.body.sortBy || 'createdAt';
-        console.log(req.body);
         const order = req.body.order == 'asc' ? 1 : -1 || -1;
         const limit = parseInt(req.body.limit) || 100;
         const skip = parseInt(req.body.skip) || 0;
@@ -37,9 +36,6 @@ export default async function handle(req, res) {
         } else {
           sort[sortBy] = order;
         }
-
-        console.log(sort);
-
         const posts = await Post.find(args, proj)
           .populate('user', 'name email')
           .select('-markdown')
@@ -48,7 +44,7 @@ export default async function handle(req, res) {
           .limit(limit);
         return res.status(200).json({ message: 'success', posts });
       } catch (e) {
-        console.log(err);
+        // console.log(err);
         return res.status(400).json({ message: e.message, error: e });
       }
     }

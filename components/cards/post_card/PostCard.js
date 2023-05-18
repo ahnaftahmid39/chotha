@@ -24,9 +24,9 @@ const PostCard = forwardRef(({ post, onClick, href }, ref) => {
           </div>
           {user && (
             <Link href={`/users/${user._id}`} passHref>
-              <a className={`${styles['author']}`} type='button'>
+              <button className={`${styles['author']}`} type='button'>
                 {user?.name}
-              </a>
+              </button>
             </Link>
           )}
         </div>

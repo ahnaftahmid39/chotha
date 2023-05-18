@@ -121,6 +121,7 @@ const Editor = ({ post }) => {
         post={{
           title: post?.title || '',
           description: post?.description || '',
+          tags: post?.tags || [],
         }}
         addImgLink={addImgLink}
         addLink={addLink}
@@ -152,7 +153,7 @@ const Editor = ({ post }) => {
             ref={taRef}
             text={text}
             setText={setText}
-            className={`${styles.textarea}`}
+            className={`${styles.textarea} custom-scroll`}
           />
         </div>
         <div className={`${styles.preview}`} data-view={view}>

@@ -170,8 +170,8 @@ button {
 }
 
 .custom-scroll::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
 }
 
 /* Handle */
@@ -179,7 +179,7 @@ button {
   -webkit-border-radius: 5px;
   border-radius: 5px;
   background: hsla(0, 0%, 0%, 0.3);
-  width: 5px;
+  width: 12px;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb:hover {

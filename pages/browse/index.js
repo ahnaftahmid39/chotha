@@ -72,7 +72,7 @@ export default function Browse({}) {
     setIsloading(true);
     try {
       const f = newFilter || filter;
-      console.log(f);
+      // console.log(f);
       const res = await fetch('/api/post/filter', {
         method: 'POST',
         body: JSON.stringify({

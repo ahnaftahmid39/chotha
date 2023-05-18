@@ -11,9 +11,9 @@ function isSubSequence(str1, str2, m, n) {
   return isSubSequence(str1, str2, m, n - 1);
 }
 
-const SelectTag = ({ onChange }) => {
+const SelectTag = ({ prevTags = [], onChange }) => {
   const [tags, setTags] = useState([]);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(prevTags);
 
   const handleAddTag = async (newTag) => {
     if (newTag != '') {

@@ -1,6 +1,7 @@
 import React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism-async-light';
 import nord from 'react-syntax-highlighter/dist/cjs/styles/prism/nord';
+
 import styles from './CodeMarkdown.module.css';
 
 const CodeMarkdown = React.memo(
@@ -9,12 +10,11 @@ const CodeMarkdown = React.memo(
     return !inline && match ? (
       <SyntaxHighlighter
         style={nord}
-        showLineNumbers
         className={`custom-scroll ${className} ${styles['syntax-highlighter']}`}
         language={langMap[match[1]] || match[1]}
         PreTag='div'
         {...props}
-        customStyle={{ padding: 0, margin: 0 }}
+        customStyle={{ overflowY: 'hidden', padding: 0, margin: 0 }}
       >
         {String(children).trim()}
       </SyntaxHighlighter>
