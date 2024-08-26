@@ -27,7 +27,7 @@ const Home = () => {
           <div className={styles['branding-wrapper']}>
           {theme == "light" ? 
             <Image
-              src={srcLogo}
+              src={logoLight}
               alt='logo'
               width={150}
               height={148}
@@ -35,7 +35,7 @@ const Home = () => {
             /> 
             :
             <Image
-              src={srcLogo}
+              src={logoDark}
               alt='logo'
               width={150}
               height={148}
