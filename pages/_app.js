@@ -1,11 +1,12 @@
-import Navbar from '../components/navbar/Navbar';
-import '../styles/globals.css';
 import { ThemeProvider } from 'next-themes';
+
+import Navbar from '../components/navbar/Navbar';
 import UserProvider from '../providers/UserProvider';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider>
+    <ThemeProvider enableSystem={true}>
       <UserProvider>
         <Navbar />
         <Component {...pageProps} />

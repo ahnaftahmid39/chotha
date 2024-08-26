@@ -13,10 +13,9 @@ const repeatCount = 2;
 const logoLight = '/images/logo-light.png';
 const logoDark = '/images/logo-dark.png';
 const Home = () => {
-  const { theme } = useTheme();
+  const { resolvedTheme: theme } = useTheme();
   const counter = useRef(0);
-
-
+  console.log(theme)
   return (
     <>
       <Head>
