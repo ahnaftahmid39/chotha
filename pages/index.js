@@ -10,13 +10,13 @@ import Layout from '../components/layout/Layout';
 import styles from '../styles/Home.module.css';
 
 const repeatCount = 2;
-
+const logoLight = '/images/logo-light.png';
+const logoDark = '/images/logo-dark.png';
 const Home = () => {
   const { theme } = useTheme();
   const counter = useRef(0);
 
-  let srcLogo = '/images/logo-light.png';
-  if (theme == 'dark') srcLogo = '/images/logo-dark.png';
+
   return (
     <>
       <Head>
@@ -25,13 +25,22 @@ const Home = () => {
       <Layout>
         <section className={styles['branding-section-wrapper']}>
           <div className={styles['branding-wrapper']}>
+          {theme == "light" ? 
             <Image
               src={srcLogo}
               alt='logo'
               width={150}
               height={148}
               objectFit='cover'
-            />
+            /> 
+            :
+            <Image
+              src={srcLogo}
+              alt='logo'
+              width={150}
+              height={148}
+              objectFit='cover'
+            />}
             <div className={`${styles['brand']} unselectable`}>
               <div className={styles['brand-name']}>Chotha</div>
               <TypeAnimation
